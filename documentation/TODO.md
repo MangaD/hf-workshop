@@ -7,7 +7,6 @@
 # To-do
 
 - Redo AMF0 serialization in the same fashion as AMF3.
-- `itemLmi` replacing is producing a different output in both HFX and HFv0.7. Investigate.
 - optimize PNGs added by the user (make flag for disabling optimizations so that unit tests that compare files don't fail)
 - HF v0.7 swf browser encrypted version does not come out equal! Same for downloadable SWF. It's wrecked by HFW. Investigate why.
 - When saving the file it will say "Permission denied" or something in case the EXE file that we're saving to is open. Mention that this might be the case in the error message.

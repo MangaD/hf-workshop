@@ -619,9 +619,7 @@ int hfw::exportData(vector<size_t> &ids) {
 			data = zlib::zlib_decompress(ba->binaryData);
 
 			//XXX Only for test
-			/*
-			writeBinaryFile(name + ".out", data);
-			*/
+			//writeBinaryFile(name + ".out", data);
 
 			pos = 0;
 
@@ -1133,18 +1131,17 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 			// PNGs
 			count = 0;
 			for(auto b : embeddedLPs) {
-				if (b) {
-					try {
-						data.emplace_back(AMF3::BYTE_ARRAY_MARKER);
-						concatVectorWithContainer(data, AMF3::U29BAToVector(pngs.at(count).size()));
-						concatVectorWithContainer(data, pngs.at(count));
-					} catch (const out_of_range& oor) {
-						/// TRANSLATORS: 'embeded' is an intentional typo
-						printf_colored(rlutil::YELLOW, io.getText("WARNING: LimbPic with ID=%d has \"embeded\" set "
-							"to \"true\", but there is no PNG file with that ID. If you wish to disable it, "
-							"change \"disabled\" to \"true\" and \"embeded\" to \"false\".\n"), count);
-						data.emplace_back(0x01);
-					}
+				bool pngExists = (pngs.find(count) != pngs.end());
+				if (b && pngExists) {
+					data.emplace_back(AMF3::BYTE_ARRAY_MARKER);
+					concatVectorWithContainer(data, AMF3::U29BAToVector(pngs.at(count).size()));
+					concatVectorWithContainer(data, pngs.at(count));
+				} else if (b) {
+					/// TRANSLATORS: 'embeded' is an intentional typo
+					printf_colored(rlutil::YELLOW, io.getText("WARNING: LimbPic with ID=%d has \"embeded\" set "
+						"to \"true\", but there is no PNG file with that ID. If you wish to disable it, "
+						"change \"disabled\" to \"true\" and \"embeded\" to \"false\".\n"), count);
+					data.emplace_back(0x01);
 				} else {
 					data.emplace_back(0x01);
 				}
@@ -1296,9 +1293,7 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 		}
 
 		//XXX Only for test
-		/*
-		writeBinaryFile(tagName + ".out", data);
-		*/
+		//writeBinaryFile(tagName + ".out", data);
 
 		vector<uint8_t> compressed = zlib::zlib_compress(data, Z_BEST_COMPRESSION);
 
