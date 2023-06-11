@@ -6,9 +6,12 @@
 
 # To-do
 
+- HFX story code is perhaps encoded somehow. https://canary.discord.com/channels/234364433344888832/605880341915238409/856471951592390666
 - HF v0.7 swf browser encrypted version does not come out equal! Same for downloadable SWF. It's wrecked by HFW. Investigate why.
 - Make unit test that exports and replaces data, and checks if the uncompressed exported binary is equal to the uncompressed binary to replace.
+- When saving the file it will say "Permission denied" or something in case the EXE file that we're saving to is open. Mention that this might be the case in the error message.
 - Make `1. Help` have 3 subsections: `1. README`, `2. About`, `3. Credits`
+- Validate HF stories with XSD made by Nikhil Krishna. Review the XSD and credit Nikhil for making it. Look into http://xerces.apache.org/xerces-c/
 - make tests for libswf using HF_v0.3.0.swf
 - optimize PNGs added by the user (optional so unit tests don't use it)
 - Convert AMF0 JSON to AMF3 JSON and vice-versa. Convert data structures too if possible.

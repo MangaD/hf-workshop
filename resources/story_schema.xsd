@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Lol I don't know what am I doing with my life. Send help , please. Jokes aside , I think maybe this will work. Yours truly , Nikhil -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="story">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element minOccurs="0" name="storyid" type="xs:string" />
+          <xs:element minOccurs="0" name="storylevel" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="bar">
+            <xs:complexType mixed="true">
+              <xs:sequence minOccurs="0">
+                <xs:choice maxOccurs="unbounded">
+                  <xs:element minOccurs="0" name="bg">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element minOccurs="0" name="bgid" type="xs:string" />
+                        <xs:element minOccurs="0" name="x" type="xs:string" />
+                        <xs:element minOccurs="0" name="z" type="xs:string" />
+                        <xs:element minOccurs="0" name="y" type="xs:string" />
+                        <xs:element minOccurs="0" name="facing" type="xs:string" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element minOccurs="0" name="left" type="xs:string" />
+                  <xs:element minOccurs="0" name="right" type="xs:string" />
+                  <xs:element minOccurs="0" maxOccurs="unbounded" name="hide">
+                    <xs:complexType>
+                      <xs:sequence minOccurs="0">
+                        <xs:choice maxOccurs="unbounded">
+                          <xs:element minOccurs="0" maxOccurs="unbounded" name="hide" type="xs:string" />
+                          <xs:element minOccurs="0" maxOccurs="unbounded" name="obj">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:choice maxOccurs="unbounded">
+                                  <xs:element minOccurs="0" maxOccurs="unbounded" name="id" type="xs:string" />
+                                  <xs:element minOccurs="0" maxOccurs="unbounded" name="facing" type="xs:string" />
+                                  <xs:element minOccurs="0" name="times" type="xs:string" />
+                                  <xs:element minOccurs="0" name="po" type="xs:string" />
+                                  <xs:element minOccurs="0" name="a" type="xs:string" />
+                                  <xs:element minOccurs="0" maxOccurs="unbounded" name="ratio" type="xs:string" />
+                                  <xs:element minOccurs="0" name="grp" type="xs:string" />
+                                  <xs:element minOccurs="0" name="bossGrp" type="xs:string" />
+                                  <xs:element minOccurs="0" name="toHire" />
+                                  <xs:element minOccurs="0" name="x" type="xs:string" />
+                                  <xs:element minOccurs="0" name="z" type="xs:string" />
+                                  <xs:element minOccurs="0" name="y" type="xs:string" />
+                                </xs:choice>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:choice>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element minOccurs="0" name="effect" type="xs:string" />
+                  <xs:element minOccurs="0" name="drama">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:choice maxOccurs="unbounded">
+                          <xs:element minOccurs="0" maxOccurs="unbounded" name="a">
+                            <xs:complexType mixed="true">
+                              <xs:sequence>
+                                <xs:choice maxOccurs="unbounded">
+                                  <xs:element minOccurs="0" maxOccurs="unbounded" name="a">
+                                    <xs:complexType>
+                                      <xs:sequence>
+                                        <xs:choice maxOccurs="unbounded">
+                                          <xs:element minOccurs="0" name="id" type="xs:string" />
+                                          <xs:element minOccurs="0" name="wac" type="xs:string" />
+                                          <xs:element minOccurs="0" name="ac" type="xs:string" />
+                                          <xs:element minOccurs="0" maxOccurs="unbounded" name="f" type="xs:string" />
+                                          <xs:element minOccurs="0" name="x" type="xs:string" />
+                                          <xs:element minOccurs="0" name="z" type="xs:string" />
+                                          <xs:element minOccurs="0" name="c" type="xs:string" />
+                                          <xs:element minOccurs="0" name="y" type="xs:string" />
+                                          <xs:element minOccurs="0" name="a">
+                                            <xs:complexType mixed="true">
+                                              <xs:sequence minOccurs="0">
+                                                <xs:element minOccurs="0" name="id" type="xs:string" />
+                                                <xs:element minOccurs="0" name="c" type="xs:string" />
+                                                <xs:element minOccurs="0" name="wac" type="xs:string" />
+                                              </xs:sequence>
+                                            </xs:complexType>
+                                          </xs:element>
+                                          <xs:element minOccurs="0" name="t" type="xs:string" />
+                                        </xs:choice>
+                                      </xs:sequence>
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element minOccurs="0" name="ha">
+                                    <xs:complexType>
+                                      <xs:sequence>
+                                        <xs:element minOccurs="0" name="id" type="xs:string" />
+                                        <xs:element minOccurs="0" name="f" type="xs:string" />
+                                        <xs:element minOccurs="0" name="x" type="xs:string" />
+                                        <xs:element minOccurs="0" name="z" type="xs:string" />
+                                        <xs:element minOccurs="0" name="c" type="xs:string" />
+                                      </xs:sequence>
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element minOccurs="0" name="t">
+                                    <xs:complexType mixed="true">
+                                      <xs:sequence>
+                                        <xs:choice maxOccurs="unbounded">
+                                          <xs:element minOccurs="0" name="s" type="xs:string" />
+                                          <xs:element minOccurs="0" name="a" type="xs:string" />
+                                          <xs:element minOccurs="0" name="n" type="xs:string" />
+                                          <xs:element minOccurs="0" name="b5" type="xs:string" />
+                                          <xs:element minOccurs="0" name="en" type="xs:string" />
+                                          <xs:element minOccurs="0" name="i" type="xs:string" />
+                                        </xs:choice>
+                                      </xs:sequence>
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element minOccurs="0" name="hide">
+                                    <xs:complexType>
+                                      <xs:sequence>
+                                        <xs:element minOccurs="0" maxOccurs="unbounded" name="a">
+                                          <xs:complexType>
+                                            <xs:sequence>
+                                              <xs:element minOccurs="0" name="id" type="xs:string" />
+                                              <xs:element minOccurs="0" name="ac" type="xs:string" />
+                                            </xs:sequence>
+                                          </xs:complexType>
+                                        </xs:element>
+                                      </xs:sequence>
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element minOccurs="0" name="old">
+                                    <xs:complexType>
+                                      <xs:sequence>
+                                        <xs:element minOccurs="0" name="a">
+                                          <xs:complexType>
+                                            <xs:sequence>
+                                              <xs:element minOccurs="0" name="id" type="xs:string" />
+                                              <xs:element minOccurs="0" name="f" type="xs:string" />
+                                              <xs:element minOccurs="0" name="ac" type="xs:string" />
+                                            </xs:sequence>
+                                          </xs:complexType>
+                                        </xs:element>
+                                      </xs:sequence>
+                                    </xs:complexType>
+                                  </xs:element>
+                                </xs:choice>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" name="state" type="xs:string" />
+                          <xs:element minOccurs="0" maxOccurs="unbounded" name="o">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:choice maxOccurs="unbounded">
+                                  <xs:element minOccurs="0" name="s" type="xs:string" />
+                                  <xs:element minOccurs="0" name="a" type="xs:string" />
+                                  <xs:element minOccurs="0" name="id" type="xs:string" />
+                                  <xs:element minOccurs="0" name="f" type="xs:string" />
+                                  <xs:element minOccurs="0" name="x" type="xs:string" />
+                                  <xs:element minOccurs="0" name="z" type="xs:string" />
+                                  <xs:element minOccurs="0" name="c" type="xs:string" />
+                                  <xs:element minOccurs="0" name="t" type="xs:string" />
+                                  <xs:element minOccurs="0" name="ite" type="xs:string" />
+                                  <xs:element minOccurs="0" name="att" type="xs:string" />
+                                  <xs:element minOccurs="0" name="rid" type="xs:string" />
+                                  <xs:element minOccurs="0" name="y" type="xs:string" />
+                                </xs:choice>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" name="aaa">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element minOccurs="0" name="a">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" name="id" type="xs:string" />
+                                      <xs:element minOccurs="0" name="f" type="xs:string" />
+                                      <xs:element minOccurs="0" name="x" type="xs:string" />
+                                      <xs:element minOccurs="0" name="z" type="xs:string" />
+                                      <xs:element minOccurs="0" name="c" type="xs:string" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" maxOccurs="unbounded" name="hide">
+                            <xs:complexType mixed="true">
+                              <xs:sequence minOccurs="0">
+                                <xs:element minOccurs="0" name="a">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="unbounded" name="a">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" name="id" type="xs:string" />
+                                            <xs:element minOccurs="0" name="f" type="xs:string" />
+                                            <xs:element minOccurs="0" name="ac" type="xs:string" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" maxOccurs="unbounded" name="o">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" name="s" type="xs:string" />
+                                      <xs:element minOccurs="0" name="id" type="xs:string" />
+                                      <xs:element minOccurs="0" name="f" type="xs:string" />
+                                      <xs:element minOccurs="0" name="x" type="xs:string" />
+                                      <xs:element minOccurs="0" name="z" type="xs:string" />
+                                      <xs:element minOccurs="0" name="a" type="xs:string" />
+                                      <xs:element minOccurs="0" name="c" type="xs:string" />
+                                      <xs:element minOccurs="0" name="t" type="xs:string" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" maxOccurs="unbounded" name="comment">
+                            <xs:complexType mixed="true">
+                              <xs:sequence minOccurs="0">
+                                <xs:element minOccurs="0" name="a">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" name="id" type="xs:string" />
+                                      <xs:element minOccurs="0" name="f" type="xs:string" />
+                                      <xs:element minOccurs="0" name="x" type="xs:string" />
+                                      <xs:element minOccurs="0" name="z" type="xs:string" />
+                                      <xs:element minOccurs="0" name="c" type="xs:string" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" name="zkip1" />
+                          <xs:element minOccurs="0" name="zkip0" />
+                          <xs:element minOccurs="0" maxOccurs="unbounded" name="temp">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element minOccurs="0" name="o">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" name="s" type="xs:string" />
+                                      <xs:element minOccurs="0" name="id" type="xs:string" />
+                                      <xs:element minOccurs="0" name="f" type="xs:string" />
+                                      <xs:element minOccurs="0" name="x" type="xs:string" />
+                                      <xs:element minOccurs="0" name="z" type="xs:string" />
+                                      <xs:element minOccurs="0" name="c" type="xs:string" />
+                                      <xs:element minOccurs="0" name="t" type="xs:string" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" name="a">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="unbounded" name="a">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:choice maxOccurs="unbounded">
+                                              <xs:element minOccurs="0" name="id" type="xs:string" />
+                                              <xs:element minOccurs="0" name="f" type="xs:string" />
+                                              <xs:element minOccurs="0" name="ac" type="xs:string" />
+                                              <xs:element minOccurs="0" name="x" type="xs:string" />
+                                              <xs:element minOccurs="0" name="z" type="xs:string" />
+                                              <xs:element minOccurs="0" name="c" type="xs:string" />
+                                            </xs:choice>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:choice>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element minOccurs="0" name="bgm" type="xs:string" />
+                  <xs:element minOccurs="0" maxOccurs="unbounded" name="obj">
+                    <xs:complexType mixed="true">
+                      <xs:sequence>
+                        <xs:choice maxOccurs="unbounded">
+                          <xs:element minOccurs="0" maxOccurs="unbounded" name="id" type="xs:string" />
+                          <xs:element minOccurs="0" maxOccurs="unbounded" name="a" type="xs:string" />
+                          <xs:element minOccurs="0" name="hp" type="xs:string" />
+                          <xs:element minOccurs="0" maxOccurs="unbounded" name="facing" type="xs:string" />
+                          <xs:element minOccurs="0" name="times" type="xs:string" />
+                          <xs:element minOccurs="0" maxOccurs="unbounded" name="ratio" type="xs:string" />
+                          <xs:element minOccurs="0" name="bossGrp" type="xs:string" />
+                          <xs:element minOccurs="0" name="toHire" />
+                          <xs:element minOccurs="0" name="x" type="xs:string" />
+                          <xs:element minOccurs="0" name="grp" type="xs:string" />
+                          <xs:element minOccurs="0" name="po" type="xs:string" />
+                          <xs:element minOccurs="0" name="wk" type="xs:string" />
+                          <xs:element minOccurs="0" name="z" type="xs:string" />
+                          <xs:element minOccurs="0" name="x1" type="xs:string" />
+                          <xs:element minOccurs="0" name="h" type="xs:string" />
+                          <xs:element minOccurs="0" name="n" type="xs:string" />
+                          <xs:element minOccurs="0" name="mp" type="xs:string" />
+                          <xs:element minOccurs="0" name="mmp" type="xs:string" />
+                        </xs:choice>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element minOccurs="0" name="skip">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element minOccurs="0" maxOccurs="unbounded" name="obj">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:choice maxOccurs="unbounded">
+                                <xs:element minOccurs="0" maxOccurs="unbounded" name="id" type="xs:string" />
+                                <xs:element minOccurs="0" name="facing" type="xs:string" />
+                                <xs:element minOccurs="0" name="times" type="xs:string" />
+                                <xs:element minOccurs="0" name="toHire" />
+                                <xs:element minOccurs="0" name="x" type="xs:string" />
+                                <xs:element minOccurs="0" name="z" type="xs:string" />
+                                <xs:element minOccurs="0" name="a" type="xs:string" />
+                                <xs:element minOccurs="0" name="hp" type="xs:string" />
+                                <xs:element minOccurs="0" name="n" type="xs:string" />
+                              </xs:choice>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element minOccurs="0" name="remark" type="xs:string" />
+                  <xs:element minOccurs="0" name="bot" type="xs:string" />
+                  <xs:element minOccurs="0" name="walk" type="xs:string" />
+                  <xs:element minOccurs="0" name="h">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element minOccurs="0" maxOccurs="unbounded" name="obj">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element minOccurs="0" name="id" type="xs:string" />
+                              <xs:element minOccurs="0" name="times" type="xs:string" />
+                              <xs:element minOccurs="0" name="po" type="xs:string" />
+                              <xs:element minOccurs="0" name="a" type="xs:string" />
+                              <xs:element minOccurs="0" name="bossGrp" type="xs:string" />
+                              <xs:element minOccurs="0" name="grp" type="xs:string" />
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element minOccurs="0" maxOccurs="unbounded" name="hide11" />
+                  <xs:element minOccurs="0" maxOccurs="unbounded" name="remove">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element minOccurs="0" name="obj">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element minOccurs="0" name="id" type="xs:string" />
+                              <xs:element minOccurs="0" name="times" type="xs:string" />
+                              <xs:element minOccurs="0" name="h" type="xs:string" />
+                              <xs:element minOccurs="0" name="grp" type="xs:string" />
+                              <xs:element minOccurs="0" name="po" type="xs:string" />
+                              <xs:element minOccurs="0" name="a" type="xs:string" />
+                              <xs:element minOccurs="0" name="facing" type="xs:string" />
+                              <xs:element minOccurs="0" name="x" type="xs:string" />
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element minOccurs="0" maxOccurs="unbounded" name="zkip0" />
+                  <xs:element minOccurs="0" maxOccurs="unbounded" name="zkip1" />
+                </xs:choice>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="bigskip" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="hide">
+            <xs:complexType mixed="true">
+              <xs:sequence minOccurs="0">
+                <xs:element minOccurs="0" name="bar">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="left" type="xs:string" />
+                      <xs:element minOccurs="0" name="right" type="xs:string" />
+                      <xs:element minOccurs="0" maxOccurs="unbounded" name="obj">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element minOccurs="0" name="id" type="xs:string" />
+                            <xs:element minOccurs="0" name="times" type="xs:string" />
+                            <xs:element minOccurs="0" name="h" type="xs:string" />
+                            <xs:element minOccurs="0" name="po" type="xs:string" />
+                            <xs:element minOccurs="0" maxOccurs="unbounded" name="ratio" type="xs:string" />
+                            <xs:element minOccurs="0" name="facing" type="xs:string" />
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="hide_____________________no_story_sub_stage_start">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bar">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="bg">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element minOccurs="0" name="bgid" type="xs:string" />
+                            <xs:element minOccurs="0" name="x" type="xs:string" />
+                            <xs:element minOccurs="0" name="z" type="xs:string" />
+                            <xs:element minOccurs="0" name="y" type="xs:string" />
+                            <xs:element minOccurs="0" name="facing" type="xs:string" />
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element minOccurs="0" name="left" type="xs:string" />
+                      <xs:element minOccurs="0" name="right" type="xs:string" />
+                      <xs:element minOccurs="0" name="effect" type="xs:string" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="working" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="hide11" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="zkip0" />
+          <xs:element minOccurs="0" name="skip">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bar">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="left" type="xs:string" />
+                      <xs:element minOccurs="0" name="right" type="xs:string" />
+                      <xs:element minOccurs="0" maxOccurs="unbounded" name="obj">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:choice maxOccurs="unbounded">
+                              <xs:element minOccurs="0" name="facing" type="xs:string" />
+                              <xs:element minOccurs="0" name="id" type="xs:string" />
+                              <xs:element minOccurs="0" name="times" type="xs:string" />
+                              <xs:element minOccurs="0" name="ratio" type="xs:string" />
+                              <xs:element minOccurs="0" name="po" type="xs:string" />
+                              <xs:element minOccurs="0" name="a" type="xs:string" />
+                            </xs:choice>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="zkip1" />
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
