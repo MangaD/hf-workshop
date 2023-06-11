@@ -1,10 +1,14 @@
 # Reference: https://git.mel.vin/template/c/commit/584b866fe79411b3f361e79fe0c0d68a3b278b9e
 
-image: ubuntu
+image: ubuntu:20.04
 
 stages:
   - build
 #  - test
+
+cache:
+  paths:
+  - apt-cache/
 
 variables:
   # https://askubuntu.com/questions/909277/avoiding-user-interaction-with-tzdata-when-installing-certbot-in-a-docker-contai
@@ -13,11 +17,11 @@ variables:
 build:
   stage: build
   before_script:
-    - apt update && apt install -y build-essential g++ g++-multilib zlib1g-dev libminizip-dev libedit-dev gettext cmake git
+    - apt update -qq && apt -o dir::cache::archives="apt-cache" install -y build-essential g++ g++-multilib zlib1g-dev libminizip-dev libedit-dev gettext cmake git
     - git submodule sync --recursive
     - git submodule update --init --recursive
   script:
-    - make debug
+    - make debug -j8
   artifacts:
     paths:
     - bin/debug/HFWorkshop
