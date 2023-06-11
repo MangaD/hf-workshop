@@ -1511,8 +1511,14 @@ void hfw::exportAPK() {
 
 		auto newSwf = swf->exportSwf(compression);
 		zipper.add(swfName, "", Z_BEST_COMPRESSION, newSwf);
+		zipper.close();
 
-		// TODO - keytool + zipalign + apksigner
+		// zipalign'ing is not necessary because all the files are compressed
+		// See: https://github.com/osm0sis/zipalign/blob/master/ZipAlign.cpp#L85
+
+
+
+		// TODO - keytool + apksigner
 
 		unsaved = false;
 
