@@ -6,6 +6,7 @@
 
 # To-do
 
+- AMF3 references must be explicit in JSON file, because some objects can be deep copies and not references. Also, consider using [YAML](https://github.com/jbeder/yaml-cpp) instead of JSON, it seems to support references and such.
 - HFX story code is perhaps encoded somehow. https://canary.discord.com/channels/234364433344888832/605880341915238409/856471951592390666
 - HF v0.7 swf browser encrypted version does not come out equal! Same for downloadable SWF. It's wrecked by HFW. Investigate why.
 - Make unit test that exports and replaces data, and checks if the uncompressed exported binary is equal to the uncompressed binary to replace.
@@ -16,7 +17,7 @@
 - optimize PNGs added by the user (optional so unit tests don't use it)
 - Convert AMF0 JSON to AMF3 JSON and vice-versa. Convert data structures too if possible.
 - Editline introduced new bugs. Fix them. Wineditline (mingw) has different bugs.
-    - Check out https://github.com/AmokHuginnsson/replxx
+    - Check out https://github.com/AmokHuginnsson/replxx. Did, doesn't work because: https://github.com/AmokHuginnsson/replxx/issues/103
     - Check compiling with CMake on Windows (wineditline)
     - Check compiling with Visual Studio
 - use `uint8_t*` instead of `vector<uint8_t` where possible.
