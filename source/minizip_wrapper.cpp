@@ -4,9 +4,10 @@
 
 #include "minizip_wrapper.hpp"
 
-#include <ctime>     // time_t
-#include <cstring>   // memset
+#include <ctime>      // time_t
+#include <cstring>    // memset
 #include <stdexcept>
+#include <algorithm>  // std::equal
 
 #include <minizip/zip.h>
 #include <minizip/unzip.h>
@@ -15,7 +16,8 @@
 #include <minizip/iowin32.h>
 #endif
 
-#include <string>    // wstring
+#include <array>
+#include <string>      // wstring
 #include "utils.hpp"   // s2ws
 
 #ifdef ZIP_DEBUG_BUILD
@@ -45,7 +47,7 @@ namespace minizip {
 		this->zipfile = unzOpen64(filename.c_str());
 	#endif
 		if (this->zipfile == nullptr) {
-			throw std::runtime_error("Could not open file '" + filename + "'.");
+			throw minizip_exception("Could not open file '" + filename + "'.");
 		}
 
 		// Get zip info
@@ -53,7 +55,7 @@ namespace minizip {
 		int ret = unzGetGlobalInfo64(this->zipfile, &global_info);
 		if (ret != UNZ_OK) {
 			this->close();
-			throw std::runtime_error("Failed to read global info for '" + filename + "'. Error: " + std::to_string(ret));
+			throw minizip_exception("Failed to read global info for '" + filename + "'. Error: " + std::to_string(ret));
 		}
 		this->number_entry = global_info.number_entry;
 		uLong size_comment = global_info.size_comment;
@@ -66,7 +68,7 @@ namespace minizip {
 				static_cast<uint16_t>(this->globalComment.size() + 1));
 			if (ret < 0) {
 				this->close();
-				throw std::runtime_error("Failed to read global comment for '" +
+				throw minizip_exception("Failed to read global comment for '" +
 					filename + "'. Error: " + std::to_string(ret));
 			}
 			ZIP_DEBUG("\tGlobal comment: " << this->getGlobalComment());
@@ -96,7 +98,7 @@ namespace minizip {
 							  0, nullptr, 0, nullptr, 0);
 			if (ret != UNZ_OK) {
 				this->close();
-				throw std::runtime_error("Failed to read file info for '" +
+				throw minizip_exception("Failed to read file info for '" +
 					this->filename + "'. Entry no " + std::to_string(i) +
 					". Error: " + std::to_string(ret));
 			}
@@ -111,7 +113,7 @@ namespace minizip {
 					static_cast<uint16_t>(ze_comment.size() + 1));
 			if (ret != UNZ_OK) {
 				this->close();
-				throw std::runtime_error("Failed to read file info for '" +
+				throw minizip_exception("Failed to read file info for '" +
 					this->filename + "'. Entry no " + std::to_string(i) +
 					". Error: " + std::to_string(ret));
 			}
@@ -164,7 +166,7 @@ namespace minizip {
 				ret = unzGoToNextFile(this->zipfile);
 				if (ret != UNZ_OK) {
 					this->close();
-					throw std::runtime_error("Failed to go to next file on '" +
+					throw minizip_exception("Failed to go to next file on '" +
 						this->filename + "'. Entry no " + std::to_string(i) +
 						". Error: " + std::to_string(ret));
 				}
@@ -196,7 +198,7 @@ namespace minizip {
 		int ret = unzLocateFile(this->zipfile, name.c_str(), 1);
 	#endif
 		if (ret != UNZ_OK) {
-			throw std::runtime_error("File '" + name + "' not found inside '" +
+			throw minizip_exception("File '" + name + "' not found inside '" +
 				this->filename + "'.");
 		}
 
@@ -206,14 +208,14 @@ namespace minizip {
 			0, nullptr, 0, nullptr, 0);
 		if (ret != UNZ_OK) {
 			this->close();
-			throw std::runtime_error("Failed to read file info of '" + name + "' for '" +
+			throw minizip_exception("Failed to read file info of '" + name + "' for '" +
 				this->filename + "'. Error: " + std::to_string(ret));
 		}
 
 		ret = unzOpenCurrentFile(zipfile);
 		if (ret != UNZ_OK) {
 			this->close();
-			throw std::runtime_error("Failed to open file '" + name +
+			throw minizip_exception("Failed to open file '" + name +
 				"' inside '" + this->filename +
 				"'. Error: " + std::to_string(ret));
 		}
@@ -223,14 +225,14 @@ namespace minizip {
 		if (ret < 0) {
 			unzCloseCurrentFile(zipfile);
 			this->close();
-			throw std::runtime_error("Failed to read file '" + name + "' with error " +
+			throw minizip_exception("Failed to read file '" + name + "' with error " +
 			                         std::to_string(ret) + ". Error: " + std::to_string(ret));
 		}
 
 		ret = unzCloseCurrentFile(zipfile);
 		if (ret == UNZ_CRCERROR) {
 			this->close();
-			throw std::runtime_error("File '" + name + "' was read but the CRC is not good.");
+			throw minizip_exception("File '" + name + "' was read but the CRC is not good.");
 		}
 	}
 
@@ -238,11 +240,11 @@ namespace minizip {
 			: filename(_filename), global_comment(comment), zipfile() {
 
 		if (filename.empty()) {
-			throw std::runtime_error("Name of zip file must not be empty.");
+			throw minizip_exception("Name of zip file must not be empty.");
 		}
 
 		zipcharpc comm = comment.empty() ? comment.c_str() : nullptr;
-		
+
 	#if defined(_WIN32) && defined(UNICODE)
 		std::wstring wfilename = s2ws(filename);
 		zlib_filefunc64_def ffunc;
@@ -256,7 +258,7 @@ namespace minizip {
 		                            nullptr);
 	#endif
 		if (this->zipfile == nullptr) {
-			throw std::runtime_error("Could not create '" + filename + "'.");
+			throw minizip_exception("Could not create '" + filename + "'.");
 		}
 	}
 
@@ -273,7 +275,7 @@ namespace minizip {
 	void Zipper::add(const std::string &name, const std::string &comment,
 			int compressionLevel, const void *buf, size_t bufLen) {
 		if (name.empty()) {
-			throw std::runtime_error("Name of file to add in zip '" +
+			throw minizip_exception("Name of file to add in zip '" +
 				this->filename + "' must not be empty.");
 		}
 
@@ -305,7 +307,7 @@ namespace minizip {
 		                                Z_DEFLATED, compressionLevel, (bufLen >= 0xffffffff));
 		if (ret != ZIP_OK) {
 			this->close();
-			throw std::runtime_error("Failed to open file '" + name +
+			throw minizip_exception("Failed to open file '" + name +
 				"' inside '" + this->filename +
 				"'. Error: " + std::to_string(ret));
 		}
@@ -314,7 +316,7 @@ namespace minizip {
 		if (ret != ZIP_OK) {
 			zipCloseFileInZip(this->zipfile);
 			this->close();
-			throw std::runtime_error("Failed to write file '" + name +
+			throw minizip_exception("Failed to write file '" + name +
 				"' inside '" + this->filename +
 				"'. Error: " + std::to_string(ret));
 		}
@@ -322,7 +324,7 @@ namespace minizip {
 		ret = zipCloseFileInZip(this->zipfile);
 		if (ret != ZIP_OK) {
 			this->close();
-			throw std::runtime_error("Failed to close file '" + name +
+			throw minizip_exception("Failed to close file '" + name +
 				"' inside '" + this->filename +
 				"'. Error: " + std::to_string(ret));
 		}
@@ -347,9 +349,9 @@ namespace minizip {
 			return 0;
 		}
 
-		return (((uint32_t)year - 1980) << 25) | (((uint32_t)month) << 21) |
-			(((uint32_t)day) << 16) | (((uint32_t)hour) << 11) |
-			(((uint32_t)minute) << 5) | (((uint32_t)second) >> 1); // 1 every other second
+		return ((static_cast<uint32_t>(year) - 1980) << 25) | ((static_cast<uint32_t>(month)) << 21) |
+			((static_cast<uint32_t>(day)) << 16) | ((static_cast<uint32_t>(hour)) << 11) |
+			((static_cast<uint32_t>(minute)) << 5) | ((static_cast<uint32_t>(second)) >> 1); // 1 every other second
 	}
 
 	// taken from: https://zipios.sourceforge.io/zipios-v2.0/dostime_8c_source.html
@@ -371,12 +373,12 @@ namespace minizip {
 
 		t.tm_isdst = -1; /* let mktime() determine if DST is in effect */
 		/* Convert DOS time to UNIX time_t format */
-		t.tm_sec = (((int)dostime << 1) & 0x3E);
-		t.tm_min = (((int)dostime >> 5) & 0x3F);
-		t.tm_hour = (((int)dostime >> 11) & 0x1F);
-		t.tm_mday = (((int)dostime >> 16) & 0x1F);
-		t.tm_mon = (((int)dostime >> 21) & 0x0F) - 1;
-		t.tm_year = (((int)dostime >> 25) & 0x7F) + 80;
+		t.tm_sec = ((static_cast<int>(dostime) << 1) & 0x3E);
+		t.tm_min = ((static_cast<int>(dostime) >> 5) & 0x3F);
+		t.tm_hour = ((static_cast<int>(dostime) >> 11) & 0x1F);
+		t.tm_mday = ((static_cast<int>(dostime) >> 16) & 0x1F);
+		t.tm_mon = ((static_cast<int>(dostime) >> 21) & 0x0F) - 1;
+		t.tm_year = ((static_cast<int>(dostime) >> 25) & 0x7F) + 80;
 
 		if (t.tm_year < 80 || t.tm_year > 207 || t.tm_mon < 0 ||
 			t.tm_mon > 11 || t.tm_mday < 1 || t.tm_mday > 31 ||
@@ -390,6 +392,29 @@ namespace minizip {
 		// format makes use of localdate() and that's 1 to 1 compatible with
 		// mktime() which expects a local date too.
 		return mktime(&t);
+	}
+
+
+	/**
+	 * zip file format and formats based on it, such as EPUB, JAR, ODF, OOXML
+	 *
+	 * Magic numbers:
+	 *
+	 * 50 4B 03 04
+	 * 50 4B 05 06 (empty archive)
+	 * 50 4B 07 08 (spanned archive)
+	 *
+	 * https://en.wikipedia.org/wiki/List_of_file_signatures
+	 */
+	// Useless function. Can just try/catch Unzipper
+	bool isZipFile(const std::vector<uint8_t> & buffer) {
+		if (buffer.size() < 4) return false;
+		const std::array<uint8_t, 4> magicNumber1 = { 0x50, 0x4B, 0x03, 0x04 };
+		const std::array<uint8_t, 4> magicNumber2 = { 0x50, 0x4B, 0x05, 0x06 };
+		const std::array<uint8_t, 4> magicNumber3 = { 0x50, 0x4B, 0x07, 0x08 };
+		return equal(buffer.begin(), buffer.begin()+4, magicNumber1.begin()) ||
+			equal(buffer.begin(), buffer.begin()+4, magicNumber2.begin()) ||
+			equal(buffer.begin(), buffer.begin()+4, magicNumber3.begin());
 	}
 
 } // namespace minizip

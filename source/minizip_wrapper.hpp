@@ -9,8 +9,9 @@
 // Unzipper
 #include <vector>
 #include <string>
-#include <cstdint> // uint8_t
-#include <ctime>   // time_t
+#include <cstdint>   // uint8_t
+#include <ctime>     // time_t
+#include <exception> // exception
 
 #include <minizip/zip.h>
 #include <minizip/unzip.h>
@@ -20,6 +21,7 @@
  *     - https://stackoverflow.com/questions/10440113/simple-way-to-unzip-a-zip-file-using-zlib
  *     - https://stackoverflow.com/questions/4696907/zlib-c-and-extracting-files
  *     - https://github.com/sebastiandev/zipper
+ *     - https://nachtimwald.com/2019/09/08/making-minizip-easier-to-use/
  *
  * References:
  *     - https://github.com/luvit/zlib/blob/master/contrib/minizip/zip.h
@@ -27,6 +29,18 @@
  */
 
 namespace minizip {
+
+	class minizip_exception : public std::exception {
+		public:
+			explicit minizip_exception(const std::string &message = "minizip_exception")
+				: std::exception(), error_message(message) {}
+			const char *what() const noexcept
+			{
+				return error_message.c_str();
+			}
+		private:
+			std::string error_message;
+	};
 
 	// Not defined in windows version for some reason...
 #ifdef _WIN32
@@ -139,6 +153,8 @@ namespace minizip {
 	uint32_t dostime(int year, int month, int day, int hour, int minute, int second);
 	uint32_t unix2dostime(time_t unix_time);
 	std::time_t dos2unixtime(uint32_t dostime);
+
+	bool isZipFile(const std::vector<uint8_t> & buffer);
 
 } // minizip
 
