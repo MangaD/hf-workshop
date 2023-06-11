@@ -167,6 +167,10 @@ Changing the SWF file inside the original APK will cause the signature to no lon
 1. Remove the `META-INF` folder inside the APK fiile.
 2. Create certificate:
    ```sh
+   # Option 1: Using keytool from JDK
+   keytool -genkeypair -v -keystore hfx.keystore -alias hfx -keyalg RSA -keysize 2048 -validity 10000
+   
+   # Option 2: Using OpenSSL:
    openssl req -newkey rsa:2048 -x509 -keyout hfxkey.pem -out hfx.x509.pem -days 10000
    # enter password
    openssl pkcs8 -topk8 -inform PEM -outform DER -nocrypt -in hfxkey.pem -out hfx.pk8
@@ -178,7 +182,13 @@ Changing the SWF file inside the original APK will cause the signature to no lon
    ```
 4. Use `apksigner` (not `jarsigner`, because: https://stackoverflow.com/q/43006737/3049315)
    ```sh
+   # Option 1: Using KeyStore
+   apksigner sign --ks hfx.keystore --ks-key-alias hfx HeroFighterX.apk
+   
+   # Option 2: Using private key file and certificate file separately
    apksigner sign --key hfx.pk8 --cert hfx.x509.pem HeroFighterX.apk
+   
+   # Verify
    apksigner verify -v --print-certs HeroFighterX.apk
    ```
    > The private key file must use the PKCS #8 format, and the certificate file must use the X.509 format.  
