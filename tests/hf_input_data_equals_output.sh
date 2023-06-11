@@ -66,7 +66,7 @@ testFiles() {
 		if cmp -s -- "$in" "$out"; then
 			echo -e "${BOLD}${GREEN}${INV}OK!${NC}"
 		else
-			echo -e "${BOLD}${RED}${BLINK1}${INV}ERROR${NC}"
+			echo -e "${BOLD}${RED}${BLINK1}${INV}FAIL${NC}"
 		fi
 
 	done
