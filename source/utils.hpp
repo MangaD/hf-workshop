@@ -20,6 +20,9 @@
 #include <vector>     // vector
 #include <algorithm>  // sort, unique
 #include <sstream>    // stringstream
+#include <iomanip>    // setfill, setw
+#include <ios>        // hex
+
 
 /**
  * String operations
@@ -114,6 +117,21 @@ std::vector<T> getVectorOfNumbers(std::string &ids) {
 	ids_v.erase( std::unique( ids_v.begin(), ids_v.end() ), ids_v.end() );
 
 	return ids_v;
+}
+
+// Taken from: https://stackoverflow.com/a/48643043/3049315
+/// Convert integer value `val` to text in hexadecimal format.
+/// The minimum width is padded with leading zeros; if not
+/// specified, this `width` is derived from the type of the
+/// argument. Function suitable from char to long long.
+/// Pointers, floating point values, etc. are not supported;
+/// passing them will result in an (intentional!) compiler error.
+/// Basics from: http://stackoverflow.com/a/5100745/2932052
+template <typename T>
+inline std::string int_to_hex(T val, int width = sizeof(T) * 2) {
+	std::stringstream ss;
+	ss << std::setfill('0') << std::setw(width) << std::hex << (val | 0);
+	return ss.str();
 }
 
 #endif // UTILS_HPP

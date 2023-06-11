@@ -92,7 +92,7 @@ BIN_FOLDER := $(BIN_FOLDER)/debug
 else
 BIN_FOLDER := $(BIN_FOLDER)\debug
 endif # win
-DEFINES    += -DSWF_DEBUG_BUILD -DZIP_DEBUG_BUILD
+DEFINES    += -DSWF_DEBUG_BUILD -DZIP_DEBUG_BUILD -DAPK_DEBUG_BUILD
 endif # release
 
 # ARCHITECTURE (x64 or x86) #
@@ -183,6 +183,7 @@ $(OBJ_FOLDER)/hf_workshop.o: $(SRC_FOLDER)/hf_workshop.hpp $(SRC_FOLDER)/utils.h
 					$(SRC_FOLDER)/io_wrapper.hpp $(SRC_FOLDER)/minizip_wrapper.hpp
 $(OBJ_FOLDER)/io_wrapper.o: $(SRC_FOLDER)/io_wrapper.hpp
 $(OBJ_FOLDER)/minizip_wrapper.o: $(SRC_FOLDER)/minizip_wrapper.hpp
+$(OBJ_FOLDER)/apksigner.o: $(SRC_FOLDER)/apksigner.hpp
 
 
 $(SUBDIRS):

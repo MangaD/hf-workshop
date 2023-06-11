@@ -14,6 +14,7 @@
 #include <json.hpp>
 
 #include "minizip_wrapper.hpp"
+#include "apksigner.hpp"
 
 #include <rlutil/rlutil.h>
 
@@ -34,8 +35,8 @@ using namespace swf;
 using namespace l18n;
 using namespace hf_workshop;
 
-hfw::hfw(const std::string & globalZipComment) : unsaved(false),
-             isHFX(false), globalZipComment(globalZipComment),
+hfw::hfw(const std::string & _globalZipComment) : unsaved(false),
+             isHFX(false), globalZipComment(_globalZipComment),
              io(), swf(nullptr),
              stages_ids(), data_ids(), apkOriginalFilename() {
 
@@ -1512,11 +1513,15 @@ void hfw::exportAPK() {
 		auto newSwf = swf->exportSwf(compression);
 		zipper.add(swfName, "", Z_BEST_COMPRESSION, newSwf);
 		zipper.close();
+		unzipper.close();
 
 		// zipalign'ing is not necessary because all the files are compressed
 		// See: https://github.com/osm0sis/zipalign/blob/master/ZipAlign.cpp#L85
 
+		minizip::Unzipper unzipper2(outName);
+		minizip::Zipper zipper2(outName + ".signed", globalZipComment);
 
+		apksigner::sign(unzipper2, zipper2);
 
 		// TODO - keytool + apksigner
 
