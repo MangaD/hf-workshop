@@ -74,6 +74,8 @@ testFiles() {
 	rm *.zip
 }
 
+# Check if variable is set
+# https://stackoverflow.com/a/13864829/3049315
 if [ -z "$in" ]; then
 	echo "You must provide the name of the SWF file with the -f flag."
 	exit
