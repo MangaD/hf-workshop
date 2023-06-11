@@ -180,7 +180,6 @@ Changing the SWF file inside the original APK will cause the signature to no lon
    ```sh
    apksigner sign --key hfx.pk8 --cert hfx.x509.pem HeroFighterX.apk
    apksigner verify -v --print-certs HeroFighterX.apk
-   rm HeroFighterX_aligned.apk
    ```
    > The private key file must use the PKCS #8 format, and the certificate file must use the X.509 format.  
    Reference: https://developer.android.com/studio/command-line/apksigner.html
