@@ -58,7 +58,7 @@ ifneq ($(BUILD),release)
 WARNINGS = -Wall -Wextra -pedantic -Wmain -Weffc++ -Wswitch-default \
 	-Wswitch-enum -Wmissing-include-dirs -Wmissing-declarations -Wunreachable-code -Winline \
 	-Wfloat-equal -Wundef -Wcast-align -Wredundant-decls -Winit-self -Wshadow -Wnon-virtual-dtor \
-	-Wconversion #-Wno-useless-cast
+	-Wconversion -Wstrict-aliasing -Wold-style-cast #-Wno-useless-cast
 ifeq ($(CXX),g++)
 WARNINGS += -Wzero-as-null-pointer-constant #-Wuseless-cast
 else
