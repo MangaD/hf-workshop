@@ -61,10 +61,25 @@ void hfw::readFile() {
 			readLine(filename, io.getText("File path: "));
 			removequotes(trim(filename));
 
-			vector<uint8_t> buffer;
-			readBinaryFile(filename, buffer);
+			try {
+				minizip::Unzipper unzipper(filename);
+				vector<uint8_t> unzipped_entry;
+				try {
+					unzipper.extractEntryToMemory("assets/HeroFighterX_FullVer.swf", unzipped_entry);
+				} catch (const minizip::minizip_exception &) {
+					try {
+						unzipper.extractEntryToMemory("assets/HeroFighterX.swf", unzipped_entry);
+					} catch (const minizip::minizip_exception &) {
+						throw runtime_error(io.getText("SWF not found inside the archive file.\n"));
+					}
+				}
+				swf = make_unique<SWF>(unzipped_entry);
+			} catch (const minizip::minizip_exception &) {
+				vector<uint8_t> buffer;
+				readBinaryFile(filename, buffer);
+				swf = make_unique<SWF>(buffer);
+			}
 
-			swf = make_unique<SWF>(buffer);
 		} catch (const exception &e) {
 			printf_error(io.getText("Error: %s\n"), e.what());
 			fileNameError = true;
