@@ -94,7 +94,7 @@ namespace minizip {
 
 			// Get some info about current file.
 			unz_file_info64 file_info;
-			int ret = unzGetCurrentFileInfo64(this->zipfile, &file_info, nullptr,
+			auto ret = unzGetCurrentFileInfo64(this->zipfile, &file_info, nullptr,
 							  0, nullptr, 0, nullptr, 0);
 			if (ret != UNZ_OK) {
 				this->close();
@@ -117,6 +117,9 @@ namespace minizip {
 					this->filename + "'. Entry no " + std::to_string(i) +
 					". Error: " + std::to_string(ret));
 			}
+
+			// Get file offset
+			size_t file_offset = static_cast<size_t>(unzGetOffset64(this->zipfile));
 
 		#ifdef _WIN32
 			auto dosDate = file_info.dos_date;
@@ -147,7 +150,7 @@ namespace minizip {
 				 file_info.uncompressed_size, dosDate,
 				 file_info.compression_method, file_info.version,
 				 file_info.version_needed, tmu_date,
-				 (ze_name.back() == '/'));
+				 (ze_name.back() == '/'), file_offset);
 
 			ZIP_DEBUG("\tEntry name: " << entries.back().name);
 			ZIP_DEBUG("\tEntry name size: " << file_info.size_filename);
@@ -407,27 +410,5 @@ namespace minizip {
 		return mktime(&t);
 	}
 
-
-	/**
-	 * zip file format and formats based on it, such as EPUB, JAR, ODF, OOXML
-	 *
-	 * Magic numbers:
-	 *
-	 * 50 4B 03 04
-	 * 50 4B 05 06 (empty archive)
-	 * 50 4B 07 08 (spanned archive)
-	 *
-	 * https://en.wikipedia.org/wiki/List_of_file_signatures
-	 */
-	// Useless function. Can just try/catch Unzipper
-	bool isZipFile(const std::vector<uint8_t> & buffer) {
-		if (buffer.size() < 4) return false;
-		const std::array<uint8_t, 4> magicNumber1 = { 0x50, 0x4B, 0x03, 0x04 };
-		const std::array<uint8_t, 4> magicNumber2 = { 0x50, 0x4B, 0x05, 0x06 };
-		const std::array<uint8_t, 4> magicNumber3 = { 0x50, 0x4B, 0x07, 0x08 };
-		return equal(buffer.begin(), buffer.begin()+4, magicNumber1.begin()) ||
-			equal(buffer.begin(), buffer.begin()+4, magicNumber2.begin()) ||
-			equal(buffer.begin(), buffer.begin()+4, magicNumber3.begin());
-	}
 
 } // namespace minizip

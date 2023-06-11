@@ -60,11 +60,13 @@ namespace minizip {
 	public:
 		inline ZipEntry(const std::string & _name, const std::string & _comment, size_t _compressed_size,
 				size_t _uncompressed_size, size_t _dosDate, size_t _compression_method,
-				size_t _version, size_t _version_needed, tm_unz _tmu_date, bool _isDirectory)
+				size_t _version, size_t _version_needed, tm_unz _tmu_date,
+				bool _isDirectory, size_t _file_offset)
 			: name(_name), timestamp(), comment(_comment), compressed_size(_compressed_size),
 			  uncompressed_size(_uncompressed_size), dosDate(_dosDate),
 			  compression_method(_compression_method), version(_version),
-			  version_needed(_version_needed), tmu_date(_tmu_date), isDirectory(_isDirectory)
+			  version_needed(_version_needed), tmu_date(_tmu_date),
+			  isDirectory(_isDirectory), file_offset(_file_offset)
 		{
 			// timestamp YYYY-MM-DD HH:MM:SS
 			timestamp = std::to_string(tmu_date.tm_year) + "-"
@@ -74,6 +76,7 @@ namespace minizip {
 		}
 
 		inline bool valid() { return !name.empty(); }
+		inline bool isCompressed() { return this->compression_method != 0; }
 
 		std::string name, timestamp, comment;
 		size_t compressed_size, uncompressed_size;
@@ -107,6 +110,7 @@ namespace minizip {
 		size_t version_needed;// version needed to extract
 		tm_unz tmu_date;
 		bool isDirectory;
+		size_t file_offset;
 		// Zip extra field is skipped because I don't need it
 	};
 
@@ -155,7 +159,6 @@ namespace minizip {
 	uint32_t unix2dostime(time_t unix_time);
 	std::time_t dos2unixtime(uint32_t dostime);
 
-	bool isZipFile(const std::vector<uint8_t> & buffer);
 
 } // minizip
 
