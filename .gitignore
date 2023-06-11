@@ -1,3 +1,4 @@
+.cache/
 documentation/doxygen
 bin
 build
