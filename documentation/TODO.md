@@ -32,15 +32,14 @@
 - Check if given APK is using Adobe AIR version 33+. If not, say it may not work on recent Android versions and give link to download HFX mod.
 
 - Steps for re-signing apk: https://stackoverflow.com/a/15412477/3049315
-    Source code of JarSigner: https://github.com/openjdk-mirror/jdk7u-jdk/blob/master/src/share/classes/sun/security/tools/JarSigner.java
-    
-    
-    Source code of apksigner: https://android.googlesource.com/platform/tools/apksig/+/master/src/main/java/com/android/apksig/ApkSigner.java
-    Crypto++: https://cryptopp.com/
-    A zipalign implementation: https://github.com/mozilla-services/zipalign/blob/master/main.go
-    
+  Source code of apksigner:
+    - https://android.googlesource.com/platform/tools/apksig/+/master/src/main/java/com/android/apksig/ApkSigner.java
+
+  Crypto++: https://cryptopp.com/
+  A zipalign implementation:     
+    - https://github.com/osm0sis/zipalign/blob/master/ZipAlign.cpp
+    - https://github.com/mozilla-services/zipalign/blob/master/main.go
 - Validate HF stories with XSD made by Nikhil Krishna. Review the XSD and credit Nikhil for making it. Look into http://xerces.apache.org/xerces-c/
-  
 - Editline introduced new bugs. Fix them. Wineditline (mingw) has different bugs.
     - Check out https://github.com/AmokHuginnsson/replxx. Did, doesn't work because: https://github.com/AmokHuginnsson/replxx/issues/103
     - Check compiling with CMake on Windows (wineditline)

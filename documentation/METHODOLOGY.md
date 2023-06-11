@@ -1,11 +1,15 @@
 # Methodology
 
 
-## Extracting the SWF from the original HF
+## Extracting the SWF from the original HF v0.7
 
 There are two distinct release files of Hero Fighter. An SWF file which is played on the user's browser, called `Console_v0.7.0_secure.swf`, and an EXE file which is installed on the user's PC. The SWF file is encryped with MochiCrypt, if we attempt to use an SWF decompiler on it we will be seeing multiple SWF files, and the game is encrypted inside one of them using MochiCrypt. The EXE file was not compiled using the Adobe Flash Player projector, I don't know how it was compiled and the SWF file is encrypted as well (can't see it with hex editor).
 
 In order to extract the SWF file of the game we use [SWF Memory Dumper](https://sites.google.com/site/forceprojectx/services/apps/memory_dumper), which is a program that extracts the SWF file from the memory while the game is running. The principle is that flash games need to be uncompressed and decrypted in memory, before flash can play them. So if we manage to get the game directly from the memory, we bypass zlib compression, mochicrypt encryption and stuff like that, and get a ready-to-hack file.
+
+## Extracting the SWF from HFX
+
+The SWF is inside the APK file, which is a ZIP file, in the path `assets/HeroFighterX.swf`. Unlike HF v0.7, this one is not encrypted.
 
 
 ## Editing the SWF
@@ -155,3 +159,30 @@ The Adobe Flash Player projector executable file is about 14-15 MiB in size. By 
 [Article on UPX](https://labs.detectify.com/2016/04/12/using-reverse-engineering-techniques-to-see-how-a-common-malware-packer-works/)
 
 *Note: SA stands for Standalone*
+
+## Creating a modified APK
+
+Changing the SWF file inside the original APK will cause the signature to no longer be valid. For this, we have to re-sign the APK, doing the following:
+
+1. Remove the `META-INF` folder inside the APK fiile.
+2. Create certificate:
+   ```sh
+   openssl req -newkey rsa:2048 -x509 -keyout hfxkey.pem -out hfx.x509.pem -days 10000
+   # enter password
+   openssl pkcs8 -topk8 -inform PEM -outform DER -nocrypt -in hfxkey.pem -out hfx.pk8
+   ```
+3. zipalign the APK:
+   ```sh
+   zipalign -v 4 HeroFighterX.apk HeroFighterX_aligned.apk
+   rm HeroFighterX.apk && mv HeroFighterX_aligned.apk HeroFighterX.apk
+   ```
+4. Use `apksigner` (not `jarsigner`, because: https://stackoverflow.com/q/43006737/3049315)
+   ```sh
+   apksigner sign --key hfx.pk8 --cert hfx.x509.pem HeroFighterX.apk
+   apksigner verify -v --print-certs HeroFighterX.apk
+   rm HeroFighterX_aligned.apk
+   ```
+   > The private key file must use the PKCS #8 format, and the certificate file must use the X.509 format.  
+   Reference: https://developer.android.com/studio/command-line/apksigner.html
+
+For repackaging the APK using the latest Adobe AIR, see: https://stackoverflow.com/a/66080295/3049315
