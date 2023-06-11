@@ -230,7 +230,7 @@ namespace l18n {
 			out = string(line);
 			trim(out);
 			add_history(line); // Add to history so up arrow can use what was already entered
-			free((void *) line); // readline malloc's a new buffer every time.
+			free(static_cast<void *>(line)); // readline malloc's a new buffer every time.
 		}
 	#else
 		printf_normal(prompt.c_str());
