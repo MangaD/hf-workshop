@@ -741,7 +741,7 @@ int hfw::exportData(vector<size_t> &ids) {
 				// Add JSON to zip
 				zipper.add("BgInfoFile.json", "", Z_BEST_COMPRESSION, json);
 
-			} else if (fileType == "gdat") { // HF v0.7 and less
+			} else if (fileType == "gdat") { // HF v0.7 and less, and HFX
 
 				minizip::Zipper zipper(name + ".zip", comment);
 
@@ -833,26 +833,6 @@ int hfw::exportData(vector<size_t> &ids) {
 				minizip::Zipper zipper(name + ".zip", comment);
 				string json = (AMF3{ data.data(), pos }).to_json_str();
 				zipper.add("BgInfoFile.json", "", Z_BEST_COMPRESSION, json);
-
-			} else if (fileType == "gdatO") { // HFX
-
-				minizip::Zipper zipper(name + ".zip", comment);
-
-				int32_t numA = static_cast<int32_t>(bytestodec_be<uint32_t>(data.data()+pos));
-				pos += 4;
-
-				for (int32_t i = 0; i < numA; ++i) {
-					string json = (AMF3{ data.data(), pos }).to_json_str();
-					zipper.add("Attack_" + to_string(i) + ".json", "", Z_BEST_COMPRESSION, json);
-				}
-
-				int32_t numPt = static_cast<int32_t>(bytestodec_be<uint32_t>(data.data()+pos));
-				pos += 4;
-
-				for (int32_t i = 0; i < numPt; ++i) {
-					string json = (AMF3{ data.data(), pos }).to_json_str();
-					zipper.add("PtWithName_" + to_string(i) + ".json", "", Z_BEST_COMPRESSION, json);
-				}
 
 			} else {
 				printf_error(io.getText("Error for data file with ID=%zu: File type unrecognized.\n"), t->id);
@@ -1252,12 +1232,7 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 
 		} else if (endsWith(tagName, "Dat")) {
 
-			string fileType;
-			if (this->isHFX) {
-				fileType = "gdatO";
-			} else {
-				fileType = "gdat";
-			}
+			string fileType = "gdat";
 			AMF0::writeStringWithLenPrefixU16(data, fileType);
 
 			map<int, string> attacks;
@@ -1297,15 +1272,10 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 
 			// Attacks
 			for (auto &ze : attacks) {
-				if (this->isHFX) {
-					AMF3 attack{swf::json::parse(ze.second)};
-					concatVectorWithContainer(data, attack.serialize());
-				} else {
-					vector<uint8_t> amf0 = AMF0::fromJSON(ze.second);
-					data.emplace_back(AMF3::BYTE_ARRAY_MARKER);
-					concatVectorWithContainer(data, AMF3::U29BAToVector(amf0.size()));
-					concatVectorWithContainer(data, amf0);
-				}
+				vector<uint8_t> amf0 = AMF0::fromJSON(ze.second);
+				data.emplace_back(AMF3::BYTE_ARRAY_MARKER);
+				concatVectorWithContainer(data, AMF3::U29BAToVector(amf0.size()));
+				concatVectorWithContainer(data, amf0);
 			}
 
 			// Num of PtWithNames
@@ -1314,15 +1284,10 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 
 			// PtWithNames
 			for (auto &ze : ptwnames) {
-				if (this->isHFX) {
-					AMF3 ptWithName{swf::json::parse(ze.second)};
-					concatVectorWithContainer(data, ptWithName.serialize());
-				} else {
-					vector<uint8_t> amf0 = AMF0::fromJSON(ze.second);
-					data.emplace_back(AMF3::BYTE_ARRAY_MARKER);
-					concatVectorWithContainer(data, AMF3::U29BAToVector(amf0.size()));
-					concatVectorWithContainer(data, amf0);
-				}
+				vector<uint8_t> amf0 = AMF0::fromJSON(ze.second);
+				data.emplace_back(AMF3::BYTE_ARRAY_MARKER);
+				concatVectorWithContainer(data, AMF3::U29BAToVector(amf0.size()));
+				concatVectorWithContainer(data, amf0);
 			}
 
 		} else {
