@@ -14,7 +14,7 @@
 #include <json.hpp>
 
 #include "minizip_wrapper.hpp"
-#include "apksigner.hpp"
+#include "apksigner/apksigner.hpp"
 
 #include <rlutil/rlutil.h>
 
