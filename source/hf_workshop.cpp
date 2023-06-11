@@ -1130,8 +1130,8 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 					disabled = jsonObj["disabled"].get<bool>();
 					embedded = jsonObj["embeded"].get<bool>();
 				} else {// FIXME
-					disabled = jsonObj["Data.LimbPic"]["disabled"].get<bool>();
-					embedded = jsonObj["Data.LimbPic"]["embeded"].get<bool>();
+					disabled = jsonObj["disabled"].get<bool>();
+					embedded = jsonObj["embeded"].get<bool>();
 				}
 				if (disabled == embedded) {
 					/// TRANSLATORS: 'embeded' is an intentional typo
