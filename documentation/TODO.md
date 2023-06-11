@@ -6,6 +6,8 @@
 
 # To-do
 
+- AMF0 Arrays always use the "ECMA Array" regardless of indices being ordinal or not. This is inconvenient because adding and removing elements to an array in JSON requires changing the "Associate count" value as well. Also, it makes it differ from AMF3 array representations in JSON. One thing that can be done is verify if a key is an integer and add it to a "dense" portion and if not add it to the "associate" portion, as in AMF3 arrays. The problem with this approach is that then it is impossible to distinguish from ECMA Arrays and Strict Arrays in JSON. However, since Strict arrays are not being used by HF, there could be an optional flag in the `to_json` and `from_json` functions of AMF0 to treat every array as an ECMA Array.
+  
 - Convert AMF0 data structures to AMF3 data structures and vice-versa, so that JSONs can be converted as well.
   About saving int as number, AMF3 file spec says:
 
