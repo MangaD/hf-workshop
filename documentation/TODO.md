@@ -19,6 +19,7 @@
 - use `uint8_t*` instead of `vector<uint8_t` where possible.
 - Coronation Wars 1.1 crashes HFW x86
 - Compile for MSVC using appveyor.com
+- Add LGTM code quality tags: https://lgtm.com/
 - Translate error messages.
 - Add I/O API functions to `Contributing.md`.
 - Export Linux 64 binary (requires hex editing). Check <https://github.com/shockpkg/swf-projector> and Discord chat with `JrMasterModelBuilder#5116`.

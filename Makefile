@@ -126,7 +126,7 @@ LDLIBS += -lminizip -lswf -lz -llzmasdk -llodepng # -llzma
 
 # CAREFUL: GNU Readline uses the GPLv3 license! This has implications in
 #          the rights you have over the code you link it against.
-#LDLIBS += -lreadline
+#LDLIBS += -lreadline -ltermcap
 
 # editline, or libedit, BSD 3-clause
 # depends on libncurses
