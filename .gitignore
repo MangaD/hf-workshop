@@ -9,6 +9,7 @@ resources/*.o
 resources/*.aps
 resources/out.*
 resources/*.swf
+resources/*.apk
 *.swf
 .fuse_hidden*
 *~
