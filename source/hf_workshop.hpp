@@ -8,10 +8,11 @@
 #include <string>
 #include <vector>
 #include <array>
-#include <memory>  // std::std::unique_ptr
+#include <memory>  // std::unique_ptr
 
 #include "swf.hpp"
 #include "io_wrapper.hpp"
+#include "minizip_wrapper.hpp"
 
 namespace hf_workshop {
 
@@ -29,7 +30,7 @@ namespace hf_workshop {
 
 	class hfw {
 	public:
-		hfw();
+		hfw(const std::string & globalZipComment = "Created with HF Workshop.");
 
 		void printHeader();
 		void printHelp();
@@ -58,15 +59,24 @@ namespace hf_workshop {
 
 		void exportSwf();
 		void exportExe();
+		void exportAPK();
+
 
 	private:
 		bool unsaved;
 		bool isHFX;
+		std::string globalZipComment;
 		l18n::localization io;
 		std::unique_ptr<swf::SWF> swf;
 
 		std::vector<size_t> stages_ids;
 		std::vector<size_t> data_ids;
+
+		std::string apkOriginalFilename;
+
+		swf::CompressionChoice getCompressionOption();
+		std::string getFilePathWithDefault(const std::string & prompt, const std::string & defaultPath);
+		std::string getSwfFileNameFromAPK(minizip::Unzipper &unzipper);
 	};
 
 } // hf_workshop

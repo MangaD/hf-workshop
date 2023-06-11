@@ -34,8 +34,11 @@ using namespace swf;
 using namespace l18n;
 using namespace hf_workshop;
 
-hfw::hfw() : unsaved(false), isHFX(false), io(), swf(nullptr),
-             stages_ids(), data_ids() {
+hfw::hfw(const std::string & globalZipComment) : unsaved(false),
+             isHFX(false), globalZipComment(globalZipComment),
+             io(), swf(nullptr),
+             stages_ids(), data_ids(), apkOriginalFilename() {
+
 	rlutil::setConsoleTitle(this->io.getText("HF Workshop"));
 	this->printHeader();
 
@@ -52,6 +55,16 @@ hfw::hfw() : unsaved(false), isHFX(false), io(), swf(nullptr),
 	}
 }
 
+string hfw::getSwfFileNameFromAPK(minizip::Unzipper &unzipper) {
+	auto entries = unzipper.getEntries();
+	for (const auto &ze : entries) {
+		if (startsWith(ze.name, "assets/HeroFighterX") && endsWith(ze.name, ".swf")) {
+			return ze.name;
+		}
+	}
+	throw runtime_error(io.getText("SWF not found inside the archive file."));
+}
+
 void hfw::readFile() {
 	string filename;
 	bool fileNameError;
@@ -63,16 +76,10 @@ void hfw::readFile() {
 
 			try {
 				minizip::Unzipper unzipper(filename);
+				string swfName = getSwfFileNameFromAPK(unzipper);
 				vector<uint8_t> unzipped_entry;
-				try {
-					unzipper.extractEntryToMemory("assets/HeroFighterX_FullVer.swf", unzipped_entry);
-				} catch (const minizip::minizip_exception &) {
-					try {
-						unzipper.extractEntryToMemory("assets/HeroFighterX.swf", unzipped_entry);
-					} catch (const minizip::minizip_exception &) {
-						throw runtime_error(io.getText("SWF not found inside the archive file.\n"));
-					}
-				}
+				unzipper.extractEntryToMemory(swfName, unzipped_entry);
+				apkOriginalFilename = filename;
 				swf = make_unique<SWF>(unzipped_entry);
 			} catch (const minizip::minizip_exception &) {
 				vector<uint8_t> buffer;
@@ -110,7 +117,7 @@ void hfw::showMenuMain() {
 		vector<string> options = {io.getText("Help"), io.getText("Edit stages"),
 			io.getText("Edit sounds"), io.getText("Edit images"),
 			io.getText("Edit data"), io.getText("Export SWF"),
-			io.getText("Export EXE"), io.getText("Exit")};
+			io.getText((this->isHFX ? "Export APK" : "Export EXE")), io.getText("Exit")};
 
 		printOptions(options);
 
@@ -120,7 +127,7 @@ void hfw::showMenuMain() {
 			string choice3;
 			if (unsaved) {
 				/// TRANSLATORS: Please don't change the y and n options.
-				readLine(choice3, io.getText("You have unsaved changes. Are you sure you want to exit without exporting SWF/EXE? [y/n] (default=n): "));
+				readLine(choice3, io.getText("You have unsaved changes. Are you sure that you want to exit without exporting the file? [y/n] (default=n): "));
 				while (!(choice3 == "y" || choice3 == "Y" || choice3 == "n" || choice3 == "N" || choice3 == "")) {
 					printf_error(io.getText("Invalid option.\n"));
 					readLine(choice3);
@@ -144,7 +151,11 @@ void hfw::showMenuMain() {
 		} else if (choice == "6") {
 			exportSwf();
 		} else if (choice == "7") {
-			exportExe();
+			if (this->isHFX) {
+				exportAPK();
+			} else {
+				exportExe();
+			}
 		} else {
 			printf_normal(io.getText("Invalid option.\n"));
 		}
@@ -653,12 +664,10 @@ int hfw::exportData(vector<size_t> &ids) {
 			}
 			pos += strLen;
 
-			string comment = "Created with HF Workshop.";
-
 			if (fileType == "limbInfo") { // HF v0.7 and less
 
 				// Create zip file
-				minizip::Zipper zipper(name + ".zip", comment);
+				minizip::Zipper zipper(name + ".zip", globalZipComment);
 
 				/**
 				 * After the file type comes the number of LimbPic objects.
@@ -716,7 +725,7 @@ int hfw::exportData(vector<size_t> &ids) {
 				}
 			} else if (fileType == "Spt") { // HF v0.7 and less
 
-				minizip::Zipper zipper(name + ".zip", comment);
+				minizip::Zipper zipper(name + ".zip", globalZipComment);
 
 				// Spt
 				AMF3 a{ data.data(), pos };
@@ -736,7 +745,7 @@ int hfw::exportData(vector<size_t> &ids) {
 
 			} else if (fileType == "Bg") { // HF v0.7 and less
 
-				minizip::Zipper zipper(name + ".zip", comment);
+				minizip::Zipper zipper(name + ".zip", globalZipComment);
 
 				// BgInfoFile
 				AMF3 a{ data.data(), pos };
@@ -756,7 +765,7 @@ int hfw::exportData(vector<size_t> &ids) {
 
 			} else if (fileType == "gdat") { // HF v0.7 and less, and HFX
 
-				minizip::Zipper zipper(name + ".zip", comment);
+				minizip::Zipper zipper(name + ".zip", globalZipComment);
 
 				int32_t numA = static_cast<int32_t>(bytestodec_be<uint32_t>(data.data()+pos));
 				pos += 4;
@@ -799,7 +808,7 @@ int hfw::exportData(vector<size_t> &ids) {
 			} else if (fileType == "limbInfoO") { // HFX
 
 				// Create zip file
-				minizip::Zipper zipper(name + ".zip", comment);
+				minizip::Zipper zipper(name + ".zip", globalZipComment);
 
 				/**
 				 * After the file type comes the number of LimbPic objects.
@@ -835,7 +844,7 @@ int hfw::exportData(vector<size_t> &ids) {
 				}
 			} else if (fileType == "SptO") { // HFX
 
-				minizip::Zipper zipper(name + ".zip", comment);
+				minizip::Zipper zipper(name + ".zip", globalZipComment);
 
 				// Spt
 				string json = (AMF3{ data.data(), pos }).to_json_str();
@@ -843,7 +852,7 @@ int hfw::exportData(vector<size_t> &ids) {
 
 			} else if (fileType == "BgO") { // HFX
 
-				minizip::Zipper zipper(name + ".zip", comment);
+				minizip::Zipper zipper(name + ".zip", globalZipComment);
 				string json = (AMF3{ data.data(), pos }).to_json_str();
 				zipper.add("BgInfoFile.json", "", Z_BEST_COMPRESSION, json);
 
@@ -1344,34 +1353,51 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 	}
 }
 
+swf::CompressionChoice hfw::getCompressionOption() {
+	printf_colored(rlutil::YELLOW, io.getText("Compression: \n"));
+
+	string choice;
+	printf_normal(io.getText("[0] Uncompressed\n[1] *zlib (faster, bigger)\n[2] LZMA (slower, smaller)\n"));
+	auto prompt = io.getText("Pick option (default=1): ");
+	readLine(choice, prompt);
+	while (!(choice == "0" || choice == "1" || choice == "2" || choice == "")) {
+		printf_error(io.getText("Invalid option.\n"));
+		readLine(choice, prompt);
+	}
+	if (choice == "" || choice == "1") {
+		return CompressionChoice::zlib;
+	} else if (choice == "0") {
+		return CompressionChoice::uncompressed;
+	} else if (choice == "2") {
+		return CompressionChoice::lzma;
+	} else {
+		throw runtime_error(io.getText("Invalid compression option!"));
+	}
+}
+
+string hfw::getFilePathWithDefault(const string & prompt, const string & defaultPath) {
+	string outName;
+	readLine(outName, prompt);
+	if (outName == "") {
+		outName = defaultPath;
+	}
+	return outName;
+}
+
 /**
  * Changes 'unsaved' to false in case of success.
  */
 void hfw::exportSwf() {
 
-	printf_colored(rlutil::YELLOW, io.getText("Compression: \n"));
+	CompressionChoice compression = getCompressionOption();
 
-	string choice2;
-	printf_normal(io.getText("[0] Uncompressed\n[1] *zlib (faster, bigger)\n[2] LZMA (slower, smaller)\n"));
-	readLine(choice2, io.getText("Pick option (default=1): "));
-	while (!(choice2 == "0" || choice2 == "1" || choice2 == "2" || choice2 == "")) {
-		printf_error(io.getText("Invalid option.\n"));
-		readLine(choice2);
-	}
-	if (choice2 == "") {
-		choice2 = "1";
-	}
-
-	string outName;
-	readLine(outName, io.getText("Path to output file (default=HF_out.swf): "));
-	if (outName == "") {
-		outName = "HF_out.swf";
-	}
+	/// TRANSLATORS: Don't change default swf name
+	string outName = getFilePathWithDefault(string{io.getText("Path to output file (default=HF_out.swf): ")}, "HF_out.swf");
 
 	printf_normal(io.getText("Generating SWF... Please wait.\n"));
 
 	try {
-		vector<uint8_t> bytes = swf->exportSwf(stoi(choice2));
+		vector<uint8_t> bytes = swf->exportSwf(compression);
 		writeBinaryFile(outName, bytes);
 		unsaved = false;
 	} catch (exception &e) {
@@ -1385,46 +1411,26 @@ void hfw::exportSwf() {
  */
 void hfw::exportExe() {
 
-	printf_colored(rlutil::YELLOW, io.getText("Compression: \n"));
+	CompressionChoice compression = getCompressionOption();
 
-	string choice2;
-	printf_normal(io.getText("[0] Uncompressed\n[1] *zlib (faster, bigger)\n[2] LZMA (slower, smaller)\n"));
-	readLine(choice2, io.getText("Pick option (default=1): "));
-	while (!(choice2 == "0" || choice2 == "1" || choice2 == "2" || choice2 == "")) {
-		printf_error(io.getText("Invalid option.\n"));
-		readLine(choice2);
-	}
-	if (choice2 == "") {
-		choice2 = "1";
-	}
-
-	string outName;
 	/// TRANSLATORS: Don't change default executable name
-	readLine(outName, io.getText("Path to output file (default=HF_out.exe): "));
-	removequotes(trim(outName));
-	if (outName == "") {
-		outName = "HF_out.exe";
-	}
+	string outName = getFilePathWithDefault(string{io.getText("Path to output file (default=HF_out.exe): ")}, "HF_out.exe");
 
-	string choice3;
+	string choice;
 	if (swf->hasProjector()) {
 		/// TRANSLATORS: Don't change y/n options
-		readLine(choice3, io.getText("You have already loaded a Flash Player SA into memory.\nWould you like to use it? [y/n] (default=y): "));
-		while (!(choice3 == "y" || choice3 == "Y" || choice3 == "n" || choice3 == "N" || choice3 == "")) {
+		readLine(choice, io.getText("You have already loaded a Flash Player SA into memory.\nWould you like to use it? [y/n] (default=y): "));
+		while (!(choice == "y" || choice == "Y" || choice == "n" || choice == "N" || choice == "")) {
 			printf_error(io.getText("Invalid option.\n"));
-			readLine(choice3);
+			readLine(choice);
 		}
 	}
 
 	bool windows = false;
 	vector<uint8_t> proj;
-	if (!swf->hasProjector() || choice3 == "n" || choice3 == "N") {
-		string projectorName;
-		readLine(projectorName, io.getText("Path to Adobe Flash Player Projector (default=SA.exe): "));
-		removequotes(trim(projectorName));
-		if (projectorName == "") {
-			projectorName = "SA.exe";
-		}
+	if (!swf->hasProjector() || choice == "n" || choice == "N") {
+		/// TRANSLATORS: Don't change default projector name
+		string projectorName = getFilePathWithDefault(string{io.getText("Path to Adobe Flash Player Projector (default=SA.exe): ")}, "SA.exe");
 		// Check if Projector file exists
 		try {
 			readBinaryFile(projectorName, proj);
@@ -1442,13 +1448,74 @@ void hfw::exportExe() {
 	printf_normal(io.getText("Generating %s... Please wait.\n"), (windows ? "EXE" : "ELF"));
 
 	try {
-		vector<uint8_t> bytes = swf->exportExe(proj, stoi(choice2));
+		vector<uint8_t> bytes = swf->exportExe(proj, compression);
 		writeBinaryFile(outName, bytes);
 		unsaved = false;
 	} catch (exception &e) {
 		printf_error("%s\n", e.what());
 		putchar('\n');
 	}
+}
+
+/**
+ * Changes 'unsaved' to false in case of success.
+ */
+void hfw::exportAPK() {
+
+	CompressionChoice compression = getCompressionOption();
+
+	string choice;
+	if (!apkOriginalFilename.empty()) {
+		/// TRANSLATORS: Don't change y/n options
+		readLine(choice, io.getText("You have already specified an APK file.\nWould you like to use it? [y/n] (default=y): "));
+		while (!(choice == "y" || choice == "Y" || choice == "n" || choice == "N" || choice == "")) {
+			printf_error(io.getText("Invalid option.\n"));
+			readLine(choice);
+		}
+	}
+
+	if (apkOriginalFilename.empty() || (choice != "y" && choice != "Y" && choice != "")) {
+		apkOriginalFilename.clear();
+		while (apkOriginalFilename.empty()) {
+			readLine(apkOriginalFilename, io.getText("Path to original APK file (necessary for generating a new APK): "));
+			removequotes(trim(apkOriginalFilename));
+		}
+	}
+
+
+	try {
+		minizip::Unzipper unzipper(apkOriginalFilename);
+		string swfName = getSwfFileNameFromAPK(unzipper);
+
+		std::vector<minizip::ZipEntry> entries = unzipper.getEntries();
+
+		/// TRANSLATORS: Don't change default apk name
+		string outName = getFilePathWithDefault(string{io.getText("Path to output file (default=HFX.apk): ")}, "HFX.apk");
+
+		minizip::Zipper zipper(outName, globalZipComment);
+
+		for (auto &ze : entries) {
+
+			if (ze.name != swfName && !startsWith(ze.name, "META-INF")) {
+
+				vector<uint8_t> unzipped_entry;
+				unzipper.extractEntryToMemory(ze.name, unzipped_entry);
+
+				zipper.add(ze.name, "", Z_BEST_COMPRESSION, unzipped_entry);
+			}
+		}
+
+		auto newSwf = swf->exportSwf(compression);
+		zipper.add(swfName, "", Z_BEST_COMPRESSION, newSwf);
+
+		unsaved = false;
+
+	} catch (exception &e) {
+		apkOriginalFilename.clear();
+		printf_error("%s\n", e.what());
+		putchar('\n');
+	}
+
 }
 
 void hfw::printHeader() {
