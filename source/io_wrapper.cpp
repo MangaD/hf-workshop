@@ -24,7 +24,7 @@
 /**
  * CAREFUL: GNU Readline uses the GPLv3 license! This has implications in
  *          the rights you have over the code you link it against.
- * 
+ *
  * MinGW:
  *
  * 32-bit:
@@ -45,11 +45,12 @@
  *
  * 32-bit:
  *   https://packages.msys2.org/package/mingw-w64-i686-wineditline
- *   
+ *
  * 64-bit:
  *   https://packages.msys2.org/package/mingw-w64-x86_64-wineditline
  */
 #include <editline/readline.h>
+#include <histedit.h>
 #endif
 
 using namespace std;
@@ -106,7 +107,7 @@ namespace l18n {
 		// Enable buffering to prevent VS from chopping up UTF-8 byte sequences
 		setvbuf(stdout, nullptr, _IOFBF, stdoutBuffSize); // XXX If string has more than 1000 bytes, this could go wrong
 		setvbuf(stderr, nullptr, _IOFBF, stdoutBuffSize);
-		
+
 		// Lastly, the Windows console supports both raster fonts and TrueType fonts.
 		// As pointed out by Paul, raster fonts will simply ignore the console's code page.
 		// So non-ASCII Unicode characters will only work if the console is set to a

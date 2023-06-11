@@ -6,7 +6,7 @@
 
 # To-do
 
-- HF v0.7 swf browser encrypted version does not come out equal! It's wrecked by HFW. Investigate why.
+- HF v0.7 swf browser encrypted version does not come out equal! Same for downloadable SWF. It's wrecked by HFW. Investigate why.
 - Make `1. Help` have 3 subsections: `1. README`, `2. About`, `3. Credits`
 - make tests for libswf using HF_v0.3.0.swf
 - optimize PNGs added by the user

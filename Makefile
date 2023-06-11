@@ -131,9 +131,9 @@ LDLIBS += -lminizip -lswf -lz -llzmasdk -llodepng # -llzma
 # editline, or libedit, BSD 3-clause
 # depends on libncurses
 ifeq ($(OS),Windows_NT)
-LDLIBS += -ledit_static
+LDLIBS += -ledit_static -lcurses
 else
-LDLIBS += -ledit
+LDLIBS += -ledit -lcurses
 #-lncurses
 endif
 
