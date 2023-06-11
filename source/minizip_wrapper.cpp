@@ -173,11 +173,18 @@ namespace minizip {
 			}
 		}
 
+		// Place cursor on first file so we can call this function again.
+		int ret = unzGoToFirstFile(this->zipfile);
+		if (ret != UNZ_OK) {
+			this->close();
+			throw minizip_exception("Failed to go to first file on '" +
+				this->filename + "'. Error: " + std::to_string(ret));
+		}
+
 		return entries;
 	}
 
-	void Unzipper::extractEntryToMemory(const std::string &name, std::vector<uint8_t> &vec) {
-
+	bool Unzipper::hasEntry(const std::string& name) {
 	#ifdef _WIN32
 		/*
 		 * Try locate the file szFileName in the zipfile.
@@ -197,7 +204,13 @@ namespace minizip {
 		 */
 		int ret = unzLocateFile(this->zipfile, name.c_str(), 1);
 	#endif
-		if (ret != UNZ_OK) {
+		return ret == UNZ_OK;
+	}
+
+	void Unzipper::extractEntryToMemory(const std::string &name, std::vector<uint8_t> &vec) {
+
+		int ret;
+		if (!this->hasEntry(name)) {
 			throw minizip_exception("File '" + name + "' not found inside '" +
 				this->filename + "'.");
 		}

@@ -114,6 +114,7 @@ namespace minizip {
 	public:
 		explicit Unzipper(const std::string & filename);
 		~Unzipper();
+		bool hasEntry(const std::string& name);
 		void extractEntryToMemory(const std::string& name, std::vector<uint8_t>& vec);
 		std::vector<ZipEntry> getEntries();
 		inline uint64_t getNoEntries() { return this->number_entry; }
