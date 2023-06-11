@@ -33,7 +33,7 @@
 
 - Steps for re-signing apk: https://stackoverflow.com/a/15412477/3049315
   Source code of apksigner:
-    - https://android.googlesource.com/platform/tools/apksig/+/master/src/main/java/com/android/apksig/ApkSigner.java
+    - git clone https://android.googlesource.com/platform/tools/apksig
 
   Crypto++: https://cryptopp.com/
   A zipalign implementation:     

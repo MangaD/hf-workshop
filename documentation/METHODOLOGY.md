@@ -179,6 +179,9 @@ Changing the SWF file inside the original APK will cause the signature to no lon
    ```sh
    zipalign -v 4 HeroFighterX.apk HeroFighterX_aligned.apk
    rm HeroFighterX.apk && mv HeroFighterX_aligned.apk HeroFighterX.apk
+   
+   # Verify
+   zipalign -c -v 4 HeroFighterX.apk
    ```
 4. Use `apksigner` (not `jarsigner`, because: https://stackoverflow.com/q/43006737/3049315)
    ```sh
