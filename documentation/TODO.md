@@ -6,9 +6,7 @@
 
 # To-do
 
-- Redo AMF0 serialization in the same fashion as AMF3.
-
-- Convert AMF0 JSON to AMF3 JSON and vice-versa. Convert data structures too if possible.
+- Convert AMF0 data structures to AMF3 data structures and vice-versa, so that JSONs can be converted as well.
   About saving int as number, AMF3 file spec says:
 
     > Note: this means the original type information of the data is potentially lost (though it 
@@ -19,9 +17,9 @@
   
   About sealed vs dynamic properties, AMF0 stores all  as same. The opposite is not true so I must check if there are any typed objects in HFX that use dynamic properties, and if yes, create a function in HFW that converts the AMF0 JSON to AMF3 JSON accordingly.
 
+  About arrays, can check if indices of AMF0 ECMA Array are integers, and add them to the "dense portion" is yes, and to the "associative" portion if not. Since HF's AMF0 does not use the strict array, AMF3 arrays should always convert to ECMA arrays.
+  
 - optimize PNGs added by the user (make flag for disabling optimizations so that unit tests that compare files don't fail)
-
-- HF v0.7 swf browser encrypted version does not come out equal! Same for downloadable SWF. It's wrecked by HFW. Investigate why.
 
 - When saving the file it will say "Permission denied" or something in case the EXE file that we're saving to is open. Mention that this might be the case in the error message.
 
@@ -40,7 +38,7 @@
 
 - Compile for MSVC using appveyor.com
 
-- Add LGTM code quality tags: https://lgtm.com/
+- ~~Add LGTM code quality tags: https://lgtm.com/~~ Doesn't work with GitLab repos
 
 - Translate error messages.
 
