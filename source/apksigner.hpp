@@ -1,6 +1,8 @@
 /**
  * C++ implementation of necessary parts from:
  * https://android.googlesource.com/platform/tools/apksig
+ *
+ * Overview: https://source.android.com/docs/security/features/apksigning
  */
 
 #ifndef APKSIGNER_HPP
@@ -101,6 +103,16 @@ namespace apksigner {
 			if ((buffer.size()-position) < 1) throw buffer_underflow_exception("There is less than 1 byte left to read in the buffer.");
 			auto u8 = static_cast<size_t>(bytestodec_le<uint8_t>(buffer.data() + position));
 			return u8;
+		}
+		ByteBuffer& putUnsignedInt32(size_t position, uint32_t value) {
+			auto arr = dectobytes_le(value);
+			this->buffer.insert(this->buffer.begin() + position, arr.begin(), arr.end());
+			return *this;
+		}
+		ByteBuffer& putUnsignedInt16(size_t position, uint16_t value) {
+			auto arr = dectobytes_le(value);
+			this->buffer.insert(this->buffer.begin() + position, arr.begin(), arr.end());
+			return *this;
 		}
 	};
 

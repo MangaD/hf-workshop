@@ -284,7 +284,7 @@ void hfw::showMenuImages() {
 				continue;
 			}
 
-			// Get mp3 filename
+			// Get image filename
 			printf_colored(rlutil::YELLOW, io.getText("Which image file do you wish to replace with?\n"));
 			string img_s;
 			readLine(img_s, io.getText("File path: "));
@@ -416,7 +416,7 @@ void hfw::showMenuData() {
 				continue;
 			}
 
-			// Get mp3 filename
+			// Get data filename
 			printf_colored(rlutil::YELLOW, io.getText("Which data file do you wish to replace with? (.zip)\n"));
 			string chr_s;
 			readLine(chr_s, io.getText("File path: "));
