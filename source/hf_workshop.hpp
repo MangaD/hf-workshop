@@ -74,8 +74,8 @@ namespace hf_workshop {
 
 		std::string apkOriginalFilename;
 
-		swf::CompressionChoice getCompressionOption();
-		std::string getFilePathWithDefault(const std::string & prompt, const std::string & defaultPath);
+		swf::CompressionChoice getSWFCompressionOption();
+		std::string askFilePathWithDefaultOption(const std::string & prompt, const std::string & defaultPath);
 		std::string getSwfFileNameFromAPK(minizip::Unzipper &unzipper);
 	};
 

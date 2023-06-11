@@ -1126,11 +1126,11 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 				bool disabled;
 				bool embedded;
 				if (this->isHFX) {
-					disabled = jsonObj["disabled"];
-					embedded = jsonObj["embeded"];
+					disabled = jsonObj["disabled"].get<bool>();
+					embedded = jsonObj["embeded"].get<bool>();
 				} else {// FIXME
-					disabled = jsonObj["Data.LimbPic"]["disabled"];
-					embedded = jsonObj["Data.LimbPic"]["embeded"];
+					disabled = jsonObj["Data.LimbPic"]["disabled"].get<bool>();
+					embedded = jsonObj["Data.LimbPic"]["embeded"].get<bool>();
 				}
 				if (disabled == embedded) {
 					/// TRANSLATORS: 'embeded' is an intentional typo
@@ -1353,7 +1353,7 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 	}
 }
 
-swf::CompressionChoice hfw::getCompressionOption() {
+swf::CompressionChoice hfw::getSWFCompressionOption() {
 	printf_colored(rlutil::YELLOW, io.getText("Compression: \n"));
 
 	string choice;
@@ -1375,7 +1375,7 @@ swf::CompressionChoice hfw::getCompressionOption() {
 	}
 }
 
-string hfw::getFilePathWithDefault(const string & prompt, const string & defaultPath) {
+string hfw::askFilePathWithDefaultOption(const string & prompt, const string & defaultPath) {
 	string outName;
 	readLine(outName, prompt);
 	if (outName == "") {
@@ -1389,10 +1389,10 @@ string hfw::getFilePathWithDefault(const string & prompt, const string & default
  */
 void hfw::exportSwf() {
 
-	CompressionChoice compression = getCompressionOption();
+	CompressionChoice compression = getSWFCompressionOption();
 
 	/// TRANSLATORS: Don't change default swf name
-	string outName = getFilePathWithDefault(string{io.getText("Path to output file (default=HF_out.swf): ")}, "HF_out.swf");
+	string outName = askFilePathWithDefaultOption(string{io.getText("Path to output file (default=HF_out.swf): ")}, "HF_out.swf");
 
 	printf_normal(io.getText("Generating SWF... Please wait.\n"));
 
@@ -1411,10 +1411,10 @@ void hfw::exportSwf() {
  */
 void hfw::exportExe() {
 
-	CompressionChoice compression = getCompressionOption();
+	CompressionChoice compression = getSWFCompressionOption();
 
 	/// TRANSLATORS: Don't change default executable name
-	string outName = getFilePathWithDefault(string{io.getText("Path to output file (default=HF_out.exe): ")}, "HF_out.exe");
+	string outName = askFilePathWithDefaultOption(string{io.getText("Path to output file (default=HF_out.exe): ")}, "HF_out.exe");
 
 	string choice;
 	if (swf->hasProjector()) {
@@ -1430,7 +1430,7 @@ void hfw::exportExe() {
 	vector<uint8_t> proj;
 	if (!swf->hasProjector() || choice == "n" || choice == "N") {
 		/// TRANSLATORS: Don't change default projector name
-		string projectorName = getFilePathWithDefault(string{io.getText("Path to Adobe Flash Player Projector (default=SA.exe): ")}, "SA.exe");
+		string projectorName = askFilePathWithDefaultOption(string{io.getText("Path to Adobe Flash Player Projector (default=SA.exe): ")}, "SA.exe");
 		// Check if Projector file exists
 		try {
 			readBinaryFile(projectorName, proj);
@@ -1462,7 +1462,7 @@ void hfw::exportExe() {
  */
 void hfw::exportAPK() {
 
-	CompressionChoice compression = getCompressionOption();
+	CompressionChoice compression = getSWFCompressionOption();
 
 	string choice;
 	if (!apkOriginalFilename.empty()) {
@@ -1490,7 +1490,11 @@ void hfw::exportAPK() {
 		std::vector<minizip::ZipEntry> entries = unzipper.getEntries();
 
 		/// TRANSLATORS: Don't change default apk name
-		string outName = getFilePathWithDefault(string{io.getText("Path to output file (default=HFX.apk): ")}, "HFX.apk");
+		string outName = askFilePathWithDefaultOption(string{io.getText("Path to output file (default=HFX.apk): ")}, "HFX.apk");
+		while (apkOriginalFilename == outName) {
+			printf_error(io.getText("Output file name cannot be equal to original APK file name.\n"));
+			outName = askFilePathWithDefaultOption(string{io.getText("Path to output file (default=HFX.apk): ")}, "HFX.apk");
+		}
 
 		minizip::Zipper zipper(outName, globalZipComment);
 
@@ -1507,6 +1511,8 @@ void hfw::exportAPK() {
 
 		auto newSwf = swf->exportSwf(compression);
 		zipper.add(swfName, "", Z_BEST_COMPRESSION, newSwf);
+
+		// TODO - keytool + zipalign + apksigner
 
 		unsaved = false;
 
