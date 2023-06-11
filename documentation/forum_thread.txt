@@ -98,6 +98,9 @@ You may find it useful to translate HFW's interface to your native language in c
 
 [spoiler=XXXX]
 [list]
+[*]Support for older HF versions (but SWFs must be unencrypted first, using [url=https://sites.google.com/site/forceprojectx/services/apps/memory_dumper]SWF Memory Dumper[/url] for example).
+[*]Support for Hero Fighter X (Android only).
+[*]PNG files get optimized for size automatically when replacing (no quality loss).
 [*]GNU Readline replaced with Editline (WinEditLine on Windows). On Windows, CTRL+U for erasing input before the cursor position is now CTRL+W.
 [/list]
 [/spoiler]

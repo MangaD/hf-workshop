@@ -1331,9 +1331,9 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 		}
 
 		//XXX Only for test
-
+		/*
 		writeBinaryFile(tagName + ".out", data);
-
+		*/
 
 		vector<uint8_t> compressed = zlib::zlib_compress(data, Z_BEST_COMPRESSION);
 

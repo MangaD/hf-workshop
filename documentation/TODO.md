@@ -7,9 +7,11 @@
 # To-do
 
 - HF v0.7 swf browser encrypted version does not come out equal! Same for downloadable SWF. It's wrecked by HFW. Investigate why.
+- Make unit test that exports and replaces data, and checks if the uncompressed exported binary is equal to the uncompressed binary to replace.
 - Make `1. Help` have 3 subsections: `1. README`, `2. About`, `3. Credits`
 - make tests for libswf using HF_v0.3.0.swf
-- optimize PNGs added by the user
+- optimize PNGs added by the user (optional so unit tests don't use it)
+- Convert AMF0 JSON to AMF3 JSON and vice-versa. Convert data structures too if possible.
 - Editline introduced new bugs. Fix them. Wineditline (mingw) has different bugs.
     - Check out https://github.com/AmokHuginnsson/replxx
     - Check compiling with CMake on Windows (wineditline)

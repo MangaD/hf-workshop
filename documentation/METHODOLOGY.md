@@ -40,6 +40,8 @@ _Note: HF's original `itemLmi` file has `disabled: false` and `embeded: true` fo
 
 The `gdat` file contains a series of `Attack` and `PtWithName` AMF0 serialized objects each stored in an AMF3 ByteArray. The `Attack` and `PtWithName` series of objects are each prefixed with a 32-bit signed integer indicating their quantity, as indicated [here](https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/utils/ByteArray.html#readInt()). The `Attack`s come first, then the `PtWithName`s.
 
+For Hero Fighter X, AMF0 is no longer used and the objects are serialized directly in AMF3 (also not inside AMF3 `ByteArray`s). The string indicating the file type also has an `O` at the end (e.g. `limbInfoO`).
+
 [AMF0 file format](amf0-file-format-specification.pdf)  
 [AMF3 file format](amf3-file-format-spec.pdf)
 
