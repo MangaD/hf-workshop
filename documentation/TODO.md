@@ -6,20 +6,19 @@
 
 # To-do
 
-- HFX story code is perhaps encoded somehow. https://canary.discord.com/channels/234364433344888832/605880341915238409/856471951592390666
+- Redo AMF0 serialization in the same fashion as AMF3.
+- `itemLmi` replacing is producing a different output in both HFX and HFv0.7. Investigate.
+- optimize PNGs added by the user (make flag for disabling optimizations so that unit tests that compare files don't fail)
 - HF v0.7 swf browser encrypted version does not come out equal! Same for downloadable SWF. It's wrecked by HFW. Investigate why.
-- Make unit test that exports and replaces data, and checks if the uncompressed exported binary is equal to the uncompressed binary to replace.
 - When saving the file it will say "Permission denied" or something in case the EXE file that we're saving to is open. Mention that this might be the case in the error message.
 - Make `1. Help` have 3 subsections: `1. README`, `2. About`, `3. Credits`
 - Validate HF stories with XSD made by Nikhil Krishna. Review the XSD and credit Nikhil for making it. Look into http://xerces.apache.org/xerces-c/
-- make tests for libswf using HF_v0.3.0.swf
-- optimize PNGs added by the user (optional so unit tests don't use it)
 - Convert AMF0 JSON to AMF3 JSON and vice-versa. Convert data structures too if possible.
 - Editline introduced new bugs. Fix them. Wineditline (mingw) has different bugs.
     - Check out https://github.com/AmokHuginnsson/replxx. Did, doesn't work because: https://github.com/AmokHuginnsson/replxx/issues/103
     - Check compiling with CMake on Windows (wineditline)
     - Check compiling with Visual Studio
-- use `uint8_t*` instead of `vector<uint8_t` where possible.
+- use `uint8_t*` instead of `vector<uint8_t>` where possible.
 - Coronation Wars 1.1 crashes HFW x86
 - Compile for MSVC using appveyor.com
 - Add LGTM code quality tags: https://lgtm.com/
@@ -42,3 +41,4 @@
 - doxygen
 - cppcheck
 - Make a [JSON Schema](https://json-schema.org/) for data files to use with editors that support them. It gives autocompletion, checks for errors,...
+- HFX modes are encoded in ActionScript: https://canary.discord.com/channels/234364433344888832/605880341915238409/856471951592390666

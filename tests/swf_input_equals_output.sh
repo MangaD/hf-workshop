@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Place this file in a folder with uncompressed SWFs to test. HFW will parse
+# each SWF file and export it uncompressed, then the script will compare
+# if the saved file is exactly equal to the original.
+
 printf " ------------------------------------------------------------\n"
 printf " \tHFW test if SWF output is equal to SWF input.\n"
 printf " \tThe SWF input should not be compressed.\n"
@@ -8,7 +12,7 @@ printf " ------------------------------------------------------------\n"
 RED='\033[0;31m'   	# RED
 NC='\033[0m'       	# No Color
 GREEN='\033[0;32m' 	# GREEN
-YELLOW='\33[1;33m' 	# YELLOW
+YELLOW='\033[1;33m' 	# YELLOW
 BLINK1='\e[5m'
 BLINK2='\e[25m'	   	#BLINK
 INV='\e[7m'         #INVERTED
@@ -28,10 +32,3 @@ do
 		echo -e "${BOLD}${RED}${BLINK1}${INV}ERROR${NC}"
 	fi
 done
-
-
-
-
-
-
-
