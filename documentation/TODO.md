@@ -6,7 +6,7 @@
 
 # To-do
 
-- AMF3 references must be explicit in JSON file, because some objects can be deep copies and not references. Also, consider using [YAML](https://github.com/jbeder/yaml-cpp) instead of JSON, it seems to support references and such.
+- AMF3 array and object references must be explicit in JSON file, because some objects can be deep copies and not references. And because there can be circular references. Also, consider using [YAML](https://github.com/jbeder/yaml-cpp) instead of JSON, it seems to support references and such. Consider [JSON comments](https://json.nlohmann.me/features/comments/). Consider [JSON references](https://json-spec.readthedocs.io/reference.html). String references do not need to be explicit in JSON because they are immutable (see: <https://en.wikipedia.org/wiki/ActionScript#Using_data_types>). Object trait references also are not likely to need to be explicit in JSON.
 - HFX story code is perhaps encoded somehow. https://canary.discord.com/channels/234364433344888832/605880341915238409/856471951592390666
 - HF v0.7 swf browser encrypted version does not come out equal! Same for downloadable SWF. It's wrecked by HFW. Investigate why.
 - Make unit test that exports and replaces data, and checks if the uncompressed exported binary is equal to the uncompressed binary to replace.
