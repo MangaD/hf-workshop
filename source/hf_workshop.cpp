@@ -1100,7 +1100,7 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 			vector<bool> embeddedLPs;
 			for (auto &ze : limbPics) {
 
-				swf::json jsonObj = swf::json::parse(ze.second);
+				swf::json jsonObj = swf::json::parse(ze.second, nullptr, true, true);
 				bool disabled;
 				bool embedded;
 				if (this->isHFX) {
@@ -1158,7 +1158,7 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 			// Limbs
 			for (auto &ze : limbs) {
 				if (this->isHFX) {
-					AMF3 limb{swf::json::parse(ze.second)};
+					AMF3 limb{swf::json::parse(ze.second, nullptr, true, true)};
 					concatVectorWithContainer(data, limb.serialize());
 				} else {
 					vector<uint8_t> amf0 = AMF0::fromJSON(ze.second);
@@ -1190,7 +1190,7 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 			string s = {unzipped_entry.begin(), unzipped_entry.end()};
 
 			if (this->isHFX) {
-				AMF3 spt{swf::json::parse(s)};
+				AMF3 spt{swf::json::parse(s, nullptr, true, true)};
 				concatVectorWithContainer(data, spt.serialize());
 			} else {
 				vector<uint8_t> amf0 = AMF0::fromJSON(s);
@@ -1221,7 +1221,7 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 			string s = {unzipped_entry.begin(), unzipped_entry.end()};
 
 			if (this->isHFX) {
-				AMF3 bg{swf::json::parse(s)};
+				AMF3 bg{swf::json::parse(s, nullptr, true, true)};
 				concatVectorWithContainer(data, bg.serialize());
 			} else {
 				vector<uint8_t> amf0 = AMF0::fromJSON(s);

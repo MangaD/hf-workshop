@@ -103,6 +103,7 @@ You may find it useful to translate HFW's interface to your native language in c
 [*]PNG files get optimized for size automatically when replacing (no quality loss).
 [*]GNU Readline replaced with Editline (WinEditLine on Windows). On Windows, CTRL+U for erasing input before the cursor position is now CTRL+W.
 [*]Fixed a bug with replacing large files whose size can still be represented with 29 bits.
+[*]JSON comments are permitted.
 [/list]
 [/spoiler]
 [spoiler=17 August 2019]
