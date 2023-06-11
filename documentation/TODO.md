@@ -39,6 +39,7 @@
   A zipalign implementation:     
     - https://github.com/osm0sis/zipalign/blob/master/ZipAlign.cpp
     - https://github.com/mozilla-services/zipalign/blob/master/main.go
+- In Android manifest allow changing the application ID, so that multiple versions of HFX can be installed simultanously.
 - Validate HF stories with XSD made by Nikhil Krishna. Review the XSD and credit Nikhil for making it. Look into http://xerces.apache.org/xerces-c/
 - Editline introduced new bugs. Fix them. Wineditline (mingw) has different bugs.
     - Check out https://github.com/AmokHuginnsson/replxx. Did, doesn't work because: https://github.com/AmokHuginnsson/replxx/issues/103
