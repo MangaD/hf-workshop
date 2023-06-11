@@ -1,0 +1,6 @@
+[submodule "libraries/rlutil"]
+	path = libraries/rlutil
+	url = https://github.com/MangaD/rlutil
+[submodule "libraries/libswf/libswf"]
+	path = libraries/libswf/libswf
+	url = https://gitlab.com/MangaD/libswf

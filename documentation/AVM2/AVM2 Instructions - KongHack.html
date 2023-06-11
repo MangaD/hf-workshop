@@ -1,0 +1,2613 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://konghack.com/content/19-avm2instructions -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="globalsign-domain-verification" content="I1dlJblo_DuiWnFz2y9rC_hk5PhcXW1VOQnVKkOvQu">				<title>AVM2 Instructions - KongHack</title>
+				
+				<meta http-equiv="Cache-Control" content="private">
+				<meta http-equiv="Pragma" content="no-cache">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<meta name="keywords" content="">
+				<meta name="description" content="">
+				<meta name="ROBOTS" content="NOARCHIVE">
+
+				<!-- Facebook Tags -->
+				<meta property="og:url" content="https://konghack.com/">
+				<meta property="og:title" content="AVM2 Instructions - KongHack">
+				<meta property="og:description" content="">
+				<meta property="og:image" content="https://konghack.com/assets/001-konghack/images/KHSquare_250.png">
+				<link rel="icon" type="image/png" href="https://konghack.com/assets/001-konghack/favicon.png">
+				<link rel="icon shortcut" type="image/png" href="https://konghack.com/assets/001-konghack/favicon.png">
+				<link rel="stylesheet" type="text/css" href="./AVM2 Instructions - KongHack_files/font-awesome.min.css">
+				<link rel="stylesheet" type="text/css" href="./AVM2 Instructions - KongHack_files/jquery-ui-1.10.3.custom.min.css">
+				<link rel="stylesheet" type="text/css" href="./AVM2 Instructions - KongHack_files/compiled_1.css.gz">
+				<link href="./AVM2 Instructions - KongHack_files/css" rel="stylesheet" type="text/css">
+				<link rel="stylesheet" type="text/css" href="./AVM2 Instructions - KongHack_files/site.css">
+				<script type="text/javascript" async="" src="./AVM2 Instructions - KongHack_files/recaptcha__en.js"></script><script async="" src="./AVM2 Instructions - KongHack_files/analytics.js"></script><script type="text/javascript" src="./AVM2 Instructions - KongHack_files/compiled_1.js.gz"></script><style>@media print {#ghostery-purple-box {display:none !important}}</style>
+				
+					<script type="text/javascript">
+						(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+						(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+						m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+						})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+						ga('create', 'UA-30011612-1', 'konghack.com');
+						ga('require', 'displayfeatures');
+						ga('send', 'pageview');
+					</script>
+				<script type="text/javascript" src="./AVM2 Instructions - KongHack_files/ajaxify.js"></script>
+				<script type="text/javascript" src="./AVM2 Instructions - KongHack_files/ckeditor.js"></script><style>.cke{visibility:hidden;}</style>
+				<script type="text/javascript">CKEDITOR.timestamp="11111";</script>
+				<script src="./AVM2 Instructions - KongHack_files/api.js" async="" defer=""></script>			<style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style></head>
+			<body style="">
+				<header id="site_header">
+		<nav class="navbar yamm navbar-default" role="navigation">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="https://konghack.com/"><img src="./AVM2 Instructions - KongHack_files/header.png" alt="KongHack"></a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<form class="navbar-form navbar-left" role="search" action="https://konghack.com/search_results.php" id="cse-search-box">
+					<div class="form-group">
+						<input type="hidden" name="cof" value="FORID:10">
+						<input type="hidden" name="ie" value="UTF-8">
+						<input type="hidden" name="sa" value="Search">
+						<div class="input-group" style="width:150px;">
+							<span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input type="text" class="form-control ui-autocomplete-input" placeholder="Search" name="q" id="header_search" autocomplete="off">
+							<div class="input-group-btn">
+								<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+							</div>
+						</div>
+					</div>
+				</form>
+				<ul class="nav navbar-nav"><li><a href="https://konghack.com/features">Features</a></li>
+						<li class="dropdown">
+							<a href="https://konghack.com/content/19-avm2instructions#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li>
+									<div class="yamm-content">
+										<div class="row">
+											<div class="col-sm-12">
+												<div class="row NORMAL_PANEL_CLASS_login_dropdown"><div class="col-sm-12">
+			<form class="form-horizontal" method="post" action="https://konghack.com/login_resp.php">
+				<fieldset>
+					<legend>Login</legend>
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+						<input type="text" class="form-control" name="username" placeholder="Username" required="">
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+						<input type="password" class="form-control" name="password" placeholder="Password" required="">
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="button1id"></label>
+						<div class="controls">
+							<input type="submit" class="btn btn-success" value="Login">
+							<a class="btn btn-danger" href="https://konghack.com/lostpass.php">Forgot Password?</a>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div></div>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</li>
+						<li><a href="https://konghack.com/register.php">Register</a></li>
+						<li class="dropdown">
+							<a href="https://konghack.com/content/19-avm2instructions#" class="dropdown-toggle" data-toggle="dropdown">Games <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li>
+									<div class="yamm-content">
+										<div class="row">
+											<div class="col-sm-12">
+												<div class="row NORMAL_PANEL_CLASS_games_dropdown"><div class="col-sm-12"><p><a href="https://konghack.com/games" class="btn btn-primary btn-block ">Game Database</a></p><p><a href="https://konghack.com/games/hacks" class="btn btn-primary btn-block ">Hack Database</a></p><p><a href="https://konghack.com/games/reviews" class="btn btn-primary btn-block ">Game Reviews</a></p></div></div>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</li>
+						
+			<li class="dropdown yamm-fw">
+				<a href="https://konghack.com/content/19-avm2instructions#" class="dropdown-toggle" data-toggle="dropdown">Content <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li>
+						<div class="yamm-content"><div class="row">
+<div class="col-sm-3">
+
+			<div class="panel panel-sitespecific">
+				<div class="panel-heading">
+					<div class="panel-title">Useful Links</div>
+				</div>
+				<div class="panel-body">
+					<p><a class="btn btn-primary btn-block" href="https://konghack.com/topic/8355-konghack_101">KH&nbsp;101</a></p>
+
+<p><a class="btn btn-danger btn-block" href="https://konghack.com/page/18-useful_programs">Useful Programs</a></p>
+
+<p><a class="btn btn-primary btn-block" href="https://konghack.com/content/1-hack_faq">Hack&nbsp;FAQ</a></p>
+
+<p><a class="btn btn-primary btn-block" href="https://konghack.com/topic/83-swfmdump__fpx_version">SWF&nbsp;Dump</a></p>
+
+<p><a class="btn btn-primary btn-block" href="https://konghack.com/content/6-as3bytecodes">AS3&nbsp;Bytecodes</a></p>
+
+<p><a class="btn btn-primary btn-block" href="https://konghack.com/topic/8143-kbh_v1200_working_kongregate_badge_hack">Badge&nbsp;Hack</a></p>
+
+<p><a class="btn btn-primary btn-block" href="https://konghack.com/content/19-avm2instructions">AVM2&nbsp;Instructions</a></p>
+
+				</div>
+			</div>
+			</div>
+<div class="col-sm-3">
+
+			<div class="panel panel-sitespecific">
+				<div class="panel-heading">
+					<div class="panel-title">Statistics</div>
+				</div>
+				<div class="panel-body">
+					<p><a class="btn btn-primary btn-block" href="http://konghack.com/stats.php">Stats</a></p>
+
+<p><a class="btn btn-primary btn-block" href="http://konghack.com/timeline.php">History&nbsp;of&nbsp;KongHack</a></p>
+
+				</div>
+			</div>
+			</div>
+<div class="col-sm-3">
+
+			<div class="panel panel-sitespecific">
+				<div class="panel-heading">
+					<div class="panel-title">Community</div>
+				</div>
+				<div class="panel-body">
+					<p><a class="btn btn-danger btn-block" href="https://steamcommunity.com/groups/KongHack">Kong Hack Steam Group</a></p>
+
+<p><a class="btn btn-primary btn-block" href="https://konghack.com/page/70-donate">$ Donate $</a></p>
+
+<p><a class="btn btn-primary btn-block" href="https://konghack.com/content/16-tinychat">Tiny&nbsp;Chat</a></p>
+
+				</div>
+			</div>
+			</div>
+<div class="col-sm-3">
+
+			<div class="panel panel-sitespecific">
+				<div class="panel-heading">
+					<div class="panel-title">Other</div>
+				</div>
+				<div class="panel-body">
+					<p><a class="btn btn-primary btn-block" href="http://konghack.com/spam-list">Spam</a></p>
+
+<p><a class="btn btn-primary btn-block" href="http://konghack.com/content/20-amazonmp3">Amazon&nbsp;MP3</a></p>
+
+<p><a class="btn btn-primary btn-block" href="http://konghack.com/content/22-toolbar">Toolbar</a></p>
+&nbsp;
+
+<p><a class="btn btn-info btn-block" href="https://konghack.com/page/16-khwar_tutorial">War Tutorial</a></p>
+
+				</div>
+			</div>
+			</div></div>
+						</div>
+					</li>
+				</ul>
+			</li>
+			</ul>
+			</div>
+		</nav></header>
+		<div id="wrapper" style="margin-top:-20px;">
+			<div id="page_title" style="display:none;">AVM2 Instructions - KongHack</div>
+			<div id="nav_message_notification" class="alert alert-info" style="display:none;">
+				<a href="https://konghack.com/ucp/PrivateMessages">
+					<span class="glyphicon glyphicon-inbox"></span> You Have <b>0</b> Private Messages!
+				</a>
+				<button type="button" class="close" data-dismiss="alert">
+				  <span aria-hidden="true">×</span>
+				  <span class="sr-only">Close</span>
+				</button>
+			</div>
+					<div id="show_your_support" style=""><div>
+	<table>
+		<tbody><tr>
+			<td valign="middle"><img src="./AVM2 Instructions - KongHack_files/abp.png" style="height:50px;"></td>
+			<td valign="middle">Come on man, please don't block the ads.  They don't even cover the cost of running the site!</td>
+		</tr>
+	</tbody></table>
+</div></div>
+					<div id="body">
+						<div>
+							<div class="pull-left">
+								<div class="btn-group btn-breadcrumb">
+									<a class="btn btn-sitespecific" href="https://konghack.com/"><span class="glyphicon glyphicon-home"></span> </a><a class="btn btn-sitespecific" href="https://konghack.com/content/19-avm2instructions#" disabled="disabled">AVM2 Instructions</a></div></div><div class="pull-right"><div class="well well-sm" style="margin-bottom:0px;"><div class="pull-left" style="margin-right:6px"><img src="./AVM2 Instructions - KongHack_files/6.jpeg" class="img-thumbnail" style="height:4em"></div><div class="pull-left"><a target="_blank" href="https://konghack.com/aclick/6">Boost Your Website Traffic</a><br><small>Try the new KongHack Ad Manager</small><br><small class="text-success">Increase your traffic today!</small><br></div><div class="pull-left" style="margin-left:6px"><a href="https://konghack.com/member/1-the_ignorant_masses"><img src="./AVM2 Instructions - KongHack_files/tim" style="max-width:56px; max-height:56px;"></a></div><div class="clearfix"></div></div></div><div class="clearfix"></div></div><div class="row"><div class="col-sm-12"><style type="text/css">.op_table {
+	width: 100%;
+}
+.op_col_header {
+	background-color: #eeeeee;
+	text-align: center;
+	border-top: 1px solid #888888;
+	border-bottom: 1px solid #888888;
+}
+.mnemonic {
+	background-color: #eeeeff;
+	font-size: larger;
+	font-weight: bold;
+	font-family: monaco, courier, fixed;
+	padding-left : 1em;
+}
+.deprecated {
+	color: #888888;
+	font-style: italic;
+	text-decoration: line-through;
+}
+.opcode {
+	background-color: #eeffee;
+	text-align: center;
+	font-family: monaco, courier, fixed;
+}
+.arguments {
+	background-color: #ffffee;
+	padding-left : 1em;
+	font-family: monaco, courier, fixed;
+}
+.stack {
+	background-color: #ffeeee;
+	padding-left : 1em;
+	padding-right : 1em;
+	font-family: monaco, courier, fixed;
+}
+.op_description {
+	background-color: #f8f8f8;
+	padding-left : 2em;
+	padding-top : 1em;
+	padding-bottom: 1em;
+	padding-right: 1em;
+	border-bottom: 1px solid #888888
+}
+.intro_blurb {
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 1em;
+}
+</style>
+<div class="mainContent">
+<div class="intro_blurb">Summary of the AVM2 instructions that can appear in an ABC file or tag</div>
+
+<div id="footer_container_copyright">
+						<div class="row">
+							<div class="col-sm-4 footer_content">
+								<div class="margin-left:10px;">
+									<a href="https://konghack.com/_privacy_policy.php">Privacy Policy</a> | <a href="https://konghack.com/_terms_of_service.php">Terms of Service</a><br>
+								</div>
+							</div>
+							<div class="col-sm-4 footer_content" style="text-align:center;">
+								<a href="http://konghack.com/" target="_blank">KongHack Inc.</a> CMS <a href="https://konghack.com/version.php?v=2.6.0">v 2.6.0</a> © 2020<br>
+							</div>
+
+							<div class="col-sm-4 footer_content" style="text-align:right;">
+								<div class="margin-right:10px">
+									
+								</div>
+							</div>
+						</div>
+					</div><div id="bottomAd" style="font-size: 2px;">&nbsp;</div><table class="op_table">
+	<thead>
+		<tr class="op_header">
+			<td class="op_col_header">Mnemonic</td>
+			<td class="op_col_header">Opcode</td>
+			<td class="op_col_header">Arguments</td>
+			<td class="op_col_header">Stack Before</td>
+			<td class="op_col_header">Stack After</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="mnemonic"><a name="add">add</a></td>
+			<td class="opcode">0xA0</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">a + b</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Add two items according to their types.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="add_i">add_i</a></td>
+			<td class="opcode">0xC5</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">int(a) + int(b)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Convert two items to integers and add them.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="astype">astype</a></td>
+			<td class="opcode">0x86</td>
+			<td class="arguments">type name</td>
+			<td class="stack">a</td>
+			<td class="stack">a or null</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Implements the 'as' operator.</p>
+
+			<p>Pop an object. If it is an instance of the type given by the argument then it is put back, otherwise null is pushed.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="astypelate">astypelate</a></td>
+			<td class="opcode">0x87</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">class<br>
+			a</td>
+			<td class="stack">a or null</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Implements the 'as' operator.</p>
+
+			<p>Pop a class constructor and an object. If the object is an instance of the class then it is put back, otherwise null is pushed.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="bitand">bitand</a></td>
+			<td class="opcode">0xA8</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">int(a) &amp; int(b)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Bitwise AND.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="bitnot">bitnot</a></td>
+			<td class="opcode">0x97</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">~int(a)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Bitwise NOT.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="bitor">bitor</a></td>
+			<td class="opcode">0xA9</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">int(a) | int(b)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Pop two ints and push their bitwise OR.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="bitxor">bitxor</a></td>
+			<td class="opcode">0xAA</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">int(a) ^ int(b)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Bitwise XOR.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="bkpt">bkpt</a></td>
+			<td class="opcode">0x01</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>If in debug mode, enter the debugger.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="bkptline">bkptline</a></td>
+			<td class="opcode">0xF2</td>
+			<td class="arguments">line number</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>If in debug mode, set the debug line number and enter the debugger.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="call">call</a></td>
+			<td class="opcode">0x41</td>
+			<td class="arguments">n = arg count</td>
+			<td class="stack">arg n<br>
+			..<br>
+			arg 1<br>
+			"this"<br>
+			function</td>
+			<td class="stack">function result</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Call a function on the stack.</p>
+
+			<p>Throws an error if the function object is not actually a function.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="callmethod">callmethod</a></td>
+			<td class="opcode">0x43</td>
+			<td class="arguments">dispatch id<br>
+			n = arg count</td>
+			<td class="stack">arg n<br>
+			..<br>
+			arg 1<br>
+			target</td>
+			<td class="stack">method result</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Call an instance method via a VTable.</p>
+
+			<p>Throws an error if the target object is null.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="callproperty">callproperty</a></td>
+			<td class="opcode">0x46</td>
+			<td class="arguments">name<br>
+			n = arg count</td>
+			<td class="stack">arg n<br>
+			..<br>
+			arg 1<br>
+			(name string)<br>
+			(namespace)<br>
+			target</td>
+			<td class="stack">method result</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Call a method of the target with the given name.</p>
+
+			<p>If the name is a runtime name then the actual name string will be on the stack.</p>
+
+			<p>If the name has a runtime namespace then the actual namespace object will be on the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="callproplex">callproplex</a></td>
+			<td class="opcode">0x4C</td>
+			<td class="arguments">name<br>
+			n = arg count</td>
+			<td class="stack">arg n<br>
+			..<br>
+			arg 1<br>
+			(name string)<br>
+			(namespace)<br>
+			target</td>
+			<td class="stack">method result</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Call a function of the target with the given name. The function is called with "this" set to null.</p>
+
+			<p>If the name is a runtime name then the actual name string will be on the stack.</p>
+
+			<p>If the name has a runtime namespace then the actual namespace object will be on the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="callpropvoid">callpropvoid</a></td>
+			<td class="opcode">0x4F</td>
+			<td class="arguments">name<br>
+			n = arg count</td>
+			<td class="stack">arg n<br>
+			..<br>
+			arg 1<br>
+			(name string)<br>
+			(namespace)<br>
+			target</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Call a method of the target with the given name. The result is discarded.</p>
+
+			<p>If the name is a runtime name then the actual name string will be on the stack.</p>
+
+			<p>If the name has a runtime namespace then the actual namespace object will be on the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="callstatic">callstatic</a></td>
+			<td class="opcode">0x44</td>
+			<td class="arguments">method id<br>
+			n = arg count</td>
+			<td class="stack">arg n<br>
+			..<br>
+			arg 1<br>
+			target</td>
+			<td class="stack">method result</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Call a static method via a method id.</p>
+
+			<p>Throws an error if the target object is null.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="callsuper">callsuper</a></td>
+			<td class="opcode">0x45</td>
+			<td class="arguments">name<br>
+			n = arg count</td>
+			<td class="stack">arg n<br>
+			..<br>
+			arg 1<br>
+			(name string)<br>
+			(namespace)<br>
+			target</td>
+			<td class="stack">method result</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Call a super method with the given name.</p>
+
+			<p>If the name is a runtime name then the actual name string will be on the stack.</p>
+
+			<p>If the name has a runtime namespace then the actual namespace object will be on the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="callsupervoid">callsupervoid</a></td>
+			<td class="opcode">0x4E</td>
+			<td class="arguments">name<br>
+			n = arg count</td>
+			<td class="stack">arg n<br>
+			..<br>
+			arg 1<br>
+			(name string)<br>
+			(namespace)<br>
+			target</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Call a super method with the given name. The result (if any) is discarded.</p>
+
+			<p>If the name is a runtime name then the actual name string will be on the stack.</p>
+
+			<p>If the name has a runtime namespace then the actual namespace object will be on the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="checkfilter">checkfilter</a></td>
+			<td class="opcode">0x78</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">a</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Check that the object on the stack is an XML or XMLList object and raise an error if not.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="coerce">coerce</a></td>
+			<td class="opcode">0x80</td>
+			<td class="arguments">name</td>
+			<td class="stack">a</td>
+			<td class="stack">b</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Convert a value to the type given by the name argument. This implements the ES4 implicit conversion.</p>
+
+			<p>Throw an exception if conversion is not possible.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="coerce_a">coerce_a</a></td>
+			<td class="opcode">0x82</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">a</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Convert a value to an atom. Appears to be a no-op since the AVM2 interpreter only uses atoms.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic deprecated"><a name="coerce_b">coerce_b</a></td>
+			<td class="opcode">0x81</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">boolean(a)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Deprecated.</p>
+
+			<p>Convert a value to a boolean. Use <a href="https://konghack.com/content/19-avm2instructions#convert_b">convert_b</a> instead.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic deprecated"><a name="coerce_d">coerce_d</a></td>
+			<td class="opcode">0x84</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">number(a)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Deprecated.</p>
+
+			<p>Convert a value to a number.</p>
+
+			<p>Use <a href="https://konghack.com/content/19-avm2instructions#convert_b">convert_d</a> instead.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic deprecated"><a name="coerce_i">coerce_i</a></td>
+			<td class="opcode">0x83</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">int(a)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Deprecated.</p>
+
+			<p>Convert a value to a signed int.</p>
+
+			<p>Use <a href="https://konghack.com/content/19-avm2instructions#convert_i">convert_i</a> instead.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="coerce_o">coerce_o</a></td>
+			<td class="opcode">0x89</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">a</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Convert a value to an object.</p>
+
+			<p>The only action appears to be to convert undefined to null.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="coerce_s">coerce_s</a></td>
+			<td class="opcode">0x85</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">string(a)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Convert a value or object to a string.</p>
+
+			<p>Null or undefined are converted to a null string.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic deprecated"><a name="coerce_u">coerce_u</a></td>
+			<td class="opcode">0x88</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">uint(a)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Deprecated.</p>
+
+			<p>Convert a value to an unsigned int.</p>
+
+			<p>Use <a href="https://konghack.com/content/19-avm2instructions#convert_u">convert_u</a> instead.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="construct">construct</a></td>
+			<td class="opcode">0x42</td>
+			<td class="arguments">n = arg count</td>
+			<td class="stack">arg n<br>
+			..<br>
+			arg 1<br>
+			function</td>
+			<td class="stack">new instance</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Call a constructor function on the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="constructprop">constructprop</a></td>
+			<td class="opcode">0x4A</td>
+			<td class="arguments">name<br>
+			n = arg count</td>
+			<td class="stack">arg n<br>
+			..<br>
+			arg 1<br>
+			(name string)<br>
+			(namespace)<br>
+			target</td>
+			<td class="stack">new instance</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Call a constructor function that is a named property of the target. The property cannot be a method of the target.</p>
+
+			<p>If the name is a runtime name then the actual name string will be on the stack.</p>
+
+			<p>If the name has a runtime namespace then the actual namespace object will be on the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="constructsuper">constructsuper</a></td>
+			<td class="opcode">0x49</td>
+			<td class="arguments">n = arg count</td>
+			<td class="stack">arg n<br>
+			..<br>
+			arg 1<br>
+			target</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Implements the super(..) call.</p>
+
+			<p>Call the constructor of the superclass with the target as "this".</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="convert_b">convert_b</a></td>
+			<td class="opcode">0x76</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">boolean(a)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Convert a value to a boolean.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="convert_d">convert_d</a></td>
+			<td class="opcode">0x75</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">number(a)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Convert a value to a number.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="convert_i">convert_i</a></td>
+			<td class="opcode">0x73</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">int(a)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Convert a value to a signed int.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="convert_o">convert_o</a></td>
+			<td class="opcode">0x77</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">a</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Convert to object.</p>
+
+			<p>Appears to do nothing other than raise an error if the value is null or undefined.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="convert_s">convert_s</a></td>
+			<td class="opcode">0x70</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">string(a)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Convert a value to a string.</p>
+
+			<p>Undefined is converted to "undefined" and null is converted to "null".</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="convert_u">convert_u</a></td>
+			<td class="opcode">0x74</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">uint(a)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Convert a value to an unsigned int.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="debug">debug</a></td>
+			<td class="opcode">0xEF</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Does not appear to be implemented yet.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="debugfile">debugfile</a></td>
+			<td class="opcode">0xF1</td>
+			<td class="arguments">string</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>If in debug mode, set the debug filename.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="debugline">debugline</a></td>
+			<td class="opcode">0xF0</td>
+			<td class="arguments">line number</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>If in debug mode, set the debug line number.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="declocal">declocal</a></td>
+			<td class="opcode">0x94</td>
+			<td class="arguments">register index</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Decrement the given local register.</p>
+
+			<p>Convert the value to a number if required.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="declocal_i">declocal_i</a></td>
+			<td class="opcode">0xC3</td>
+			<td class="arguments">register index</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Decrement the given local register.</p>
+
+			<p>Convert the value to an int if required.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="decrement">decrement</a></td>
+			<td class="opcode">0x93</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">number(a) - 1</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Decrement the top value - converting to a number if necessary.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="decrement_i">decrement_i</a></td>
+			<td class="opcode">0xC1</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">int(a) - 1</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Decrement the top value - converting to an int if necessary.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="deleteproperty">deleteproperty</a></td>
+			<td class="opcode">0x6A</td>
+			<td class="arguments">name</td>
+			<td class="stack">(name string)<br>
+			(namespace)<br>
+			target</td>
+			<td class="stack">true or false</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Delete the named property of the target object. Push true if deleted, false if not.</p>
+
+			<p>If the name is a runtime name then the actual name string will be on the stack.</p>
+
+			<p>If the name has a runtime namespace then the actual namespace object will be on the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="divide">divide</a></td>
+			<td class="opcode">0xA3</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">number(a)/number(b)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Numeric division.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="dup">dup</a></td>
+			<td class="opcode">0x2A</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">a<br>
+			a</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Duplicate the item on the top of the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="dxns">dxns</a></td>
+			<td class="opcode">0x06</td>
+			<td class="arguments">string</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Set the default XML namespace to the given string argument.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="dxnslate">dxnslate</a></td>
+			<td class="opcode">0x07</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">string</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Set the default XML namespace to the string on the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="equals">equals</a></td>
+			<td class="opcode">0xAB</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">a == b</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>The equality operator.</p>
+
+			<p>See also: <a href="https://konghack.com/content/19-avm2instructions#strictequals">strictequals</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="esc_xattr">esc_xattr</a></td>
+			<td class="opcode">0x72</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">string(a) escaped</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Escape the value as an XML attribute value.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="esc_xelem">esc_xelem</a></td>
+			<td class="opcode">0x71</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">string(a) escaped</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Escape the value as an XML element value.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="finddef">finddef</a></td>
+			<td class="opcode">0x5F</td>
+			<td class="arguments">name</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">object</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Find a global definition. TODO: What exactly does this do ?</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="findproperty">findproperty</a></td>
+			<td class="opcode">0x5E</td>
+			<td class="arguments">name</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">object</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Search the scope chain for the first scope object that has the property given by the name argument. If no matching object is found then the object at the top of the scope chain is pushed.</p>
+
+			<p>If the property is found via the prototype chain of an object then the object, not the prototype, is pushed. This will find the correct object for setting the property (prototype properties should not be altered).</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="findpropstrict">findpropstrict</a></td>
+			<td class="opcode">0x5D</td>
+			<td class="arguments">name</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">object</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Search the scope chain for the first scope object that has the property given by the name argument. If no object is found then an error is thrown.</p>
+
+			<p>If the property is found via the prototype chain of an object then the object, not the prototype, is pushed. This will find the correct object for setting the property (prototype properties should not be altered).</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="getdescendants">getdescendants</a></td>
+			<td class="opcode">0x59</td>
+			<td class="arguments">name</td>
+			<td class="stack">(name string)<br>
+			(namespace)<br>
+			XMLObject/List</td>
+			<td class="stack">XMLList</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Get the descendants of the XML object or list that have the given name. The result is an XMLList.</p>
+
+			<p>If the name is a runtime name then the actual name string will be on the stack.</p>
+
+			<p>If the name has a runtime namespace then the actual namespace object will be on the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="getglobalscope">getglobalscope</a></td>
+			<td class="opcode">0x64</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">scope object</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Get the object at the top of the scope chain.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic deprecated"><a name="getglobalslot">getglobalslot</a></td>
+			<td class="opcode">0x6E</td>
+			<td class="arguments">slot id</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Deprecated.</p>
+
+			<p>Get the item in the given slot of the global scope (object at top of scope chain).</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="getlex">getlex</a></td>
+			<td class="opcode">0x60</td>
+			<td class="arguments">name</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Get the named property from the current scope.</p>
+
+			<p>Equivalent to <a href="https://konghack.com/content/19-avm2instructions#findpropstrict">findpropstrict</a> followed by <a href="https://konghack.com/content/19-avm2instructions#getproperty">getproperty</a> (but runtime names or namespaces are not allowed).</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="getlocal">getlocal</a></td>
+			<td class="opcode">0x62</td>
+			<td class="arguments">register index</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Push the value of the given local register.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="getlocal0">getlocal0</a></td>
+			<td class="opcode">0xD0</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Push the value of local register 0.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="getlocal1">getlocal1</a></td>
+			<td class="opcode">0xD1</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Push the value of local register 1.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="getlocal2">getlocal2</a></td>
+			<td class="opcode">0xD2</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Push the value of local register 2.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="getlocal3">getlocal3</a></td>
+			<td class="opcode">0xD3</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Push the value of local register 3.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="getproperty">getproperty</a></td>
+			<td class="opcode">0x66</td>
+			<td class="arguments">name</td>
+			<td class="stack">(name string)<br>
+			(namespace)<br>
+			target</td>
+			<td class="stack">a</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Get the named property of the given target.</p>
+
+			<p>If the name is a runtime name then the actual name string will be on the stack.</p>
+
+			<p>If the name has a runtime namespace then the actual namespace object will be on the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="getscopeobject">getscopeobject</a></td>
+			<td class="opcode">0x65</td>
+			<td class="arguments">index</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">object</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Get the scope object at the given index in the scope chain.</p>
+
+			<p>Index zero is the top of the scope chain (most global).</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="getslot">getslot</a></td>
+			<td class="opcode">0x6C</td>
+			<td class="arguments">slot id</td>
+			<td class="stack">a</td>
+			<td class="stack">b</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Get the item in the given slot of the top object.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="getsuper">getsuper</a></td>
+			<td class="opcode">0x04</td>
+			<td class="arguments">name</td>
+			<td class="stack">(name string)<br>
+			(namespace)<br>
+			target</td>
+			<td class="stack">a</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Get the named item of the super object of the target.</p>
+
+			<p>If the name is a runtime name then the actual name string will be on the stack.</p>
+
+			<p>If the name has a runtime namespace then the actual namespace object will be on the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="greaterequals">greaterequals</a></td>
+			<td class="opcode">0xB0</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">a &gt;= b</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Greater-than-or-equals operator.</p>
+
+			<p>Result is false if either operand is NaN.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="greaterthan">greaterthan</a></td>
+			<td class="opcode">0xAF</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">a &gt; b</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Greater-than operator.</p>
+
+			<p>Result is false if either operand is NaN.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="hasnext">hasnext</a></td>
+			<td class="opcode">0x1F</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">index<br>
+			target</td>
+			<td class="stack">next index</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Get the index of the next property, zero if none.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="hasnext2">hasnext2</a></td>
+			<td class="opcode">0x32</td>
+			<td class="arguments">target register<br>
+			index register</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">true or false</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Get the index of the next property of the target. Push true if there is a next property, false otherwise.</p>
+
+			<p>The index register is updated to the next index and the target register is updated to the object (the target itself, or a prototype of the target) that has the next property.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="ifeq">ifeq</a></td>
+			<td class="opcode">0x13</td>
+			<td class="arguments">offset</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Branch if a == b.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="iffalse">iffalse</a></td>
+			<td class="opcode">0x12</td>
+			<td class="arguments">offset</td>
+			<td class="stack">a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Branch if value is false.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="ifge">ifge</a></td>
+			<td class="opcode">0x18</td>
+			<td class="arguments">offset</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Branch if a &gt;= b.</p>
+
+			<p>If either value is NaN then the branch is skipped.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="ifgt">ifgt</a></td>
+			<td class="opcode">0x17</td>
+			<td class="arguments">offset</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Branch if a &gt; b.</p>
+
+			<p>If either value is NaN then the branch is skipped.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="ifle">ifle</a></td>
+			<td class="opcode">0x16</td>
+			<td class="arguments">offset</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Branch if a &lt;= b.</p>
+
+			<p>If either value is NaN then the branch is skipped.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="iflt">iflt</a></td>
+			<td class="opcode">0x15</td>
+			<td class="arguments">offset</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Branch if a &lt; b.</p>
+
+			<p>If either value is NaN then the branch is skipped.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="ifne">ifne</a></td>
+			<td class="opcode">0x14</td>
+			<td class="arguments">offset</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Branch if a != b.</p>
+
+			<p>If either value is NaN then the branch is skipped.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="ifnge">ifnge</a></td>
+			<td class="opcode">0x0F</td>
+			<td class="arguments">offset</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Branch if not(a &gt;= b).</p>
+
+			<p>If either value is NaN then the branch is taken.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="ifngt">ifngt</a></td>
+			<td class="opcode">0x0E</td>
+			<td class="arguments">offset</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Branch if not(a &gt; b).</p>
+
+			<p>If either value is NaN then the branch is taken.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="ifnle">ifnle</a></td>
+			<td class="opcode">0x0D</td>
+			<td class="arguments">offset</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Branch if not(a &lt;= b).</p>
+
+			<p>If either value is NaN then the branch is taken.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="ifnlt">ifnlt</a></td>
+			<td class="opcode">0x0C</td>
+			<td class="arguments">offset</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Branch if not (a &lt; b).</p>
+
+			<p>If either value is NaN then the branch is taken.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="ifstricteq">ifstricteq</a></td>
+			<td class="opcode">0x19</td>
+			<td class="arguments">offset</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Branch if a === b.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="ifstrictne">ifstrictne</a></td>
+			<td class="opcode">0x1A</td>
+			<td class="arguments">offset</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Branch if a !== b.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="iftrue">iftrue</a></td>
+			<td class="opcode">0x11</td>
+			<td class="arguments">offset</td>
+			<td class="stack">a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Branch if value is true.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="in">in</a></td>
+			<td class="opcode">0xB4</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">target<br>
+			string name</td>
+			<td class="stack">true or false</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>The "in" operator.</p>
+
+			<p>If the given property exists on the target or in its prototype chain then push true.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="inclocal">inclocal</a></td>
+			<td class="opcode">0x92</td>
+			<td class="arguments">register index</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Increment the given local register.</p>
+
+			<p>Convert the value to an int if required.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="inclocal_i">inclocal_i</a></td>
+			<td class="opcode">0xC2</td>
+			<td class="arguments">register index</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Increment the given local register.</p>
+
+			<p>Convert the value to an int if required.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="increment">increment</a></td>
+			<td class="opcode">0x91</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">number(a) + 1</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Increment the top value - converting to a number if necessary.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="increment_i">increment_i</a></td>
+			<td class="opcode">0xC0</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">number(a) + 1</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Increment the top value - converting to an int if necessary.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="initproperty">initproperty</a></td>
+			<td class="opcode">0x68</td>
+			<td class="arguments">name</td>
+			<td class="stack">value<br>
+			(name string)<br>
+			(namespace)<br>
+			target</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Initialize the named property of the target with the given value.</p>
+
+			<p>TODO: How is this different from setproperty - does it not go up the scope chain but set the property directly on the object ?</p>
+
+			<p>If the name is a runtime name then the actual name string will be on the stack.</p>
+
+			<p>If the name has a runtime namespace then the actual namespace object will be on the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="instanceof">instanceof</a></td>
+			<td class="opcode">0xB1</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">a instanceof b</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>The instanceof operator.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="istype">istype</a></td>
+			<td class="opcode">0xB2</td>
+			<td class="arguments">name</td>
+			<td class="stack">a</td>
+			<td class="stack">a is name</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>The "is" operator with a fixed type name.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="istypelate">istypelate</a></td>
+			<td class="opcode">0xB3</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">b:Function<br>
+			a</td>
+			<td class="stack">a is b</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>The "is" operator with a stack supplied type constructor function.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="jump">jump</a></td>
+			<td class="opcode">0x10</td>
+			<td class="arguments">offset</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Unconditional branch.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="kill">kill</a></td>
+			<td class="opcode">0x08</td>
+			<td class="arguments">register index</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Set the local register to undefined.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="label">label</a></td>
+			<td class="opcode">0x09</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Appears to be a no-op.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="lessequals">lessequals</a></td>
+			<td class="opcode">0xAE</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">a &lt;= b</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Less-than-or-equals operator.</p>
+
+			<p>Result is false if either operand is NaN.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="lessthan">lessthan</a></td>
+			<td class="opcode">0xAD</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">a &lt; b</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Less-than operator.</p>
+
+			<p>Result is false if either operand is NaN.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="lookupswitch">lookupswitch</a></td>
+			<td class="opcode">0x1B</td>
+			<td class="arguments">default offset<br>
+			n = max index<br>
+			offset 0<br>
+			...<br>
+			offset n</td>
+			<td class="stack">index:integer</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Switch on uint(index). If the index is between 0 and n then branch with the corresponding offset, otherwise branch with the default offset.</p>
+
+			<p>This is misnamed - it is really a tableswitch.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="lshift">lshift</a></td>
+			<td class="opcode">0xA5</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">int(a) &lt;&lt; uint(b)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Bitwise shift-left.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="modulo">modulo</a></td>
+			<td class="opcode">0xA4</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">number(a) % number(b)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>The mod operator.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="multiply">multiply</a></td>
+			<td class="opcode">0xA2</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">number(a) * number(b)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>The multiplication operator.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="multiply_i">multiply_i</a></td>
+			<td class="opcode">0xC7</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">int(a) * int(b)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>The integer multiplication operator.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="negate">negate</a></td>
+			<td class="opcode">0x90</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">-number(a)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>The negation operator.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="negate_i">negate_i</a></td>
+			<td class="opcode">0xC4</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">-int(a)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>The integer negation operator.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="newactivation">newactivation</a></td>
+			<td class="opcode">0x57</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">activation</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Create a new activation object.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="newarray">newarray</a></td>
+			<td class="opcode">0x56</td>
+			<td class="arguments">arg count = n</td>
+			<td class="stack">arg n<br>
+			..<br>
+			arg 1</td>
+			<td class="stack">[ arg 1, .. , arg n ]</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Create and initialize a new array.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="newcatch">newcatch</a></td>
+			<td class="opcode">0x5A</td>
+			<td class="arguments">exception index</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">catch object</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Create a new catch object for the exception given by the index (within the exception handlers of the current method).</p>
+
+			<p>TODO: What is this used for ?</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="newclass">newclass</a></td>
+			<td class="opcode">0x58</td>
+			<td class="arguments">class index</td>
+			<td class="stack">base class closure</td>
+			<td class="stack">new class</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Create a new class closure from the class definition given by the index.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="newfunction">newfunction</a></td>
+			<td class="opcode">0x40</td>
+			<td class="arguments">method index</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">function object</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Create a new function object (as a closure within the current scope) from the method definition given by the index.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="newobject">newobject</a></td>
+			<td class="opcode">0x55</td>
+			<td class="arguments">arg count = N</td>
+			<td class="stack">valueN<br>
+			keyN<br>
+			..<br>
+			value1<br>
+			key1</td>
+			<td class="stack">{ key1: value1, .. , keyN: valueN }</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Create and initialize a new object.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="nextname">nextname</a></td>
+			<td class="opcode">0x1E</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">index:int<br>
+			target</td>
+			<td class="stack">string</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Get the next property name from the given index. Null string if no more enumerable properties.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="nextvalue">nextvalue</a></td>
+			<td class="opcode">0x23</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">index:int<br>
+			target</td>
+			<td class="stack">value</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Get the next property value from the given index. Undefined if no more enumerable properties.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="nop">nop</a></td>
+			<td class="opcode">0x02</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Do nothing.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="not">not</a></td>
+			<td class="opcode">0x96</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">! boolean(a)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Boolean NOT operator.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="pop">pop</a></td>
+			<td class="opcode">0x29</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Discard the value on the top of the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="popscope">popscope</a></td>
+			<td class="opcode">0x1D</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Remove the object at the bottom of the scope chain (least global).</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="pushbyte">pushbyte</a></td>
+			<td class="opcode">0x24</td>
+			<td class="arguments">signed byte = a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Push a signed byte value.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="pushdouble">pushdouble</a></td>
+			<td class="opcode">0x2F</td>
+			<td class="arguments">index</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">double_pool[index]</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Push a double from the double constant pool.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="pushfalse">pushfalse</a></td>
+			<td class="opcode">0x27</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">false</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Push the constant false.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="pushint">pushint</a></td>
+			<td class="opcode">0x2D</td>
+			<td class="arguments">index</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">int_pool[index]</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Push an int from the int constant pool.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="pushnamespace">pushnamespace</a></td>
+			<td class="opcode">0x31</td>
+			<td class="arguments">index</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">namespace_pool[index]</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Push a namespace object from the namespace constant pool.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="pushnan">pushnan</a></td>
+			<td class="opcode">0x28</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">NaN</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Push the constant NaN.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="pushnull">pushnull</a></td>
+			<td class="opcode">0x20</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">null</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Push the constant null.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="pushscope">pushscope</a></td>
+			<td class="opcode">0x30</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">scope object</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Add an object to the bottom of the scope chain.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="pushshort">pushshort</a></td>
+			<td class="opcode">0x25</td>
+			<td class="arguments">short int = a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Push a short value.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="pushstring">pushstring</a></td>
+			<td class="opcode">0x2C</td>
+			<td class="arguments">index</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">string_pool[index]</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Push a string from the string constant pool.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="pushtrue">pushtrue</a></td>
+			<td class="opcode">0x26</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">true</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Push the constant true.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="pushuint">pushuint</a></td>
+			<td class="opcode">0x2E</td>
+			<td class="arguments">index</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">uint_pool[index]</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Push a uint from the uint constant pool.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="pushundefined">pushundefined</a></td>
+			<td class="opcode">0x21</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">undefined</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Push the constant undefined.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="pushwith">pushwith</a></td>
+			<td class="opcode">0x1C</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">object</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Add an object to the bottom of the scope chain.</p>
+
+			<p>TODO: how is this different from pushscope ?</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="returnvalue">returnvalue</a></td>
+			<td class="opcode">0x48</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Return a value from a function or method.</p>
+
+			<p>Coerce the value according the return type.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="returnvoid">returnvoid</a></td>
+			<td class="opcode">0x47</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Return undefined from a function or method.</p>
+
+			<p>Coerce undefined according the return type.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="rshift">rshift</a></td>
+			<td class="opcode">0xA6</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">b<br>
+			a</td>
+			<td class="stack">int(a) &gt;&gt; uint(b)</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Signed bitwise shift-right.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic deprecated"><a name="setglobalslot">setglobalslot</a></td>
+			<td class="opcode">0x6F</td>
+			<td class="arguments">slot id</td>
+			<td class="stack">value</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Deprecated.</p>
+
+			<p>Set the property with the given slot id on the global scope object.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="setlocal">setlocal</a></td>
+			<td class="opcode">0x63</td>
+			<td class="arguments">register index</td>
+			<td class="stack">a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Set the given local register from the value on the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="setlocal0">setlocal0</a></td>
+			<td class="opcode">0xD4</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Set local register 0 from the value on the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="setlocal1">setlocal1</a></td>
+			<td class="opcode">0xD5</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Set local register 1 from the value on the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="setlocal2">setlocal2</a></td>
+			<td class="opcode">0xD6</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Set local register 2 from the value on the stack.</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="mnemonic"><a name="setlocal3">setlocal3</a></td>
+			<td class="opcode">0xD7</td>
+			<td class="arguments">
+			<div style="text-align: center">-</div>
+			</td>
+			<td class="stack">a</td>
+			<td class="stack">
+			<div style="text-align: center">-</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="op_description" colspan="5">
+			<p>Set local register 3 from the value on the stack.</p>
+			</td>
+		</tr>
+		<tr>
+		</tr>
+	
+					
+					
+					
+			<script type="text/javascript">
+			$(document).ready( function()
+			{
+				window.setTimeout( function()
+				{
+					var bottomad = $('#bottomAd');
+					if (bottomad.length == 1)
+					{
+						if (bottomad.height() == 0)
+						{
+							$('#show_your_support').show().load('/abp.php');
+						}
+						else
+						{
+							// no adblocker
+						}
+					}
+				}, 1);
+			});
+			</script>
+			
+			
+		
+		</tbody></table></div></div></div></div></div><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="display: none;"></ul></body></html>

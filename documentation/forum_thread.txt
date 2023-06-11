@@ -1,0 +1,171 @@
+[align=center][img]https://gitlab.com/MangaD/hf-workshop/raw/master/resources/logo.png[/img][/align]
+
+[b]Download:[/b] [i][color=#FFC5AA](17 August 2019)[/color][/i]
+[url=https://hf-empire.com/downloads/hf-workshop/HFWorkshop_x86.exe]Windows (32-bit)[/url]
+[url=https://hf-empire.com/downloads/hf-workshop/HFWorkshop_x64.exe]Windows (64-bit)[/url]
+[url=https://hf-empire.com/downloads/hf-workshop/HFWorkshop_winxp_x86.exe]Windows XP (32-bit)[/url]
+[url=https://hf-empire.com/downloads/hf-workshop/HFWorkshop_winxp_x64.exe]Windows XP (64-bit)[/url]
+[url=https://hf-empire.com/downloads/hf-workshop/HFWorkshop_x86.bin]Linux (32-bit)[/url]
+[url=https://hf-empire.com/downloads/hf-workshop/HFWorkshop_x64.bin]Linux (64-bit)[/url]
+
+[b]Language files:[/b]
+[url=https://hf-empire.com/downloads/hf-workshop/locale/zh/LC_MESSAGES/hfworkshop.mo]zh[/url] [i][color=#FFC5AA](16 August 2019)[/color][/i] [i][color=#AAC5FF](Chinese Simplified)[/color][/i]
+[url=https://hf-empire.com/downloads/hf-workshop/locale/zh_TW/LC_MESSAGES/hfworkshop.mo]zh_TW[/url] [i][color=#FFC5AA](16 August 2019)[/color][/i] [i][color=#AAC5FF](Chinese Traditional)[/color][/i]
+[url=https://hf-empire.com/downloads/hf-workshop/locale/de/LC_MESSAGES/hfworkshop.mo]de[/url] [i][color=#FFC5AA](16 August 2019)[/color][/i]
+[url=https://hf-empire.com/downloads/hf-workshop/locale/pt/LC_MESSAGES/hfworkshop.mo]pt[/url] [i][color=#FFC5AA](16 August 2019)[/color][/i]
+
+These .mo files should be placed in "[b]locale/XX/LC_MESSAGES/hfworkshop.mo[/b]", where "[b]XX[/b]" is the respective language code (eg. zh_TW). This "[b]locale[/b]" folder should be in the same path as HF Workshop. Chinese players from HK, Taiwan, Singapore... probably need the zh_TW language file. The language is activated based on your OS's regional settings.
+
+[size=large][b][color=#FFFF99]Video tutorial[/color][/b][/size]
+
+[spoiler="English"]
+[video=youtube]https://www.youtube.com/watch?v=ODhGBlutFmM[/video]
+[/spoiler]
+[spoiler="Chinese"]
+[video=bilibili]https://www.bilibili.com/video/av62035602/[/video]
+[/spoiler]
+
+
+[align=justify][size=large][b][color=#FFFF99]Introduction[/color][/b][/size]
+
+HF Workshop is a tool that aims to allow editing HF data. This includes images, sounds, stage files, character data and background data. At the moment of this writing, there is only a console version, very basic, but does the job. There are no tutorials yet, I leave this task to you. The program has not been extensively tested yet so there may be latent bugs, please report any that you find (and make sure it is not your fault).
+
+Please note that [b][u][color=#CFC9FF]with great power comes great responsibility[/color][/u][/b]. There are two important things that you must have in consideration if you do not wish to harm the game and its author:
+
+[list=1]
+[*]Hero Fighter has premium account. With data changing it is eventually possible to play with premium characters without buying them. However, keep in mind that the game's future depends on the support that it gets, that means popularity and income. Therefore, you shall not use your powers to unlock premium characters for everyone.
+
+If you really wish to support the game, you can replace premium characters with characters that you make, in order to encourage players to buy premium. But this is not necessary of course.
+
+Now you may ask if I'm not being an hypocrite, since I'm giving people the power to play with premium characters without buying them. But after much thought and consideration, I believe that what I'm doing helps the game more than it harms. That is because the game barely has any new player population at this moment, and continuing abandoned as it is, the future doesn't look bright. In other words, people are not buying premium. With all these new tools, the game at least has a chance to make a comeback and who knows new players may join and support the game.
+
+[*]Copyrighted content. Please do not make public any mods that contain copyrighted content (sounds, images...). This could get us into trouble if you share them here. Make sure that you only use free sounds and pictures in your modifications.
+[/list]
+
+Another thing to consider is that your mods will be uploaded and downloaded on the internet, so you should resize / compress your sounds, images and executables as much as possible for smaller file sizes.
+
+
+[size=large][b][color=#FFFF99]Story editing[/color][/b][/size]
+
+Story editing is a whole chapter of its own and has its own forum [url=https://hf-empire.com/forum/forumdisplay.php?fid=31]here[/url]. With the release of HF Workshop, the HF Story Editor program becomes obsolete. There are 2 major reasons for this:
+
+[list=1]
+[*]HF Workshop allows replacing stories, sounds, pictures, characters and backgrounds, whilst HFSE only allows replacing stories.
+[*]HFSE is heavy on resources and its interface not very useful. That is because HFSE was programmed in NodeJS and also uses Electron. Its interface only features a basic editor which isn't any better than editors such as [url=https://notepad-plus-plus.org/]Notepad++[/url].
+[/list]
+
+Stories are created using [url=https://www.w3schools.com/xml/xml_whatis.asp]XML format[/url] and tutorials can be found in its due forum.
+
+[size=large][b][color=#FFFF99]Sound editing[/color][/b][/size]
+
+Only MP3 files are allowed, and only sample rates of 5512 Hz, 11025 Hz, 22050 Hz and 44100 Hz (note: sample rates and bit rates are not the same thing). HF Workshop will tell you if the MP3 file that you're trying to replace with doesn't meet the requirements. In this case, you may find a converter online for your MP3 file. It is also recommended that you find an MP3 compressor to reduce the size of your MP3 files.
+
+[size=large][b][color=#FFFF99]Image editing[/color][/b][/size]
+
+Only PNG files are supported. It is recommended that you resize and compress your PNG files.
+
+Note: Images get slightly changed during the process of extracting and replacing because of premultiplied alpha.
+
+[size=large][b][color=#FFFF99]Data editing[/color][/b][/size]
+
+I don't have any tutorials on this but here's what you have to keep in mind:
+
+[list=1]
+[*]Don't change the names of the extracted zip files and files inside the zip files if you wish to use them to replace data. That is because the program verifies if you're replacing the right data file ID (and corresponding name), and also expects the file names inside the zip to be in a specific format so it knows how to replace them.
+[*]Data values are in [url=https://www.w3schools.com/js/js_json_intro.asp]JSON format[/url]. Be careful with what you change in them because you can break the game completely.
+[*]The numbers in the file names specify their order and should not be changed. The exception is for PNG files in LMI data, in case you add or remove PNG files, make sure they correspond to an existing LimbPic JSON file.
+[/list]
+
+[size=large][b][color=#FFFF99]Exporting EXE[/color][/b][/size]
+
+You may export the modified Hero Fighter in SWF or EXE formats. When exporting, you'll be given the option to compress the SWF file using Zlib or LZMA algorithms. It is highly recommended that you use one of these because a smaller file size will be easier to transfer on the internet. Zlib compression is the most common, whilst LZMA is more recent and won't work on Flash Player versions below 11.
+
+If you're using a [url=https://www.adobe.com/support/flashplayer/debug_downloads.html]Flash Player projector[/url] (i.e. an EXE file) it is recommended that you compress it using [url=https://upx.github.io/]UPX[/url].
+
+Last but not least, not all HF exe files work with HF Workshop. The official HF exe from HF installer won't work. The HF portable exe file provided at this site before won't work either. So it is recommended that you use the new HF exe provided [url=https://hf-empire.com/forum/showthread.php?tid=316]here[/url].
+
+[size=large][b][color=#FFFF99]Translating HFW[/color][/b][/size]
+
+You may find it useful to translate HFW's interface to your native language in case your community doesn't know English very well. 
+
+[list=1]
+[*]Download [url=https://hf-empire.com/downloads/hf-workshop/hfworkshop.po]this[/url] file.
+[*]Open the file with notepad++ and change the language code.
+[*]Open the PO file with [url=https://poedit.net/]Poedit[/url] and add the translated strings. If you open the PO file with a text editor, don't change the `msgid`s, change only the `msgstr`s! Make sure that the file is saved with UTF-8 encoding. Open it with notepad++ and convert the encoding to UTF-8 w/o BOM.
+[/list]
+
+[size=large][b][color=#FFFF99]Change log[/color][/b][/size]
+
+[spoiler=XXXX]
+[list]
+[*]GNU Readline replaced with Editline (WinEditLine on Windows). On Windows, CTRL+U for erasing input before the cursor position is now CTRL+W.
+[/list]
+[/spoiler]
+[spoiler=17 August 2019]
+[list]
+[*]Fix HFW not working on Windows XP. BUT:
+[list]
+[*]If you're using language files on this OS you may need to change the console font to a true type font (e.g. Lucida Console).
+[*]If the language file changes the order of the strings in some sentence, that sentence won't work on Win XP.
+[/list]
+[/list]
+[/spoiler]
+[spoiler=16 August 2019 - 2nd revision]
+[list]
+[*]Fixed bug with reading zip files created with previous HFW version. Those zip files had invalid date times which HFW wasn't prepared to deal with this time.
+[/list]
+[/spoiler]
+[spoiler=16 August 2019]
+[list]
+[*]All language files updated, including the English template.
+[*]Chinese language now works on Windows, BUT:
+[list]
+[*]Auto-complete with Chinese characters does not work on Windows.
+[*]May need to set [code]chcp 936[/code] for Chinese simplified or [code]chcp 950[/code] for Chinese traditional on Windows command line.
+[/list]
+[*]Read and write files with unicode characters in filename now works on Windows, BUT:
+[list]
+[*]May need to set [code]chcp 936[/code] for Chinese simplified or [code]chcp 950[/code] for Chinese traditional on Windows command line.
+[/list]
+[*]Optimizations.
+[*]Bug fixes.
+[/list]
+[/spoiler]
+[spoiler=05 August 2019]
+[list]
+[*][url=https://hf-empire.com/forum/showthread.php?tid=316]HF v0.7+[/url] was updated and it is recommended you download it.
+[*]Multi-lingual support. (problem with Chinese characters on Windows)
+[*]Released tutorial video on how to use HFW.
+[*]Zip for replacing doesn't need a strict filename.
+[*][b]Solved HUGE issue with transparent images. If you exported / replaced images before, do it again because they were not correct.[/b]
+[*]Quotes around the file path/name are allowed.
+[*]File path auto-completion with tab key and input history now works on Windows.
+[list]
+[*]Use up arrow key for getting previous inputs.
+[*]Use tab key for auto-completion, clicking twice will show you available paths/names.
+[*]CTRL+A will move to the beginning of the line.
+[*]CTRL+E will move to the end of the line.
+[*]CTRL+U will erase everything before the cursor position.
+[*]CTRL+K will erase everything after the cursor position.
+[*]CTRL+L will clear the screen. (not sure)
+[/list]
+[*]Made a logo.
+[*]Optimizations.
+[*]Bug fixes.
+[*]Released Windows 64-bit version.
+[/list]
+[/spoiler]
+[spoiler=31 July 2019]
+HF Workshop console version is released.
+[/spoiler]
+
+
+[size=large][b][color=#FFFF99]Thanks[/color][/b][/size]
+
+[list]
+[*]@Tommy for 'zh_TW' translation, assisting on early HFW development and testing.
+[*]@"O n L y" for 'zh' and 'zh_TW' translation and testing.
+[*]@Luigi600 for 'de' translation and testing.
+[/list]
+
+[/align]

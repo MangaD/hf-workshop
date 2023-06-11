@@ -1,0 +1,675 @@
+# Chinese translations for hfworkshop package
+# hfworkshop ®M¥óªº¶Ç²Î¦rº~»yÂ½Ä¶.
+# Copyright (C) 2019 MangaD
+# This file is distributed under the same license as the hfworkshop package.
+# Automatically generated, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hfworkshop 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-11 12:18+0100\n"
+"PO-Revision-Date: 2019-08-08 12:38+0100\n"
+"Last-Translator: OnLy\n"
+"Language-Team: none\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.3\n"
+
+#: ../../source/main.cpp:1514
+msgid ""
+"  _   _ _____  __        _____  ____  _  ______  _   _  ___  ____  \\n | | | "
+"|  ___| \\ \\      / / _ \\|  _ \\| |/ / ___|| | | |/ _ \\|  _ \\ \\n | |_| "
+"| |_     \\ \\ /\\ / / | | | |_) | ' /\\___ \\| |_| | | | | |_) |\\n |  _  "
+"|  _|     \\ V  V /| |_| |  _ <| . \\ ___) |  _  | |_| |  __/ \\n |_| |_|"
+"_|        \\_/\\_/  \\___/|_| \\_\\_|\\_\\____/|_| |_|\\___/|_|    \\n\\n"
+msgstr ""
+
+#: ../../source/main.cpp:1528
+msgid ""
+"  _  _ ___ _    ___ \\n | || | __| |  | _ \\\\n | __ | _|| |__|  _/\\n |_||_|"
+"___|____|_|  \\n\\n"
+msgstr ""
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1543
+msgid " NOT "
+msgstr "不"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1553
+msgid ""
+" as much as possible so that the final file will not be too large.\n"
+"\n"
+msgstr ""
+"盡量使最後導出的檔案不致過大。\n"
+"\n"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1581
+msgid ""
+" of 5512 Hz, 11025 Hz, 22050 Hz and 44100 Hz are allowed (note: sample rates "
+"and bit rates are not the same thing). This program will tell you if the MP3 "
+"file that you're trying to replace with doesn't meet the requirements. In "
+"this case, you may find a converter online for your MP3 file. It is also "
+"recommended that you find an MP3 compressor to reduce the size of your MP3 "
+"files.\n"
+"\n"
+msgstr ""
+"可使用的採樣率為5512 Hz、11025 Hz、22050 Hz和44100 Hz (注: 採樣率和比特率並不"
+"相同)若您試圖替換的MP3文件不符要求本程序會告知您。在此情況下，您可以使用MP3轉"
+"換工具將文件調整至符合要求的格式。並且建議您使用MP3壓縮工具來減少MP3的大"
+"小。\n"
+"\n"
+
+#: ../../source/main.cpp:207 ../../source/main.cpp:277
+#: ../../source/main.cpp:343 ../../source/main.cpp:408
+msgid "Back"
+msgstr "返回"
+
+#: ../../source/main.cpp:1408 ../../source/main.cpp:1447
+msgid "Compression: \n"
+msgstr "壓縮: \n"
+
+#: ../../source/main.cpp:440
+msgid "Data ID: "
+msgstr "數據ID: "
+
+#: ../../source/main.cpp:511 ../../source/main.cpp:750
+#: ../../source/main.cpp:1116
+#, c-format
+msgid "Data file with ID=%zu not found inside the game.\n"
+msgstr "未在遊戲中找到ID為%zu的數據文件。\n"
+
+#: ../../source/main.cpp:160
+msgid "Edit data"
+msgstr "編輯數據"
+
+#: ../../source/main.cpp:159
+msgid "Edit images"
+msgstr "編輯圖片"
+
+#: ../../source/main.cpp:159
+msgid "Edit sounds"
+msgstr "編輯音頻"
+
+#: ../../source/main.cpp:158
+msgid "Edit stages"
+msgstr "編輯關卡"
+
+#: ../../source/main.cpp:928
+#, c-format
+msgid "Error for data file with ID=%zu: %s"
+msgstr "ID為%zu: %s 的數據文件出錯。"
+
+#: ../../source/main.cpp:919
+#, c-format
+msgid "Error for data file with ID=%zu: File type unrecognized.\n"
+msgstr "ID為%zu的數據文件出錯: 文件類型無法識別。\n"
+
+#: ../../source/main.cpp:924
+#, c-format
+msgid "Error for data file with ID=%zu: Not an AMF3 ByteArray.\n"
+msgstr "ID為%zu的數據文件出錯: 並非AMF3的字節序列。\n"
+
+#: ../../source/main.cpp:621
+#, c-format
+msgid "Error for image with ID=%zu: %s\n"
+msgstr "ID為%zu: %s 的圖片出錯\n"
+
+#: ../../source/main.cpp:663
+#, c-format
+msgid "Error for stage file with ID=%zu: %s\n"
+msgstr "ID為%zu: %s 的關卡文件出錯\n"
+
+#: ../../source/main.cpp:127 ../../source/main.cpp:147
+#, c-format
+msgid "Error: %s\n"
+msgstr "錯誤: %s\n"
+
+#: ../../source/main.cpp:161
+msgid "Exit"
+msgstr "離開"
+
+#: ../../source/main.cpp:161
+msgid "Export EXE"
+msgstr "導出EXE"
+
+#: ../../source/main.cpp:160
+msgid "Export SWF"
+msgstr "導出SWF"
+
+#: ../../source/main.cpp:407
+msgid "Export data file(s)"
+msgstr "導出數據文件"
+
+#: ../../source/main.cpp:276
+msgid "Export image(s)"
+msgstr "導出圖片"
+
+#: ../../source/main.cpp:342
+msgid "Export sound(s)"
+msgstr "導出音頻"
+
+#: ../../source/main.cpp:206
+msgid "Export stage file(s)"
+msgstr "導出關卡文件"
+
+#: ../../source/main.cpp:434
+#, c-format
+msgid "Exported %d data file(s).\n"
+msgstr "導出%d個數據文件。\n"
+
+#: ../../source/main.cpp:304
+#, c-format
+msgid "Exported %d image(s).\n"
+msgstr "導出%d張圖片。\n"
+
+#: ../../source/main.cpp:369
+#, c-format
+msgid "Exported %d sound(s).\n"
+msgstr "導出%d個音頻。\n"
+
+#: ../../source/main.cpp:228 ../../source/main.cpp:238
+#, c-format
+msgid "Exported %d stage file(s).\n"
+msgstr "導出%d個關卡文件。\n"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1556
+msgid "Exporting HF: "
+msgstr "導出HF: "
+
+#: ../../source/main.cpp:615 ../../source/main.cpp:657
+#: ../../source/main.cpp:716 ../../source/main.cpp:755
+#, c-format
+msgid "Exporting: %s\n"
+msgstr "正在導出: %s\n"
+
+#: ../../source/main.cpp:139 ../../source/main.cpp:262
+#: ../../source/main.cpp:328 ../../source/main.cpp:393
+#: ../../source/main.cpp:458
+msgid "File path: "
+msgstr "文件路徑: "
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1587
+msgid "For tutorials and discussion visit "
+msgstr "關於教學與討論，請訪問"
+
+#. / TRANSLATORS: Generating EXE / ELF, leave %s as it is.
+#: ../../source/main.cpp:1500
+#, c-format
+msgid "Generating %s... Please wait.\n"
+msgstr "正在生成%s...請稍候。\n"
+
+#: ../../source/main.cpp:1426
+msgid "Generating SWF... Please wait.\n"
+msgstr "正在生成SWF...請稍候。\n"
+
+#: ../../source/main.cpp:180
+msgid "Good bye. o/\n"
+msgstr "再見。o/\n"
+
+#: ../../source/main.cpp:117
+msgid "HF Workshop"
+msgstr "HF工坊"
+
+#: ../../source/main.cpp:1521
+msgid ""
+"Hello there, hero!\n"
+"Which file do you wish to modify?\n"
+"\n"
+msgstr ""
+"你好，英雄！\n"
+"打算做點什麼？\n"
+"\n"
+
+#: ../../source/main.cpp:158
+msgid "Help"
+msgstr "幫助"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1536
+msgid ""
+"Hero Fighter is property of Marti Wong. This game has suffered a lot at the "
+"hands of crackers, who sought to unlock all the characters in the game for "
+"free, thus making the game unsustainable. HF Workshop is meant to modify "
+"Hero Fighter in a ETHICAL manner in order to bring new wonders to the game. "
+"If you wish to see new Hero Fighter versions released in the future, by no "
+"means you'll attempt to modify this game in a way that hurts Marti's income "
+"or the game's reputation and its users. Keep in mind that sounds and images "
+"that you find on the internet might be copyright protected in which case you "
+"should"
+msgstr ""
+"Hero Fighter的所有權屬於Marti Wong。這款遊戲慘遭破解者毒手，他們試圖免費解鎖"
+"遊戲中的所有角色，從而使遊戲營運難以為繼。HF 工坊旨在另闢蹊徑，以合乎道德的方"
+"式修改英雄人物，以延續遊戲生命。如果您希望未來Hero Fighter還得以更新，切莫不"
+"可以會損害Marti收益、遊戲聲譽或其用戶的方式修改此遊戲。請記住，您在網上找到的"
+"音頻和圖片可能受到版權保護，在這種情況下您應該"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1534
+msgid "IMPORTANT: "
+msgstr "重要: "
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1564
+msgid ""
+"If you're using a Flash Player projector (i.e. an EXE file) it is "
+"recommended that you compress it using UPX.\n"
+"\n"
+msgstr ""
+"若您用的是Flash Player獨立播放器(即EXE文件)，建議您使用UPX進行壓縮。\n"
+"\n"
+"\n"
+
+#: ../../source/main.cpp:310
+msgid "Image ID: "
+msgstr "圖片ID: "
+
+#: ../../source/main.cpp:233 ../../source/main.cpp:299
+#: ../../source/main.cpp:364 ../../source/main.cpp:429
+msgid "Invalid input.\n"
+msgstr "輸入無效。\n"
+
+#: ../../source/main.cpp:251 ../../source/main.cpp:255
+#: ../../source/main.cpp:317 ../../source/main.cpp:321
+#: ../../source/main.cpp:382 ../../source/main.cpp:386
+#: ../../source/main.cpp:447 ../../source/main.cpp:451
+msgid "Invalid number.\n"
+msgstr "數字無效。\n"
+
+#: ../../source/main.cpp:173 ../../source/main.cpp:197
+#: ../../source/main.cpp:267 ../../source/main.cpp:333
+#: ../../source/main.cpp:398 ../../source/main.cpp:463
+#: ../../source/main.cpp:1413 ../../source/main.cpp:1452
+#: ../../source/main.cpp:1472
+msgid "Invalid option.\n"
+msgstr "選項無效。\n"
+
+#: ../../source/main.cpp:407
+msgid "List data files"
+msgstr "列出數據文件"
+
+#: ../../source/main.cpp:276
+msgid "List images"
+msgstr "列出圖片"
+
+#: ../../source/main.cpp:342
+msgid "List sounds"
+msgstr "列出音頻"
+
+#: ../../source/main.cpp:206
+msgid "List stage files"
+msgstr "列出關卡文件"
+
+#: ../../source/main.cpp:744 ../../source/main.cpp:1110
+#, c-format
+msgid "No data file with ID=%zu.\n"
+msgstr "ID為%zu的數據文件不存在。\n"
+
+#: ../../source/main.cpp:599 ../../source/main.cpp:1014
+#, c-format
+msgid "No image with ID=%zu.\n"
+msgstr "ID為%zu的圖片不存在。\n"
+
+#: ../../source/main.cpp:693 ../../source/main.cpp:1072
+#, c-format
+msgid "No sound with ID=%zu.\n"
+msgstr "ID為%zu的音頻不存在。\n"
+
+#: ../../source/main.cpp:645 ../../source/main.cpp:950
+#, c-format
+msgid "No stage file with ID=%zu.\n"
+msgstr "ID為%zu的關卡文件不存在。\n"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1577
+msgid "Only MP3 files with "
+msgstr "MP3文件"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1570
+msgid ""
+"Only PNG files are supported. It is recommended that you resize and compress "
+"your PNG files. Note that images get slightly changed during the process of "
+"extracting and replacing due to premultiplied alpha.\n"
+"\n"
+msgstr ""
+"僅支持PNG文件。建議您先將PNG文件調整及壓縮。請注意，由於預乘透明度圖像的關"
+"係，圖片在提取和替換的過程中會有些微的變化。\n"
+"\n"
+
+#: ../../source/main.cpp:1481
+msgid "Path to Adobe Flash Player Projector (default=SA.exe): "
+msgstr "Adobe Flash Player獨立播放器所在的路徑 (默認為當前HFW路徑的SA.exe)"
+
+#. / TRANSLATORS: Don't change default executable name
+#: ../../source/main.cpp:1461
+msgid "Path to output file (default=HF_out.exe): "
+msgstr "導出文件路徑 (默認為當前HFW路徑的HF_out.exe)"
+
+#: ../../source/main.cpp:1421
+msgid "Path to output file (default=HF_out.swf): "
+msgstr "導出文件路徑 (默認為當前HFW路徑的HF_out.swf)"
+
+#: ../../source/main.cpp:1279
+msgid ""
+"Please do not change the format of the file name. It should be \"BgInfoFile."
+"json\".\n"
+msgstr "請勿更改文件名的格式。其格式應為\"BgInfoFile.json\"。\n"
+
+#: ../../source/main.cpp:1256
+msgid ""
+"Please do not change the format of the file name. It should be \"Spt.json"
+"\".\n"
+msgstr "請勿更改文件名的格式。其格式應為\"Spt.json\"。\n"
+
+#: ../../source/main.cpp:1328
+msgid ""
+"Please do not change the format of the file names. They must start with "
+"\"Attack_\" or \"PtWithName_\" in case of .json files and be numbered "
+"accordingly to their order.\n"
+msgstr ""
+"請勿更改文件名的格式。它們必須是以\"Attack_\" or \"PtWithName_\"為開頭的.json"
+"文件並依序編號排列。\n"
+
+#: ../../source/main.cpp:1181
+msgid ""
+"Please do not change the format of the file names. They must start with "
+"\"LimbPic_\" or \"Limb_\" in case of .json files and be numbered accordingly "
+"to their order.\n"
+msgstr ""
+"請勿更改文件名的格式。它們必須是以\"LimbPic_\" or \"Limb_\"為開頭的.json文件"
+"並依序編號排列。\n"
+
+#: ../../source/main.cpp:408
+msgid "Replace data file"
+msgstr "替換數據文件"
+
+#: ../../source/main.cpp:277
+msgid "Replace image"
+msgstr "替換圖片"
+
+#: ../../source/main.cpp:343
+msgid "Replace sound"
+msgstr "替換音頻"
+
+#: ../../source/main.cpp:207
+msgid "Replace stage file"
+msgstr "替換關卡文件"
+
+#: ../../source/main.cpp:1144
+#, c-format
+msgid "Replacing '%s' with contents of file '%s'...\n"
+msgstr "正在將'%s'替換成'%s'文件的內容。\n"
+
+#: ../../source/main.cpp:972 ../../source/main.cpp:1027
+#: ../../source/main.cpp:1085
+#, c-format
+msgid "Replacing '%s' with file '%s'...\n"
+msgstr "正在將'%s'替換成'%s'文件。\n"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1568
+msgid "Replacing Images: "
+msgstr "替換圖片: "
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1575
+msgid "Replacing MP3: "
+msgstr "替換MP3: "
+
+#: ../../source/main.cpp:375
+msgid "Sound ID: "
+msgstr "音頻ID: "
+
+#: ../../source/main.cpp:704 ../../source/main.cpp:1061
+#, c-format
+msgid "Sound with ID=%zu is not an MP3 file.\n"
+msgstr "ID為%zu的音頻並不是MP3文件。\n"
+
+#: ../../source/main.cpp:244
+msgid "Stage ID: "
+msgstr "關卡ID: "
+
+#: ../../source/main.cpp:487 ../../source/main.cpp:651
+#: ../../source/main.cpp:956
+#, c-format
+msgid "Stage file with ID=%zu not found inside the game.\n"
+msgstr "未在遊戲中找到ID為%zu的關卡文件。\n"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1548
+msgid ""
+"This program allows you to list, export and replace images, sounds and "
+"stages. It is recommended that you keep the "
+msgstr "您可以使用本程序列出、導出和替換圖片、音頻和關卡。建議您保留"
+
+#: ../../source/main.cpp:1444
+msgid "Tried to call export EXE without SWF being loaded."
+msgstr "試圖在未加載SWF的情況下導出EXE。"
+
+#: ../../source/main.cpp:1405
+msgid "Tried to call export SWF without SWF being loaded."
+msgstr "試圖在未加載SWF的情況下導出SWF。"
+
+#: ../../source/main.cpp:732
+msgid "Tried to export data without SWF being loaded."
+msgstr "試圖在未加載SWF的情況下導出數據。"
+
+#: ../../source/main.cpp:580
+msgid "Tried to export images without SWF being loaded."
+msgstr "試圖在未加載SWF的情況下導出圖片。"
+
+#: ../../source/main.cpp:676
+msgid "Tried to export sounds without SWF being loaded."
+msgstr "試圖在未加載SWF的情況下導出音頻。"
+
+#: ../../source/main.cpp:636
+msgid "Tried to export stages without SWF being loaded."
+msgstr "試圖在未加載SWF的情況下導出關卡。"
+
+#: ../../source/main.cpp:504
+msgid "Tried to list data without SWF being loaded."
+msgstr "試圖在未加載SWF的情況下列出數據。"
+
+#: ../../source/main.cpp:480
+msgid "Tried to list stages without SWF being loaded."
+msgstr "試圖在未加載SWF的情況下列出關卡。"
+
+#: ../../source/main.cpp:528
+msgid "Tried to list tags without SWF being loaded."
+msgstr "試圖在未加載SWF的情況下列出標籤。"
+
+#: ../../source/main.cpp:1103
+msgid "Tried to replace a data file without SWF being loaded."
+msgstr "試圖在未加載SWF的情況下替換數據文件。"
+
+#: ../../source/main.cpp:943
+msgid "Tried to replace a stage without SWF being loaded."
+msgstr "試圖在未加載SWF的情況下替換關卡。"
+
+#: ../../source/main.cpp:989
+msgid "Tried to replace image without SWF being loaded."
+msgstr "試圖在未加載SWF的情況下替換圖片。"
+
+#: ../../source/main.cpp:1044
+msgid "Tried to replace sound without SWF being loaded."
+msgstr "試圖在未加載SWF的情況下替換音頻。"
+
+#. / TRANSLATORS: Please don't change the 'all' option
+#: ../../source/main.cpp:220 ../../source/main.cpp:290
+#: ../../source/main.cpp:355 ../../source/main.cpp:420
+msgid "Type 'all' or comma separated IDs: "
+msgstr "輸入'all'或以逗號分隔的數個ID: "
+
+#: ../../source/main.cpp:1366
+msgid "Unrecognized data file extension.\n"
+msgstr "無法識別的數據文件副檔名。\n"
+
+#. / TRANSLATORS: 'embeded' is an intentional typo
+#: ../../source/main.cpp:1203
+#, c-format
+msgid ""
+"WARNING: LimbPic with ID=%d has \"disabled\" and \"embeded\" with the same "
+"value. This should not happen.\n"
+msgstr ""
+"警告: ID為%d的LimbPic \"disabled\"和\"embeded\"具有相同的值。這不應發生。\n"
+
+#. / TRANSLATORS: 'embeded' is an intentional typo
+#: ../../source/main.cpp:1227
+#, c-format
+msgid ""
+"WARNING: LimbPic with ID=%d has \"embeded\" set to \"true\", but there is no "
+"PNG file with that ID. If you wish to disable it, change \"disabled\" to "
+"\"true\" and \"embeded\" to \"false\".\n"
+msgstr ""
+"警告: ID為%d的LimbPic \"embeded\"被設置為\"true\"，但該ID並不存在PNG文件。如"
+"果您要禁用它，請將\"disabled\"改為\"true\"並將\"embeded\"改為\"false\"。\n"
+
+#: ../../source/main.cpp:469
+msgid "What do you wish to do?\n"
+msgstr "您希望做什麼呢？\n"
+
+#. Get mp3 filename
+#: ../../source/main.cpp:391
+msgid "Which MP3 file do you wish to replace with?\n"
+msgstr "您要以哪個MP3文件作替換？\n"
+
+#. Get id to replace
+#: ../../source/main.cpp:373
+msgid "Which MP3 sound do you wish to replace?\n"
+msgstr "您要替換哪個MP3音頻？\n"
+
+#. Get mp3 filename
+#: ../../source/main.cpp:456
+msgid "Which data file do you wish to replace with? (.zip)\n"
+msgstr "您要以哪個數據文件作替換？(.zip)\n"
+
+#. Get id to replace
+#: ../../source/main.cpp:438
+msgid "Which data file do you wish to replace?\n"
+msgstr "您要替換哪個數據文件？\n"
+
+#: ../../source/main.cpp:418
+msgid "Which data file(s) do you wish to export?\n"
+msgstr "您要導出哪些數據文件？\n"
+
+#. Get id to replace
+#: ../../source/main.cpp:308
+msgid "Which image do you wish to replace?\n"
+msgstr "您要替換哪張圖片？\n"
+
+#. Get mp3 filename
+#: ../../source/main.cpp:326
+msgid "Which image file do you wish to replace with?\n"
+msgstr "您要以哪個圖片文件作替換？\n"
+
+#: ../../source/main.cpp:288
+msgid "Which image(s) do you wish to export?\n"
+msgstr "您要導出哪些圖片？\n"
+
+#: ../../source/main.cpp:353
+msgid "Which sound(s) do you wish to export?\n"
+msgstr "您要導出哪些音頻？\n"
+
+#. Get stage filename
+#: ../../source/main.cpp:260
+msgid "Which stage file do you wish to replace with? (.xml)\n"
+msgstr "您要以哪個關卡文件作替換？(.xml)\n"
+
+#. Get id to replace
+#: ../../source/main.cpp:242
+msgid "Which stage file do you wish to replace?\n"
+msgstr "您要替換哪個關卡文件？\n"
+
+#: ../../source/main.cpp:217
+msgid "Which stage(s) do you wish to export?\n"
+msgstr "您要導出哪些關卡？\n"
+
+#. / TRANSLATORS: Don't change y/n options
+#: ../../source/main.cpp:1470
+msgid ""
+"You have already loaded a Flash Player SA into memory.\n"
+"Would you like to use it? [y/n] (default=y): "
+msgstr ""
+"您已將Flash Player獨立播放器加載到內存中。\n"
+"您希望使用它嗎？[y=是/n=否] (默認為y): "
+
+#. / TRANSLATORS: Please don't change the y and n options.
+#: ../../source/main.cpp:171
+msgid ""
+"You have unsaved changes. Are you sure you want to exit without exporting "
+"SWF/EXE? [y/n] (default=n): "
+msgstr "變更尚未保存。確定要不導出SWF/EXE就離開嗎？[y=是/n=否] (默認為n): "
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1558
+msgid ""
+"You may export the modified Hero Fighter in SWF or EXE formats. When "
+"exporting, you'll be given the option to compress the SWF file using Zlib or "
+"LZMA algorithms. It is highly recommended that you use one of these because "
+"a smaller file size will be easier to transfer on the internet. Zlib "
+"compression is the most common, whilst LZMA is more recent and won't work on "
+"Flash Player versions below 11.\n"
+"\n"
+msgstr ""
+"您可以SWF或EXE格式導出修改過的Hero Fighter。導出時，您可選擇使用Zlib或LZMA演"
+"算法壓縮SWF文件。強烈建議您使用其中一種，因為文件較小更便於在網上進行傳輸。一"
+"般最常見的是Zlib壓縮，而LZMA則是較新出現，且不適用於Flash Player 11以下的版"
+"本。\n"
+"\n"
+"\n"
+
+#: ../../source/main.cpp:1411 ../../source/main.cpp:1450
+msgid ""
+"[0] Uncompressed\n"
+"[1] *zlib (faster, bigger)\n"
+"[2] LZMA (slower, smaller)\n"
+"Pick option (default=1): "
+msgstr ""
+"[0] 無壓縮\n"
+"[1] *zlib (讀取較快, 檔案較大)\n"
+"[2] LZMA (讀取較慢, 檔案較小)\n"
+"輸入選項 (默認為1): "
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1551
+msgid "images resized and sounds compressed"
+msgstr "調整圖片大小及壓縮音頻"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1579
+msgid "sample rates"
+msgstr "采樣率"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1545
+msgid ""
+"use them. Thank you.\n"
+"\n"
+msgstr ""
+"使用它們。謝謝你。\n"
+"\n"
+
+#~ msgid "Cannot read MP3 file.\n"
+#~ msgstr "無法讀取MP3文件。\n"
+
+#~ msgid "Cannot read image file.\n"
+#~ msgstr "無法讀取圖片文件。\n"
+
+#~ msgid "Cannot read projector file.\n"
+#~ msgstr "無法讀取播放器文件。\n"
+
+#~ msgid "Cannot read stage file.\n"
+#~ msgstr "無法讀取關卡文件。\n"
+
+#~ msgid "Image ID=%zu does not exist.\n"
+#~ msgstr "ID為%zu的圖片不存在。\n"
+
+#~ msgid "Sound ID=%zu does not exist.\n"
+#~ msgstr "ID為%zu的音頻不存在。\n"

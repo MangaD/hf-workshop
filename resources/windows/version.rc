@@ -1,0 +1,32 @@
+#include <windows.h>
+#include "resource.h"
+
+VS_VERSION_INFO     VERSIONINFO
+FILEVERSION         APP_VERSION_DIGITALVALUE
+PRODUCTVERSION      APP_VERSION_DIGITALVALUE
+FILEFLAGSMASK       0x3fL
+FILEFLAGS           0
+FILEOS              VOS_NT_WINDOWS32
+FILETYPE            VFT_APP
+FILESUBTYPE         VFT2_UNKNOWN
+BEGIN
+    BLOCK    "VarFileInfo"
+    BEGIN
+        VALUE    "Translation",    0x0809,    1200
+    END
+    BLOCK    "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName",      "MangaD"
+            VALUE "FileDescription",  "HF Workshop"
+            VALUE "FileVersion",      "1.0"
+            VALUE "InternalName",     "HFWorkshop"
+            VALUE "LegalCopyright",   "©2019 MangaD"
+            VALUE "OriginalFilename", "HFWorkshop.exe"
+            VALUE "ProductName",      "HF Workshop"
+            VALUE "Comments",         "Workshop for Hero Fighter v0.7"
+            VALUE "ProductVersion",   "1.0"
+        END
+    END
+END

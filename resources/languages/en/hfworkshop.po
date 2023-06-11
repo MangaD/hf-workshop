@@ -1,0 +1,705 @@
+# English translations for hfworkshop package.
+# Copyright (C) 2019 MangaD
+# This file is distributed under the same license as the hfworkshop package.
+# Automatically generated, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hfworkshop 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-11 12:18+0100\n"
+"PO-Revision-Date: 2019-08-05 00:29+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../source/main.cpp:1514
+msgid ""
+"  _   _ _____  __        _____  ____  _  ______  _   _  ___  ____  \n | | | "
+"|  ___| \\ \\      / / _ \\|  _ \\| |/ / ___|| | | |/ _ \\|  _ \\ \n | |_| "
+"| |_     \\ \\ /\\ / / | | | |_) | ' /\\___ \\| |_| | | | | |_) |\n |  _  "
+"|  _|     \\ V  V /| |_| |  _ <| . \\ ___) |  _  | |_| |  __/ \n |_| |_|"
+"_|        \\_/\\_/  \\___/|_| \\_\\_|\\_\\____/|_| |_|\\___/|_|    \n\n"
+msgstr ""
+"  _   _ _____  __        _____  ____  _  ______  _   _  ___  ____  \n"
+" | | | |  ___| \\ \\      / / _ \\|  _ \\| |/ / ___|| | | |/ _ \\|  _ \\ \n"
+" | |_| | |_     \\ \\ /\\ / / | | | |_) | ' /\\___ \\| |_| | | | | |_) |\n"
+" |  _  |  _|     \\ V  V /| |_| |  _ <| . \\ ___) |  _  | |_| |  __/ \n"
+" |_| |_|_|        \\_/\\_/  \\___/|_| \\_\\_|\\_\\____/|_| |_|\\___/|_|    \n"
+"\n"
+
+#: ../../source/main.cpp:1528
+msgid ""
+"  _  _ ___ _    ___ \n | || | __| |  | _ \\\n | __ | _|| |__|  _/\n |_||_|"
+"___|____|_|  \n\n"
+msgstr ""
+"  _  _ ___ _    ___ \n"
+" | || | __| |  | _ \\\n"
+" | __ | _|| |__|  _/\n"
+" |_||_|___|____|_|  \n"
+"\n"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1543
+msgid " NOT "
+msgstr " NOT "
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1553
+msgid ""
+" as much as possible so that the final file will not be too large.\n"
+"\n"
+msgstr ""
+" as much as possible so that the final file will not be too large.\n"
+"\n"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1581
+msgid ""
+" of 5512 Hz, 11025 Hz, 22050 Hz and 44100 Hz are allowed (note: sample rates "
+"and bit rates are not the same thing). This program will tell you if the MP3 "
+"file that you're trying to replace with doesn't meet the requirements. In "
+"this case, you may find a converter online for your MP3 file. It is also "
+"recommended that you find an MP3 compressor to reduce the size of your MP3 "
+"files.\n"
+"\n"
+msgstr ""
+" of 5512 Hz, 11025 Hz, 22050 Hz and 44100 Hz are allowed (note: sample rates "
+"and bit rates are not the same thing). This program will tell you if the MP3 "
+"file that you're trying to replace with doesn't meet the requirements. In "
+"this case, you may find a converter online for your MP3 file. It is also "
+"recommended that you find an MP3 compressor to reduce the size of your MP3 "
+"files.\n"
+"\n"
+
+#: ../../source/main.cpp:207 ../../source/main.cpp:277
+#: ../../source/main.cpp:343 ../../source/main.cpp:408
+msgid "Back"
+msgstr "Back"
+
+#: ../../source/main.cpp:1408 ../../source/main.cpp:1447
+msgid "Compression: \n"
+msgstr "Compression: \n"
+
+#: ../../source/main.cpp:440
+msgid "Data ID: "
+msgstr "Data ID: "
+
+#: ../../source/main.cpp:511 ../../source/main.cpp:750
+#: ../../source/main.cpp:1116
+#, c-format
+msgid "Data file with ID=%zu not found inside the game.\n"
+msgstr "Data file with ID=%zu not found inside the game.\n"
+
+#: ../../source/main.cpp:160
+msgid "Edit data"
+msgstr "Edit data"
+
+#: ../../source/main.cpp:159
+msgid "Edit images"
+msgstr "Edit images"
+
+#: ../../source/main.cpp:159
+msgid "Edit sounds"
+msgstr "Edit sounds"
+
+#: ../../source/main.cpp:158
+msgid "Edit stages"
+msgstr "Edit stages"
+
+#: ../../source/main.cpp:928
+#, c-format
+msgid "Error for data file with ID=%zu: %s"
+msgstr "Error for data file with ID=%zu: %s"
+
+#: ../../source/main.cpp:919
+#, c-format
+msgid "Error for data file with ID=%zu: File type unrecognized.\n"
+msgstr "Error for data file with ID=%zu: File type unrecognized.\n"
+
+#: ../../source/main.cpp:924
+#, c-format
+msgid "Error for data file with ID=%zu: Not an AMF3 ByteArray.\n"
+msgstr "Error for data file with ID=%zu: Not an AMF3 ByteArray.\n"
+
+#: ../../source/main.cpp:621
+#, c-format
+msgid "Error for image with ID=%zu: %s\n"
+msgstr "Error for image with ID=%zu: %s\n"
+
+#: ../../source/main.cpp:663
+#, c-format
+msgid "Error for stage file with ID=%zu: %s\n"
+msgstr "Error for stage file with ID=%zu: %s\n"
+
+#: ../../source/main.cpp:127 ../../source/main.cpp:147
+#, c-format
+msgid "Error: %s\n"
+msgstr "Error: %s\n"
+
+#: ../../source/main.cpp:161
+msgid "Exit"
+msgstr "Exit"
+
+#: ../../source/main.cpp:161
+msgid "Export EXE"
+msgstr "Export EXE"
+
+#: ../../source/main.cpp:160
+msgid "Export SWF"
+msgstr "Export SWF"
+
+#: ../../source/main.cpp:407
+msgid "Export data file(s)"
+msgstr "Export data file(s)"
+
+#: ../../source/main.cpp:276
+msgid "Export image(s)"
+msgstr "Export image(s)"
+
+#: ../../source/main.cpp:342
+msgid "Export sound(s)"
+msgstr "Export sound(s)"
+
+#: ../../source/main.cpp:206
+msgid "Export stage file(s)"
+msgstr "Export stage file(s)"
+
+#: ../../source/main.cpp:434
+#, c-format
+msgid "Exported %d data file(s).\n"
+msgstr "Exported %d data file(s).\n"
+
+#: ../../source/main.cpp:304
+#, c-format
+msgid "Exported %d image(s).\n"
+msgstr "Exported %d image(s).\n"
+
+#: ../../source/main.cpp:369
+#, c-format
+msgid "Exported %d sound(s).\n"
+msgstr "Exported %d sound(s).\n"
+
+#: ../../source/main.cpp:228 ../../source/main.cpp:238
+#, c-format
+msgid "Exported %d stage file(s).\n"
+msgstr "Exported %d stage file(s).\n"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1556
+msgid "Exporting HF: "
+msgstr "Exporting HF: "
+
+#: ../../source/main.cpp:615 ../../source/main.cpp:657
+#: ../../source/main.cpp:716 ../../source/main.cpp:755
+#, c-format
+msgid "Exporting: %s\n"
+msgstr "Exporting: %s\n"
+
+#: ../../source/main.cpp:139 ../../source/main.cpp:262
+#: ../../source/main.cpp:328 ../../source/main.cpp:393
+#: ../../source/main.cpp:458
+msgid "File path: "
+msgstr "File path: "
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1587
+msgid "For tutorials and discussion visit "
+msgstr "For tutorials and discussion visit "
+
+#. / TRANSLATORS: Generating EXE / ELF, leave %s as it is.
+#: ../../source/main.cpp:1500
+#, c-format
+msgid "Generating %s... Please wait.\n"
+msgstr "Generating %s... Please wait.\n"
+
+#: ../../source/main.cpp:1426
+msgid "Generating SWF... Please wait.\n"
+msgstr "Generating SWF... Please wait.\n"
+
+#: ../../source/main.cpp:180
+msgid "Good bye. o/\n"
+msgstr "Good bye. o/\n"
+
+#: ../../source/main.cpp:117
+msgid "HF Workshop"
+msgstr "HF Workshop"
+
+#: ../../source/main.cpp:1521
+msgid ""
+"Hello there, hero!\n"
+"Which file do you wish to modify?\n"
+"\n"
+msgstr ""
+"Hello there, hero!\n"
+"Which file do you wish to modify?\n"
+"\n"
+
+#: ../../source/main.cpp:158
+msgid "Help"
+msgstr "Help"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1536
+msgid ""
+"Hero Fighter is property of Marti Wong. This game has suffered a lot at the "
+"hands of crackers, who sought to unlock all the characters in the game for "
+"free, thus making the game unsustainable. HF Workshop is meant to modify "
+"Hero Fighter in a ETHICAL manner in order to bring new wonders to the game. "
+"If you wish to see new Hero Fighter versions released in the future, by no "
+"means you'll attempt to modify this game in a way that hurts Marti's income "
+"or the game's reputation and its users. Keep in mind that sounds and images "
+"that you find on the internet might be copyright protected in which case you "
+"should"
+msgstr ""
+"Hero Fighter is property of Marti Wong. This game has suffered a lot at the "
+"hands of crackers, who sought to unlock all the characters in the game for "
+"free, thus making the game unsustainable. HF Workshop is meant to modify "
+"Hero Fighter in a ETHICAL manner in order to bring new wonders to the game. "
+"If you wish to see new Hero Fighter versions released in the future, by no "
+"means you'll attempt to modify this game in a way that hurts Marti's income "
+"or the game's reputation and its users. Keep in mind that sounds and images "
+"that you find on the internet might be copyright protected in which case you "
+"should"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1534
+msgid "IMPORTANT: "
+msgstr "IMPORTANT: "
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1564
+msgid ""
+"If you're using a Flash Player projector (i.e. an EXE file) it is "
+"recommended that you compress it using UPX.\n"
+"\n"
+msgstr ""
+"If you're using a Flash Player projector (i.e. an EXE file) it is "
+"recommended that you compress it using UPX.\n"
+"\n"
+
+#: ../../source/main.cpp:310
+msgid "Image ID: "
+msgstr "Image ID: "
+
+#: ../../source/main.cpp:233 ../../source/main.cpp:299
+#: ../../source/main.cpp:364 ../../source/main.cpp:429
+msgid "Invalid input.\n"
+msgstr "Invalid input.\n"
+
+#: ../../source/main.cpp:251 ../../source/main.cpp:255
+#: ../../source/main.cpp:317 ../../source/main.cpp:321
+#: ../../source/main.cpp:382 ../../source/main.cpp:386
+#: ../../source/main.cpp:447 ../../source/main.cpp:451
+msgid "Invalid number.\n"
+msgstr "Invalid number.\n"
+
+#: ../../source/main.cpp:173 ../../source/main.cpp:197
+#: ../../source/main.cpp:267 ../../source/main.cpp:333
+#: ../../source/main.cpp:398 ../../source/main.cpp:463
+#: ../../source/main.cpp:1413 ../../source/main.cpp:1452
+#: ../../source/main.cpp:1472
+msgid "Invalid option.\n"
+msgstr "Invalid option.\n"
+
+#: ../../source/main.cpp:407
+msgid "List data files"
+msgstr "List data files"
+
+#: ../../source/main.cpp:276
+msgid "List images"
+msgstr "List images"
+
+#: ../../source/main.cpp:342
+msgid "List sounds"
+msgstr "List sounds"
+
+#: ../../source/main.cpp:206
+msgid "List stage files"
+msgstr "List stage files"
+
+#: ../../source/main.cpp:744 ../../source/main.cpp:1110
+#, c-format
+msgid "No data file with ID=%zu.\n"
+msgstr "No data file with ID=%zu.\n"
+
+#: ../../source/main.cpp:599 ../../source/main.cpp:1014
+#, c-format
+msgid "No image with ID=%zu.\n"
+msgstr "No image with ID=%zu.\n"
+
+#: ../../source/main.cpp:693 ../../source/main.cpp:1072
+#, c-format
+msgid "No sound with ID=%zu.\n"
+msgstr "No sound with ID=%zu.\n"
+
+#: ../../source/main.cpp:645 ../../source/main.cpp:950
+#, c-format
+msgid "No stage file with ID=%zu.\n"
+msgstr "No stage file with ID=%zu.\n"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1577
+msgid "Only MP3 files with "
+msgstr "Only MP3 files with "
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1570
+msgid ""
+"Only PNG files are supported. It is recommended that you resize and compress "
+"your PNG files. Note that images get slightly changed during the process of "
+"extracting and replacing due to premultiplied alpha.\n"
+"\n"
+msgstr ""
+"Only PNG files are supported. It is recommended that you resize and compress "
+"your PNG files. Note that images get slightly changed during the process of "
+"extracting and replacing due to premultiplied alpha.\n"
+"\n"
+
+#: ../../source/main.cpp:1481
+msgid "Path to Adobe Flash Player Projector (default=SA.exe): "
+msgstr "Path to Adobe Flash Player Projector (default=SA.exe): "
+
+#. / TRANSLATORS: Don't change default executable name
+#: ../../source/main.cpp:1461
+msgid "Path to output file (default=HF_out.exe): "
+msgstr "Path to output file (default=HF_out.exe): "
+
+#: ../../source/main.cpp:1421
+msgid "Path to output file (default=HF_out.swf): "
+msgstr "Path to output file (default=HF_out.swf): "
+
+#: ../../source/main.cpp:1279
+msgid ""
+"Please do not change the format of the file name. It should be \"BgInfoFile."
+"json\".\n"
+msgstr ""
+"Please do not change the format of the file name. It should be \"BgInfoFile."
+"json\".\n"
+
+#: ../../source/main.cpp:1256
+msgid ""
+"Please do not change the format of the file name. It should be \"Spt.json"
+"\".\n"
+msgstr ""
+"Please do not change the format of the file name. It should be \"Spt.json"
+"\".\n"
+
+#: ../../source/main.cpp:1328
+msgid ""
+"Please do not change the format of the file names. They must start with "
+"\"Attack_\" or \"PtWithName_\" in case of .json files and be numbered "
+"accordingly to their order.\n"
+msgstr ""
+"Please do not change the format of the file names. They must start with "
+"\"Attack_\" or \"PtWithName_\" in case of .json files and be numbered "
+"accordingly to their order.\n"
+
+#: ../../source/main.cpp:1181
+msgid ""
+"Please do not change the format of the file names. They must start with "
+"\"LimbPic_\" or \"Limb_\" in case of .json files and be numbered accordingly "
+"to their order.\n"
+msgstr ""
+"Please do not change the format of the file names. They must start with "
+"\"LimbPic_\" or \"Limb_\" in case of .json files and be numbered accordingly "
+"to their order.\n"
+
+#: ../../source/main.cpp:408
+msgid "Replace data file"
+msgstr "Replace data file"
+
+#: ../../source/main.cpp:277
+msgid "Replace image"
+msgstr "Replace image"
+
+#: ../../source/main.cpp:343
+msgid "Replace sound"
+msgstr "Replace sound"
+
+#: ../../source/main.cpp:207
+msgid "Replace stage file"
+msgstr "Replace stage file"
+
+#: ../../source/main.cpp:1144
+#, c-format
+msgid "Replacing '%s' with contents of file '%s'...\n"
+msgstr "Replacing '%s' with contents of file '%s'...\n"
+
+#: ../../source/main.cpp:972 ../../source/main.cpp:1027
+#: ../../source/main.cpp:1085
+#, c-format
+msgid "Replacing '%s' with file '%s'...\n"
+msgstr "Replacing '%s' with file '%s'...\n"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1568
+msgid "Replacing Images: "
+msgstr "Replacing Images: "
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1575
+msgid "Replacing MP3: "
+msgstr "Replacing MP3: "
+
+#: ../../source/main.cpp:375
+msgid "Sound ID: "
+msgstr "Sound ID: "
+
+#: ../../source/main.cpp:704 ../../source/main.cpp:1061
+#, c-format
+msgid "Sound with ID=%zu is not an MP3 file.\n"
+msgstr "Sound with ID=%zu is not an MP3 file.\n"
+
+#: ../../source/main.cpp:244
+msgid "Stage ID: "
+msgstr "Stage ID: "
+
+#: ../../source/main.cpp:487 ../../source/main.cpp:651
+#: ../../source/main.cpp:956
+#, c-format
+msgid "Stage file with ID=%zu not found inside the game.\n"
+msgstr "Stage file with ID=%zu not found inside the game.\n"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1548
+msgid ""
+"This program allows you to list, export and replace images, sounds and "
+"stages. It is recommended that you keep the "
+msgstr ""
+"This program allows you to list, export and replace images, sounds and "
+"stages. It is recommended that you keep the "
+
+#: ../../source/main.cpp:1444
+msgid "Tried to call export EXE without SWF being loaded."
+msgstr "Tried to call export EXE without SWF being loaded."
+
+#: ../../source/main.cpp:1405
+msgid "Tried to call export SWF without SWF being loaded."
+msgstr "Tried to call export SWF without SWF being loaded."
+
+#: ../../source/main.cpp:732
+msgid "Tried to export data without SWF being loaded."
+msgstr "Tried to export data without SWF being loaded."
+
+#: ../../source/main.cpp:580
+msgid "Tried to export images without SWF being loaded."
+msgstr "Tried to export images without SWF being loaded."
+
+#: ../../source/main.cpp:676
+msgid "Tried to export sounds without SWF being loaded."
+msgstr "Tried to export sounds without SWF being loaded."
+
+#: ../../source/main.cpp:636
+msgid "Tried to export stages without SWF being loaded."
+msgstr "Tried to export stages without SWF being loaded."
+
+#: ../../source/main.cpp:504
+msgid "Tried to list data without SWF being loaded."
+msgstr "Tried to list data without SWF being loaded."
+
+#: ../../source/main.cpp:480
+msgid "Tried to list stages without SWF being loaded."
+msgstr "Tried to list stages without SWF being loaded."
+
+#: ../../source/main.cpp:528
+msgid "Tried to list tags without SWF being loaded."
+msgstr "Tried to list tags without SWF being loaded."
+
+#: ../../source/main.cpp:1103
+msgid "Tried to replace a data file without SWF being loaded."
+msgstr "Tried to replace a data file without SWF being loaded."
+
+#: ../../source/main.cpp:943
+msgid "Tried to replace a stage without SWF being loaded."
+msgstr "Tried to replace a stage without SWF being loaded."
+
+#: ../../source/main.cpp:989
+msgid "Tried to replace image without SWF being loaded."
+msgstr "Tried to replace image without SWF being loaded."
+
+#: ../../source/main.cpp:1044
+msgid "Tried to replace sound without SWF being loaded."
+msgstr "Tried to replace sound without SWF being loaded."
+
+#. / TRANSLATORS: Please don't change the 'all' option
+#: ../../source/main.cpp:220 ../../source/main.cpp:290
+#: ../../source/main.cpp:355 ../../source/main.cpp:420
+msgid "Type 'all' or comma separated IDs: "
+msgstr "Type 'all' or comma separated IDs: "
+
+#: ../../source/main.cpp:1366
+msgid "Unrecognized data file extension.\n"
+msgstr "Unrecognized data file extension.\n"
+
+#. / TRANSLATORS: 'embeded' is an intentional typo
+#: ../../source/main.cpp:1203
+#, c-format
+msgid ""
+"WARNING: LimbPic with ID=%d has \"disabled\" and \"embeded\" with the same "
+"value. This should not happen.\n"
+msgstr ""
+"WARNING: LimbPic with ID=%d has \"disabled\" and \"embeded\" with the same "
+"value. This should not happen.\n"
+
+#. / TRANSLATORS: 'embeded' is an intentional typo
+#: ../../source/main.cpp:1227
+#, c-format
+msgid ""
+"WARNING: LimbPic with ID=%d has \"embeded\" set to \"true\", but there is no "
+"PNG file with that ID. If you wish to disable it, change \"disabled\" to "
+"\"true\" and \"embeded\" to \"false\".\n"
+msgstr ""
+"WARNING: LimbPic with ID=%d has \"embeded\" set to \"true\", but there is no "
+"PNG file with that ID. If you wish to disable it, change \"disabled\" to "
+"\"true\" and \"embeded\" to \"false\".\n"
+
+#: ../../source/main.cpp:469
+msgid "What do you wish to do?\n"
+msgstr "What do you wish to do?\n"
+
+#. Get mp3 filename
+#: ../../source/main.cpp:391
+msgid "Which MP3 file do you wish to replace with?\n"
+msgstr "Which MP3 file do you wish to replace with?\n"
+
+#. Get id to replace
+#: ../../source/main.cpp:373
+msgid "Which MP3 sound do you wish to replace?\n"
+msgstr "Which MP3 sound do you wish to replace?\n"
+
+#. Get mp3 filename
+#: ../../source/main.cpp:456
+msgid "Which data file do you wish to replace with? (.zip)\n"
+msgstr "Which data file do you wish to replace with? (.zip)\n"
+
+#. Get id to replace
+#: ../../source/main.cpp:438
+msgid "Which data file do you wish to replace?\n"
+msgstr "Which data file do you wish to replace?\n"
+
+#: ../../source/main.cpp:418
+msgid "Which data file(s) do you wish to export?\n"
+msgstr "Which data file(s) do you wish to export?\n"
+
+#. Get id to replace
+#: ../../source/main.cpp:308
+msgid "Which image do you wish to replace?\n"
+msgstr "Which image do you wish to replace?\n"
+
+#. Get mp3 filename
+#: ../../source/main.cpp:326
+msgid "Which image file do you wish to replace with?\n"
+msgstr "Which image file do you wish to replace with?\n"
+
+#: ../../source/main.cpp:288
+msgid "Which image(s) do you wish to export?\n"
+msgstr "Which image(s) do you wish to export?\n"
+
+#: ../../source/main.cpp:353
+msgid "Which sound(s) do you wish to export?\n"
+msgstr "Which sound(s) do you wish to export?\n"
+
+#. Get stage filename
+#: ../../source/main.cpp:260
+msgid "Which stage file do you wish to replace with? (.xml)\n"
+msgstr "Which stage file do you wish to replace with? (.xml)\n"
+
+#. Get id to replace
+#: ../../source/main.cpp:242
+msgid "Which stage file do you wish to replace?\n"
+msgstr "Which stage file do you wish to replace?\n"
+
+#: ../../source/main.cpp:217
+msgid "Which stage(s) do you wish to export?\n"
+msgstr "Which stage(s) do you wish to export?\n"
+
+#. / TRANSLATORS: Don't change y/n options
+#: ../../source/main.cpp:1470
+msgid ""
+"You have already loaded a Flash Player SA into memory.\n"
+"Would you like to use it? [y/n] (default=y): "
+msgstr ""
+"You have already loaded a Flash Player SA into memory.\n"
+"Would you like to use it? [y/n] (default=y): "
+
+#. / TRANSLATORS: Please don't change the y and n options.
+#: ../../source/main.cpp:171
+msgid ""
+"You have unsaved changes. Are you sure you want to exit without exporting "
+"SWF/EXE? [y/n] (default=n): "
+msgstr ""
+"You have unsaved changes. Are you sure you want to exit without exporting "
+"SWF/EXE? [y/n] (default=n): "
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1558
+msgid ""
+"You may export the modified Hero Fighter in SWF or EXE formats. When "
+"exporting, you'll be given the option to compress the SWF file using Zlib or "
+"LZMA algorithms. It is highly recommended that you use one of these because "
+"a smaller file size will be easier to transfer on the internet. Zlib "
+"compression is the most common, whilst LZMA is more recent and won't work on "
+"Flash Player versions below 11.\n"
+"\n"
+msgstr ""
+"You may export the modified Hero Fighter in SWF or EXE formats. When "
+"exporting, you'll be given the option to compress the SWF file using Zlib or "
+"LZMA algorithms. It is highly recommended that you use one of these because "
+"a smaller file size will be easier to transfer on the internet. Zlib "
+"compression is the most common, whilst LZMA is more recent and won't work on "
+"Flash Player versions below 11.\n"
+"\n"
+
+#: ../../source/main.cpp:1411 ../../source/main.cpp:1450
+msgid ""
+"[0] Uncompressed\n"
+"[1] *zlib (faster, bigger)\n"
+"[2] LZMA (slower, smaller)\n"
+"Pick option (default=1): "
+msgstr ""
+"[0] Uncompressed\n"
+"[1] *zlib (faster, bigger)\n"
+"[2] LZMA (slower, smaller)\n"
+"Pick option (default=1): "
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1551
+msgid "images resized and sounds compressed"
+msgstr "images resized and sounds compressed"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1579
+msgid "sample rates"
+msgstr "sample rates"
+
+#. / TRANSLATORS: Help section
+#: ../../source/main.cpp:1545
+msgid ""
+"use them. Thank you.\n"
+"\n"
+msgstr ""
+"use them. Thank you.\n"
+"\n"
+
+#~ msgid "Cannot read MP3 file.\n"
+#~ msgstr "Cannot read MP3 file.\n"
+
+#~ msgid "Cannot read image file.\n"
+#~ msgstr "Cannot read image file.\n"
+
+#~ msgid "Cannot read projector file.\n"
+#~ msgstr "Cannot read projector file.\n"
+
+#~ msgid "Cannot read stage file.\n"
+#~ msgstr "Cannot read stage file.\n"
+
+#~ msgid "Image ID=%zu does not exist.\n"
+#~ msgstr "Image ID=%zu does not exist.\n"
+
+#~ msgid "Sound ID=%zu does not exist.\n"
+#~ msgstr "Sound ID=%zu does not exist.\n"

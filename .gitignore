@@ -1,0 +1,14 @@
+documentation/doxygen
+bin
+build
+obj
+*.o
+libraries/*.o
+libraries/lodepng/lodepng/*.o
+resources/*.o
+resources/*.aps
+resources/out.*
+resources/*.swf
+*.swf
+.fuse_hidden*
+*~
