@@ -6,6 +6,8 @@
 
 # To-do
 
+- Badges https://www.sonarqube.org/. See https://canary.discord.com/channels/@me/556927491240099870/914186266290049105
+  
 - AMF0 Arrays always use the "ECMA Array" regardless of indices being ordinal or not. This is inconvenient because adding and removing elements to an array in JSON requires changing the "Associate count" value as well. Also, it makes it differ from AMF3 array representations in JSON. One thing that can be done is verify if a key is an integer and add it to a "dense" portion and if not add it to the "associate" portion, as in AMF3 arrays. The problem with this approach is that then it is impossible to distinguish from ECMA Arrays and Strict Arrays in JSON. However, since Strict arrays are not being used by HF, there could be an optional flag in the `to_json` and `from_json` functions of AMF0 to treat every array as an ECMA Array.
   
 - Convert AMF0 data structures to AMF3 data structures and vice-versa, so that JSONs can be converted as well.
@@ -27,6 +29,16 @@
 
 - Make `1. Help` have 3 subsections: `1. README`, `2. About`, `3. Credits`
 
+- Check if given APK is using Adobe AIR version 33+. If not, say it may not work on recent Android versions and give link to download HFX mod.
+
+- Steps for re-signing apk: https://stackoverflow.com/a/15412477/3049315
+    Source code of JarSigner: https://github.com/openjdk-mirror/jdk7u-jdk/blob/master/src/share/classes/sun/security/tools/JarSigner.java
+    
+    
+    Source code of apksigner: https://android.googlesource.com/platform/tools/apksig/+/master/src/main/java/com/android/apksig/ApkSigner.java
+    Crypto++: https://cryptopp.com/
+    A zipalign implementation: https://github.com/mozilla-services/zipalign/blob/master/main.go
+    
 - Validate HF stories with XSD made by Nikhil Krishna. Review the XSD and credit Nikhil for making it. Look into http://xerces.apache.org/xerces-c/
   
 - Editline introduced new bugs. Fix them. Wineditline (mingw) has different bugs.
@@ -34,7 +46,7 @@
     - Check compiling with CMake on Windows (wineditline)
     - Check compiling with Visual Studio
     
-- use `uint8_t*` instead of `vector<uint8_t>` where possible.
+- use `uint8_t*` instead of `vector<uint8_t>` where possible. (And maybe `std::byte` instead of `uint8_t`)
 
 - Coronation Wars 1.1 crashes HFW x86
 

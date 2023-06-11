@@ -112,6 +112,7 @@ You may find it useful to translate HFW's interface to your native language in c
 - `HFW_ArrayLenXXX` replaced with `__AMF0_ARRAY_ASSOCIATIVE_COUNT__`
 - `HFW_classNameXXX` replaced with `__AMF0_OBJECT_CLASSNAME__`
 - NaN numbers are represented in a JSON array (of byte values) which are recognized by also having the string value `__AMF0_DOUBLE_NAN__`
+For this reason, HFW v0.1 (the first version) is made available for compatibility with the previous JSON file format.
 [/list]
 [/spoiler]
 [spoiler=17 August 2019]
