@@ -105,6 +105,13 @@ You may find it useful to translate HFW's interface to your native language in c
 [*]Fixed a bug with replacing large files whose size can still be represented with 29 bits.
 [*]Fixed a bug with replacing Lmi files with LimbPic "embed" set to true but corresponding PNG missing.
 [*]JSON comments are permitted.
+[*]AMF0 (PC version) JSON format is slightly changed.
+- Root object has the class name stored in a property and not as its key name.
+- `HFW_undefinedXXX` replaced with `__AMF0_UNDEFINED__`
+- `HFW_referenceXXX` replaced with `__AMF0_REFERENCE__`
+- `HFW_ArrayLenXXX` replaced with `__AMF0_ARRAY_ASSOCIATIVE_COUNT__`
+- `HFW_classNameXXX` replaced with `__AMF0_OBJECT_CLASSNAME__`
+- NaN numbers are represented in a JSON array (of byte values) which are recognized by also having the string value `__AMF0_DOUBLE_NAN__`
 [/list]
 [/spoiler]
 [spoiler=17 August 2019]

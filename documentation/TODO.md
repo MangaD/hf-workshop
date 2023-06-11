@@ -8,16 +8,6 @@
 
 - Redo AMF0 serialization in the same fashion as AMF3.
 
-- optimize PNGs added by the user (make flag for disabling optimizations so that unit tests that compare files don't fail)
-
-- HF v0.7 swf browser encrypted version does not come out equal! Same for downloadable SWF. It's wrecked by HFW. Investigate why.
-
-- When saving the file it will say "Permission denied" or something in case the EXE file that we're saving to is open. Mention that this might be the case in the error message.
-
-- Make `1. Help` have 3 subsections: `1. README`, `2. About`, `3. Credits`
-
-- Validate HF stories with XSD made by Nikhil Krishna. Review the XSD and credit Nikhil for making it. Look into http://xerces.apache.org/xerces-c/
-
 - Convert AMF0 JSON to AMF3 JSON and vice-versa. Convert data structures too if possible.
   About saving int as number, AMF3 file spec says:
 
@@ -28,6 +18,16 @@
   Therefore, even if the type information is lost, the numbers can always be coerced to integers at runtime, if necessary. So, importing AMF0 JSON shouldn't be a problem as far as int vs floats are concerned.
   
   About sealed vs dynamic properties, AMF0 stores all  as same. The opposite is not true so I must check if there are any typed objects in HFX that use dynamic properties, and if yes, create a function in HFW that converts the AMF0 JSON to AMF3 JSON accordingly.
+
+- optimize PNGs added by the user (make flag for disabling optimizations so that unit tests that compare files don't fail)
+
+- HF v0.7 swf browser encrypted version does not come out equal! Same for downloadable SWF. It's wrecked by HFW. Investigate why.
+
+- When saving the file it will say "Permission denied" or something in case the EXE file that we're saving to is open. Mention that this might be the case in the error message.
+
+- Make `1. Help` have 3 subsections: `1. README`, `2. About`, `3. Credits`
+
+- Validate HF stories with XSD made by Nikhil Krishna. Review the XSD and credit Nikhil for making it. Look into http://xerces.apache.org/xerces-c/
   
 - Editline introduced new bugs. Fix them. Wineditline (mingw) has different bugs.
     - Check out https://github.com/AmokHuginnsson/replxx. Did, doesn't work because: https://github.com/AmokHuginnsson/replxx/issues/103

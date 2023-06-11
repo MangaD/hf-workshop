@@ -74,6 +74,8 @@ testFiles() {
 	rm *.zip
 }
 
+# TODO: -r flag for all SWF files
+
 # Check if variable is set
 # https://stackoverflow.com/a/13864829/3049315
 if [ -z "$in" ]; then

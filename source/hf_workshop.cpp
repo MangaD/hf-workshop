@@ -663,7 +663,7 @@ int hfw::exportData(vector<size_t> &ids) {
 					auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
 
 					// Parse AMF0
-					AMF0 limbPic{ ba2->binaryData.data(), ba2->binaryData.size()};
+					AMF0 limbPic{ ba2->binaryData.data()};
 					string json = limbPic.to_json_str();
 
 					// Add JSON to zip
@@ -693,7 +693,7 @@ int hfw::exportData(vector<size_t> &ids) {
 					auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
 
 					// Parse AMF0
-					AMF0 limb{ ba2->binaryData.data(), ba2->binaryData.size() };
+					AMF0 limb{ ba2->binaryData.data() };
 					string json = limb.to_json_str();
 
 					// Add JSON to zip
@@ -713,7 +713,7 @@ int hfw::exportData(vector<size_t> &ids) {
 				auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
 
 				// Parse AMF0
-				AMF0 spt{ ba2->binaryData.data(), ba2->binaryData.size() };
+				AMF0 spt{ ba2->binaryData.data() };
 				string json = spt.to_json_str();
 
 				// Add JSON to zip
@@ -733,7 +733,7 @@ int hfw::exportData(vector<size_t> &ids) {
 				auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
 
 				// Parse AMF0
-				AMF0 bg{ ba2->binaryData.data(), ba2->binaryData.size() };
+				AMF0 bg{ ba2->binaryData.data() };
 				string json = bg.to_json_str();
 
 				// Add JSON to zip
@@ -755,7 +755,7 @@ int hfw::exportData(vector<size_t> &ids) {
 					auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
 
 					// Parse AMF0
-					AMF0 attack{ ba2->binaryData.data(), ba2->binaryData.size() };
+					AMF0 attack{ ba2->binaryData.data() };
 					string json = attack.to_json_str();
 
 					// Add JSON to zip
@@ -774,7 +774,7 @@ int hfw::exportData(vector<size_t> &ids) {
 					auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
 
 					// Parse AMF0
-					AMF0 ptWithName{ ba2->binaryData.data(), ba2->binaryData.size() };
+					AMF0 ptWithName{ ba2->binaryData.data() };
 					string json = ptWithName.to_json_str();
 
 					// Add JSON to zip
@@ -1053,7 +1053,7 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 			} else {
 				fileType = "limbInfo";
 			}
-			AMF0::writeStringWithLenPrefixU16(data, fileType);
+			concatVectorWithContainer(data, AMF0::encodeString(fileType));
 
 			map<int, string> limbPics;
 			map<int, vector<uint8_t>> pngs;
@@ -1119,7 +1119,8 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 					AMF3 limbPic{jsonObj};
 					concatVectorWithContainer(data, limbPic.serialize());
 				} else {
-					vector<uint8_t> amf0 = AMF0::fromJSON(ze.second);
+					AMF0 limbPic{jsonObj};
+					auto amf0 = limbPic.serialize();
 					data.emplace_back(AMF3::BYTE_ARRAY_MARKER);
 					concatVectorWithContainer(data, AMF3::U29BAToVector(amf0.size()));
 					concatVectorWithContainer(data, amf0);
@@ -1154,11 +1155,13 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 
 			// Limbs
 			for (auto &ze : limbs) {
+				swf::json jsonObj = swf::json::parse(ze.second, nullptr, true, true);
 				if (this->isHFX) {
-					AMF3 limb{swf::json::parse(ze.second, nullptr, true, true)};
+					AMF3 limb{jsonObj};
 					concatVectorWithContainer(data, limb.serialize());
 				} else {
-					vector<uint8_t> amf0 = AMF0::fromJSON(ze.second);
+					AMF0 limb{jsonObj};
+					auto amf0 = limb.serialize();
 					data.emplace_back(AMF3::BYTE_ARRAY_MARKER);
 					concatVectorWithContainer(data, AMF3::U29BAToVector(amf0.size()));
 					concatVectorWithContainer(data, amf0);
@@ -1179,18 +1182,21 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 			} else {
 				fileType = "Spt";
 			}
-			AMF0::writeStringWithLenPrefixU16(data, fileType);
+			concatVectorWithContainer(data, AMF0::encodeString(fileType));
 
 			vector<uint8_t> unzipped_entry;
 			unzipper.extractEntryToMemory(entries[0].name, unzipped_entry);
 
 			string s = {unzipped_entry.begin(), unzipped_entry.end()};
 
+			swf::json jsonObj = swf::json::parse(s, nullptr, true, true);
+
 			if (this->isHFX) {
-				AMF3 spt{swf::json::parse(s, nullptr, true, true)};
+				AMF3 spt{jsonObj};
 				concatVectorWithContainer(data, spt.serialize());
 			} else {
-				vector<uint8_t> amf0 = AMF0::fromJSON(s);
+				AMF0 spt{jsonObj};
+				auto amf0 = spt.serialize();
 				data.emplace_back(AMF3::BYTE_ARRAY_MARKER);
 				concatVectorWithContainer(data, AMF3::U29BAToVector(amf0.size()));
 				concatVectorWithContainer(data, amf0);
@@ -1210,18 +1216,21 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 			} else {
 				fileType = "Bg";
 			}
-			AMF0::writeStringWithLenPrefixU16(data, fileType);
+			concatVectorWithContainer(data, AMF0::encodeString(fileType));
 
 			vector<uint8_t> unzipped_entry;
 			unzipper.extractEntryToMemory(entries[0].name, unzipped_entry);
 
 			string s = {unzipped_entry.begin(), unzipped_entry.end()};
 
+			swf::json jsonObj = swf::json::parse(s, nullptr, true, true);
+
 			if (this->isHFX) {
-				AMF3 bg{swf::json::parse(s, nullptr, true, true)};
+				AMF3 bg{jsonObj};
 				concatVectorWithContainer(data, bg.serialize());
 			} else {
-				vector<uint8_t> amf0 = AMF0::fromJSON(s);
+				AMF0 bg{jsonObj};
+				auto amf0 = bg.serialize();
 				data.emplace_back(AMF3::BYTE_ARRAY_MARKER);
 				concatVectorWithContainer(data, AMF3::U29BAToVector(amf0.size()));
 				concatVectorWithContainer(data, amf0);
@@ -1230,7 +1239,7 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 		} else if (endsWith(tagName, "Dat")) {
 
 			string fileType = "gdat";
-			AMF0::writeStringWithLenPrefixU16(data, fileType);
+			concatVectorWithContainer(data, AMF0::encodeString(fileType));
 
 			map<int, string> attacks;
 			map<int, string> ptwnames;
@@ -1269,7 +1278,8 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 
 			// Attacks
 			for (auto &ze : attacks) {
-				vector<uint8_t> amf0 = AMF0::fromJSON(ze.second);
+				AMF0 attack{swf::json::parse(ze.second, nullptr, true, true)};
+				auto amf0 = attack.serialize();
 				data.emplace_back(AMF3::BYTE_ARRAY_MARKER);
 				concatVectorWithContainer(data, AMF3::U29BAToVector(amf0.size()));
 				concatVectorWithContainer(data, amf0);
@@ -1281,7 +1291,8 @@ void hfw::replaceData(const size_t id, const string &dataFileName) {
 
 			// PtWithNames
 			for (auto &ze : ptwnames) {
-				vector<uint8_t> amf0 = AMF0::fromJSON(ze.second);
+				AMF0 pt{swf::json::parse(ze.second, nullptr, true, true)};
+				auto amf0 = pt.serialize();
 				data.emplace_back(AMF3::BYTE_ARRAY_MARKER);
 				concatVectorWithContainer(data, AMF3::U29BAToVector(amf0.size()));
 				concatVectorWithContainer(data, amf0);
