@@ -603,273 +603,264 @@ int hfw::exportData(vector<size_t> &ids) {
 			/**
 			 * An AMF3 byte array that holds compressed data
 			 */
-			AMF3 amf{data.data()};
-			if (amf.object->type == AMF3::BYTE_ARRAY_MARKER) {
-				auto ba = static_cast<AMF3_BYTEARRAY *>(amf.object.get());
-				data = zlib::zlib_decompress(ba->binaryData);
+			size_t pos = 0;
+			AMF3 amf{data.data(), pos};
 
-				//XXX Only for test
-				/*
-				writeBinaryFile(name + ".out", data);
-				*/
+			if (amf.object->type != AMF3::BYTE_ARRAY_MARKER) {
+				printf_error(io.getText("Error for data file with ID=%zu: Not an AMF3 ByteArray.\n"), t->id);
+				goto CONTINUE_FOR_EACH_ID;
+			}
 
-				size_t pos = 0;
+			auto ba = static_cast<AMF3_BYTEARRAY *>(amf.object.get());
+			data = zlib::zlib_decompress(ba->binaryData);
+
+			//XXX Only for test
+			/*
+			writeBinaryFile(name + ".out", data);
+			*/
+
+			pos = 0;
+
+			/**
+			 * The decompressed byte array starts with an UTF string.
+			 * An UTF string is prefixed by 2 bytes in big-endian specifying its length.
+			 *
+			 * https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/utils/ByteArray.html#readUTF()
+			 */
+			uint16_t strLen = bytestodec_be<uint16_t>(data.data()+pos);;
+			pos += 2;
+			string fileType;
+
+			for(size_t i = pos; i < strLen+pos; ++i) {
+				fileType += data[i];
+			}
+			pos += strLen;
+
+			string comment = "Created with HF Workshop.";
+
+			if (fileType == "limbInfo") { // HF v0.7 and less
+
+				// Create zip file
+				minizip::Zipper zipper(name + ".zip", comment);
 
 				/**
-				 * The decompressed byte array starts with an UTF string.
-				 * An UTF string is prefixed by 2 bytes in big-endian specifying its length.
-				 *
-				 * https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/utils/ByteArray.html#readUTF()
+				 * After the file type comes the number of LimbPic objects.
+				 * A LimbPic object is serialized in AMF0 format and stored
+				 * in an AMF3 byte array.
 				 */
-				uint16_t strLen = bytestodec_be<uint16_t>(data.data()+pos);;
-				pos += 2;
-				string fileType;
+				int32_t numLP = static_cast<int32_t>(bytestodec_be<uint32_t>(data.data() + pos));
+				pos += 4;
 
-				for(size_t i = pos; i < strLen+pos; ++i) {
-					fileType += data[i];
-				}
-				pos += strLen;
+				for (int32_t i = 0; i < numLP; ++i) {
 
-				string comment = "Created with HF Workshop.";
-
-				if (fileType == "limbInfo") { // HF v0.7 and less
-
-					// Create zip file
-					minizip::Zipper zipper(name + ".zip", comment);
-
-					/**
-					 * After the file type comes the number of LimbPic objects.
-					 * A LimbPic object is serialized in AMF0 format and stored
-					 * in an AMF3 byte array.
-					 */
-					int32_t numLP = static_cast<int32_t>(bytestodec_be<uint32_t>(data.data() + pos));
-					pos += 4;
-
-					for (int32_t i = 0; i < numLP; ++i) {
-
-						AMF3 a{ data.data() + pos };
-						if (a.object->type != AMF3::BYTE_ARRAY_MARKER) {
-							printf_error(io.getText("Error for data file with ID=%zu: 'LimbPic' is not inside an AMF3 ByteArray.\n"), t->id);
-							goto CONTINUE_FOR_EACH_ID;
-						}
-						auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
-						pos += 1 + ba2->u29_length + ba2->binaryData.size(); // AMF3::BYTE_ARRAY_MARKER + variable length + data
-
-						// Parse AMF0
-						AMF0 limbPic{ ba2->binaryData.data(), ba2->binaryData.size()};
-						string json = limbPic.exportToJSON();
-
-						// Add JSON to zip
-						zipper.add("LimbPic_" + to_string(i) + ".json", "", Z_BEST_COMPRESSION, json);
-					}
-
-					for (int32_t i = 0; i < numLP; ++i) {
-						AMF3 a{ data.data() + pos };
-
-						if (a.object->type == AMF3::BYTE_ARRAY_MARKER) {
-							auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
-							pos += 1 + ba2->u29_length + ba2->binaryData.size(); // AMF3::BYTE_ARRAY_MARKER + variable length + data
-							// Add png to zip file
-							zipper.add(to_string(i) + ".png", "", Z_BEST_COMPRESSION, ba2->binaryData);
-						} else {
-							// else 0x01 for null because not all limbPics have 'embeded' == true and 'disabled' == false
-							pos += 1;
-						}
-					}
-
-					int32_t numLimb = static_cast<int32_t>(bytestodec_be<uint32_t>(data.data()+pos));
-					pos += 4;
-
-					for (int32_t i = 0; i < numLimb; ++i) {
-						AMF3 a{ data.data() + pos };
-						if (a.object->type != AMF3::BYTE_ARRAY_MARKER) {
-							printf_error(io.getText("Error for data file with ID=%zu: 'Limb' is not inside an AMF3 ByteArray.\n"), t->id);
-							goto CONTINUE_FOR_EACH_ID;
-						}
-						auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
-						pos += 1 + ba2->u29_length + ba2->binaryData.size(); // AMF3::BYTE_ARRAY_MARKER + variable length + data
-
-						// Parse AMF0
-						AMF0 limbPic{ ba2->binaryData.data(), ba2->binaryData.size() };
-						string json = limbPic.exportToJSON();
-
-						// Add JSON to zip
-						zipper.add("Limb_" + to_string(i) + ".json", "", Z_BEST_COMPRESSION, json);
-					}
-				} else if (fileType == "Spt") { // HF v0.7 and less
-
-					minizip::Zipper zipper(name + ".zip", comment);
-
-					// Spt
-					AMF3 a{ data.data() + pos };
-
+					AMF3 a{ data.data(), pos };
 					if (a.object->type != AMF3::BYTE_ARRAY_MARKER) {
-						printf_error(io.getText("Error for data file with ID=%zu: 'Spt' is not inside an AMF3 ByteArray.\n"), t->id);
+						printf_error(io.getText("Error for data file with ID=%zu: 'LimbPic' is not inside an AMF3 ByteArray.\n"), t->id);
 						goto CONTINUE_FOR_EACH_ID;
 					}
 					auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
 
 					// Parse AMF0
-					AMF0 spt{ ba2->binaryData.data(), ba2->binaryData.size() };
-					string json = spt.exportToJSON();
+					AMF0 limbPic{ ba2->binaryData.data(), ba2->binaryData.size()};
+					string json = limbPic.exportToJSON();
 
 					// Add JSON to zip
-					zipper.add("Spt.json", "", Z_BEST_COMPRESSION, json);
+					zipper.add("LimbPic_" + to_string(i) + ".json", "", Z_BEST_COMPRESSION, json);
+				}
 
-				} else if (fileType == "Bg") { // HF v0.7 and less
+				for (int32_t i = 0; i < numLP; ++i) {
+					AMF3 a{ data.data(), pos };
 
-					minizip::Zipper zipper(name + ".zip", comment);
+					if (a.object->type == AMF3::BYTE_ARRAY_MARKER) {
+						auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
 
-					// BgInfoFile
-					AMF3 a{ data.data() + pos };
+						// Add png to zip file
+						zipper.add(to_string(i) + ".png", "", Z_BEST_COMPRESSION, ba2->binaryData);
+					}
+					// else 0x01 for null because not all limbPics have 'embeded' == true and 'disabled' == false
 
+				}
+
+				int32_t numLimb = static_cast<int32_t>(bytestodec_be<uint32_t>(data.data()+pos));
+				pos += 4;
+
+				for (int32_t i = 0; i < numLimb; ++i) {
+					AMF3 a{ data.data(), pos };
 					if (a.object->type != AMF3::BYTE_ARRAY_MARKER) {
-						printf_error(io.getText("Error for data file with ID=%zu: 'Bg' is not inside an AMF3 ByteArray.\n"), t->id);
+						printf_error(io.getText("Error for data file with ID=%zu: 'Limb' is not inside an AMF3 ByteArray.\n"), t->id);
 						goto CONTINUE_FOR_EACH_ID;
 					}
 					auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
 
 					// Parse AMF0
-					AMF0 bg{ ba2->binaryData.data(), ba2->binaryData.size() };
-					string json = bg.exportToJSON();
+					AMF0 limbPic{ ba2->binaryData.data(), ba2->binaryData.size() };
+					string json = limbPic.exportToJSON();
 
 					// Add JSON to zip
-					zipper.add("BgInfoFile.json", "", Z_BEST_COMPRESSION, json);
+					zipper.add("Limb_" + to_string(i) + ".json", "", Z_BEST_COMPRESSION, json);
+				}
+			} else if (fileType == "Spt") { // HF v0.7 and less
 
-				} else if (fileType == "gdat") { // HF v0.7 and less
+				minizip::Zipper zipper(name + ".zip", comment);
 
-					minizip::Zipper zipper(name + ".zip", comment);
+				// Spt
+				AMF3 a{ data.data(), pos };
 
-					int32_t numA = static_cast<int32_t>(bytestodec_be<uint32_t>(data.data()+pos));
-					pos += 4;
+				if (a.object->type != AMF3::BYTE_ARRAY_MARKER) {
+					printf_error(io.getText("Error for data file with ID=%zu: 'Spt' is not inside an AMF3 ByteArray.\n"), t->id);
+					goto CONTINUE_FOR_EACH_ID;
+				}
+				auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
 
-					for (int32_t i = 0; i < numA; ++i) {
-						AMF3 a{ data.data() + pos };
-						if (a.object->type != AMF3::BYTE_ARRAY_MARKER) {
-							printf_error(io.getText("Error for data file with ID=%zu: 'Attack' is not inside an AMF3 ByteArray.\n"), t->id);
-							goto CONTINUE_FOR_EACH_ID;
-						}
-						auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
-						pos += 1 + ba2->u29_length + ba2->binaryData.size(); // AMF3::BYTE_ARRAY_MARKER + variable length + data
+				// Parse AMF0
+				AMF0 spt{ ba2->binaryData.data(), ba2->binaryData.size() };
+				string json = spt.exportToJSON();
 
-						// Parse AMF0
-						AMF0 limbPic{ ba2->binaryData.data(), ba2->binaryData.size() };
-						string json = limbPic.exportToJSON();
+				// Add JSON to zip
+				zipper.add("Spt.json", "", Z_BEST_COMPRESSION, json);
 
-						// Add JSON to zip
-						zipper.add("Attack_" + to_string(i) + ".json", "", Z_BEST_COMPRESSION, json);
+			} else if (fileType == "Bg") { // HF v0.7 and less
+
+				minizip::Zipper zipper(name + ".zip", comment);
+
+				// BgInfoFile
+				AMF3 a{ data.data(), pos };
+
+				if (a.object->type != AMF3::BYTE_ARRAY_MARKER) {
+					printf_error(io.getText("Error for data file with ID=%zu: 'Bg' is not inside an AMF3 ByteArray.\n"), t->id);
+					goto CONTINUE_FOR_EACH_ID;
+				}
+				auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
+
+				// Parse AMF0
+				AMF0 bg{ ba2->binaryData.data(), ba2->binaryData.size() };
+				string json = bg.exportToJSON();
+
+				// Add JSON to zip
+				zipper.add("BgInfoFile.json", "", Z_BEST_COMPRESSION, json);
+
+			} else if (fileType == "gdat") { // HF v0.7 and less
+
+				minizip::Zipper zipper(name + ".zip", comment);
+
+				int32_t numA = static_cast<int32_t>(bytestodec_be<uint32_t>(data.data()+pos));
+				pos += 4;
+
+				for (int32_t i = 0; i < numA; ++i) {
+					AMF3 a{ data.data(), pos };
+					if (a.object->type != AMF3::BYTE_ARRAY_MARKER) {
+						printf_error(io.getText("Error for data file with ID=%zu: 'Attack' is not inside an AMF3 ByteArray.\n"), t->id);
+						goto CONTINUE_FOR_EACH_ID;
 					}
+					auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
 
-					int32_t numPt = static_cast<int32_t>(bytestodec_be<uint32_t>(data.data()+pos));
-					pos += 4;
+					// Parse AMF0
+					AMF0 limbPic{ ba2->binaryData.data(), ba2->binaryData.size() };
+					string json = limbPic.exportToJSON();
 
-					for (int32_t i = 0; i < numPt; ++i) {
-						AMF3 a{ data.data() + pos };
-						if (a.object->type != AMF3::BYTE_ARRAY_MARKER) {
-							printf_error(io.getText("Error for data file with ID=%zu: 'PtWithName' is not inside an AMF3 ByteArray.\n"), t->id);
-							goto CONTINUE_FOR_EACH_ID;
-						}
-						auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
-						pos += 1 + ba2->u29_length + ba2->binaryData.size(); // AMF3::BYTE_ARRAY_MARKER + variable length + data
-
-						// Parse AMF0
-						AMF0 limbPic{ ba2->binaryData.data(), ba2->binaryData.size() };
-						string json = limbPic.exportToJSON();
-
-						// Add JSON to zip
-						zipper.add("PtWithName_" + to_string(i) + ".json", "", Z_BEST_COMPRESSION, json);
-					}
-
-				} else if (fileType == "limbInfoO") { // HFX
-
-					// Create zip file
-					minizip::Zipper zipper(name + ".zip", comment);
-
-					/**
-					 * After the file type comes the number of LimbPic objects.
-					 * A LimbPic object in HFX is serialized in AMF3 format.
-					 */
-					int32_t numLP = static_cast<int32_t>(bytestodec_be<uint32_t>(data.data()+pos));
-					pos += 4;
-
-					// LimbPic objects (JSON)
-					for (int32_t i = 0; i < numLP; ++i) {
-
-						// Parse AMF3
-						AMF3 a{ data.data() + pos };
-
-						if (a.object->type != AMF3::OBJECT_MARKER) {
-							printf_error(io.getText("Error for data file with ID=%zu: 'LimbPic' is not inside an AMF3 Object.\n"), t->id);
-							goto CONTINUE_FOR_EACH_ID;
-						}
-
-						auto limbPic = static_cast<AMF3_OBJECT *>(a.object.get());
-
-						if (limbPic->isReference) {
-							throw swf_exception("Object reference not implemented.");
-						}
-						/*string json = limbPic.exportToJSON();
-
-						// Add JSON to zip
-						zipper.add("LimbPic_" + to_string(i) + ".json", "", Z_BEST_COMPRESSION, json);
-
-						pos += limbPic.object.u29;*/
-
-						throw swf_exception("LimbPic OK");
-					}
-
-					// LimbPic pictures (PNG)
-					for (int32_t i = 0; i < numLP; ++i) {
-						AMF3 a{ data.data() + pos };
-
-						if (a.object->type == AMF3::BYTE_ARRAY_MARKER) {
-							auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
-							pos += 1 + ba2->u29_length + ba2->binaryData.size(); // AMF3::BYTE_ARRAY_MARKER + variable length + data
-							// Add png to zip file
-							zipper.add(to_string(i) + ".png", "", Z_BEST_COMPRESSION, ba2->binaryData);
-						} else {
-							// else 0x01 for null because not all limbPics have 'embeded' == true and 'disabled' == false
-							pos += 1;
-						}
-					}
-
-					int32_t numLimb = static_cast<int32_t>(bytestodec_be<uint32_t>(data.data()+pos));
-					pos += 4;
-
-					// Limb objects (JSON)
-					for (int32_t i = 0; i < numLimb; ++i) {
-						AMF3 limb{ data.data() + pos };
-						/*string json = limb.exportToJSON();
-
-						// Add JSON to zip
-						zipper.add("Limb_" + to_string(i) + ".json", "", Z_BEST_COMPRESSION, json);*/
-					}
-
-
-					// TODO Serialized in full AMF3
-					//printf_error(io.getText("Error for data file with ID=%zu: limbInfoO not yet implemented.\n"), t->id);
-					//continue;
-				} else if (fileType == "SptO") { // HFX
-					// TODO Serialized in full AMF3
-					printf_error(io.getText("Error for data file with ID=%zu: SptO not yet implemented.\n"), t->id);
-					continue;
-				} else if (fileType == "BgO") { // HFX
-					// TODO Serialized in full AMF3
-					printf_error(io.getText("Error for data file with ID=%zu: BgO not yet implemented.\n"), t->id);
-					continue;
-				} else if (fileType == "gdatO") { // HFX
-					// TODO Serialized in full AMF3
-					printf_error(io.getText("Error for data file with ID=%zu: gdatO not yet implemented.\n"), t->id);
-					continue;
-				} else {
-					printf_error(io.getText("Error for data file with ID=%zu: File type unrecognized.\n"), t->id);
-					continue;
+					// Add JSON to zip
+					zipper.add("Attack_" + to_string(i) + ".json", "", Z_BEST_COMPRESSION, json);
 				}
 
+				int32_t numPt = static_cast<int32_t>(bytestodec_be<uint32_t>(data.data()+pos));
+				pos += 4;
+
+				for (int32_t i = 0; i < numPt; ++i) {
+					AMF3 a{ data.data(), pos };
+					if (a.object->type != AMF3::BYTE_ARRAY_MARKER) {
+						printf_error(io.getText("Error for data file with ID=%zu: 'PtWithName' is not inside an AMF3 ByteArray.\n"), t->id);
+						goto CONTINUE_FOR_EACH_ID;
+					}
+					auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
+
+					// Parse AMF0
+					AMF0 limbPic{ ba2->binaryData.data(), ba2->binaryData.size() };
+					string json = limbPic.exportToJSON();
+
+					// Add JSON to zip
+					zipper.add("PtWithName_" + to_string(i) + ".json", "", Z_BEST_COMPRESSION, json);
+				}
+
+			} else if (fileType == "limbInfoO") { // HFX
+
+				// Create zip file
+				minizip::Zipper zipper(name + ".zip", comment);
+
+				/**
+				 * After the file type comes the number of LimbPic objects.
+				 * A LimbPic object in HFX is serialized in AMF3 format.
+				 */
+				int32_t numLP = static_cast<int32_t>(bytestodec_be<uint32_t>(data.data()+pos));
+				pos += 4;
+
+				// LimbPic objects (JSON)
+				for (int32_t i = 0; i < numLP; ++i) {
+
+					// Parse AMF3
+					AMF3 a{ data.data(), pos };
+
+					if (a.object->type != AMF3::OBJECT_MARKER) {
+						printf_error(io.getText("Error for data file with ID=%zu: 'LimbPic' is not inside an AMF3 Object.\n"), t->id);
+						goto CONTINUE_FOR_EACH_ID;
+					}
+
+					auto limbPic = static_cast<AMF3_OBJECT *>(a.object.get());
+
+					/*string json = limbPic.exportToJSON();
+
+					// Add JSON to zip
+					zipper.add("LimbPic_" + to_string(i) + ".json", "", Z_BEST_COMPRESSION, json);*/
+
+					//throw swf_exception("LimbPic OK");
+				}
+
+				// LimbPic pictures (PNG)
+				for (int32_t i = 0; i < numLP; ++i) {
+					AMF3 a{ data.data(), pos };
+
+					if (a.object->type == AMF3::BYTE_ARRAY_MARKER) {
+						auto ba2 = static_cast<AMF3_BYTEARRAY *>(a.object.get());
+
+						// Add png to zip file
+						zipper.add(to_string(i) + ".png", "", Z_BEST_COMPRESSION, ba2->binaryData);
+					}
+					// else 0x01 for null because not all limbPics have 'embeded' == true and 'disabled' == false
+
+				}
+
+				int32_t numLimb = static_cast<int32_t>(bytestodec_be<uint32_t>(data.data()+pos));
+				pos += 4;
+
+				// Limb objects (JSON)
+				for (int32_t i = 0; i < numLimb; ++i) {
+					AMF3 limb{ data.data(), pos };
+					/*string json = limb.exportToJSON();
+
+					// Add JSON to zip
+					zipper.add("Limb_" + to_string(i) + ".json", "", Z_BEST_COMPRESSION, json);*/
+				}
+
+
+				// TODO Serialized in full AMF3
+				//printf_error(io.getText("Error for data file with ID=%zu: limbInfoO not yet implemented.\n"), t->id);
+				//continue;
+			} else if (fileType == "SptO") { // HFX
+				// TODO Serialized in full AMF3
+				printf_error(io.getText("Error for data file with ID=%zu: SptO not yet implemented.\n"), t->id);
+				continue;
+			} else if (fileType == "BgO") { // HFX
+				// TODO Serialized in full AMF3
+				printf_error(io.getText("Error for data file with ID=%zu: BgO not yet implemented.\n"), t->id);
+				continue;
+			} else if (fileType == "gdatO") { // HFX
+				// TODO Serialized in full AMF3
+				printf_error(io.getText("Error for data file with ID=%zu: gdatO not yet implemented.\n"), t->id);
+				continue;
 			} else {
-				printf_error(io.getText("Error for data file with ID=%zu: Not an AMF3 ByteArray.\n"), t->id);
+				printf_error(io.getText("Error for data file with ID=%zu: File type unrecognized.\n"), t->id);
 				continue;
 			}
+
 		} catch (const exception &e) {
 			printf_error(io.getText("Error for data file with ID=%zu: %s\n"), t->id, e.what());
 			continue;
