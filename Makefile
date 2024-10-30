@@ -36,7 +36,8 @@ RES_FOLDER := $(RES_FOLDER)/linux
 endif
 
 # SRC is a list of the cpp files in the source directory.
-SRC = $(wildcard $(SRC_FOLDER)/*.cpp)
+#SRC = $(wildcard $(SRC_FOLDER)/*.cpp)
+SRC = $(shell find $(SRC_FOLDER) -name '*.cpp')
 # OBJ is a list of the object files to be generated in the objects directory.
 OBJ = $(subst $(SRC_FOLDER),$(OBJ_FOLDER), $(SRC:.cpp=.o))
 RES = $(wildcard $(RES_FOLDER)/*.rc)
@@ -173,6 +174,7 @@ $(BIN): $(OBJ_FOLDER) $(BIN_FOLDER) $(SUBDIRS) $(OBJ)
 
 
 $(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.cpp
+	mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 
@@ -183,7 +185,7 @@ $(OBJ_FOLDER)/hf_workshop.o: $(SRC_FOLDER)/hf_workshop.hpp $(SRC_FOLDER)/utils.h
 					$(SRC_FOLDER)/io_wrapper.hpp $(SRC_FOLDER)/minizip_wrapper.hpp
 $(OBJ_FOLDER)/io_wrapper.o: $(SRC_FOLDER)/io_wrapper.hpp
 $(OBJ_FOLDER)/minizip_wrapper.o: $(SRC_FOLDER)/minizip_wrapper.hpp
-$(OBJ_FOLDER)/apksigner.o: $(SRC_FOLDER)/apksigner.hpp
+$(OBJ_FOLDER)/apksigner/apksigner.o: $(SRC_FOLDER)/apksigner/apksigner.hpp
 
 
 $(SUBDIRS):

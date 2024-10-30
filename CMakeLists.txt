@@ -147,7 +147,7 @@ include_directories( SYSTEM ${LIB_DIR}/libswf/libswf/include )
 include_directories( SYSTEM ${LIB_DIR} ) # rlutil
 
 # The file(GLOB...) allows for wildcard additions:
-file(GLOB SRC_FILES "${SOURCE_DIR}/*.cpp")
+file(GLOB_RECURSE SRC_FILES "${SOURCE_DIR}/*.cpp")
 
 if (WIN32)
 	file(GLOB RES_FILES "${RESOURCE_DIR}/*.rc")

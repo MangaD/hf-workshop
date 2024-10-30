@@ -212,7 +212,7 @@ void hfw::showMenuStages() {
 					printf_error(io.getText("Invalid number.\n"));
 					continue;
 				}
-			} catch (const logic_error &lr) {
+			} catch (const logic_error &) {
 				printf_error(io.getText("Invalid number.\n"));
 				continue;
 			}
@@ -279,7 +279,7 @@ void hfw::showMenuImages() {
 					printf_error(io.getText("Invalid number.\n"));
 					continue;
 				}
-			} catch (const logic_error &lr) {
+			} catch (const logic_error &) {
 				printf_error(io.getText("Invalid number.\n"));
 				continue;
 			}
@@ -345,7 +345,7 @@ void hfw::showMenuSounds() {
 					printf_error(io.getText("Invalid number.\n"));
 					continue;
 				}
-			} catch (const logic_error &lr) {
+			} catch (const logic_error &) {
 				printf_error(io.getText("Invalid number.\n"));
 				continue;
 			}
@@ -411,7 +411,7 @@ void hfw::showMenuData() {
 					printf_error(io.getText("Invalid number.\n"));
 					continue;
 				}
-			} catch (const logic_error &lr) {
+			} catch (const logic_error &) {
 				printf_error(io.getText("Invalid number.\n"));
 				continue;
 			}

@@ -193,11 +193,25 @@ cd .\vcpkg
 
 # Install libraries
 .\vcpkg.exe install zlib:x86-windows-static
+.\vcpkg.exe install zlib:x86-mingw-static
 .\vcpkg.exe install zlib:x64-windows-static
+.\vcpkg.exe install zlib:x64-mingw-static
 .\vcpkg.exe install editline:x86-windows-static
+.\vcpkg.exe install editline:x86-mingw-static
 .\vcpkg.exe install editline:x64-windows-static
+.\vcpkg.exe install editline:x64-mingw-static
+.\vcpkg.exe install readline:x86-windows-static
+.\vcpkg.exe install readline:x86-mingw-static
+.\vcpkg.exe install readline:x64-windows-static
+.\vcpkg.exe install readline:x64-mingw-static
 .\vcpkg.exe install gettext:x86-windows-static
+.\vcpkg.exe install gettext:x86-mingw-static
 .\vcpkg.exe install gettext:x64-windows-static
+.\vcpkg.exe install gettext:x64-mingw-static
+.\vcpkg.exe install minizip:x86-windows-static
+.\vcpkg.exe install minizip:x86-mingw-static
+.\vcpkg.exe install minizip:x64-windows-static
+.\vcpkg.exe install minizip:x64-mingw-static
 
 # Make libraries available
 .\vcpkg.exe integrate install

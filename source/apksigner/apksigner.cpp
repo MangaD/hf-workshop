@@ -161,7 +161,7 @@ void apksigner::sign(minizip::Unzipper &unzipper, minizip::Zipper &zipper) {
 	
 	// Step 1. Find input APK's main ZIP sections
 	try {
-		ZipSections inputZipSections = ApkUtils.findZipSections(unzipper);
+		//ZipSections inputZipSections = ApkUtils.findZipSections(unzipper); // TODO
 	} catch (const zip_format_exception& e) {
 		throw apk_format_exception(std::string("Malformed APK: not a ZIP archive.\n") + e.what());
 	}

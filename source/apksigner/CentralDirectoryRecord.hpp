@@ -217,6 +217,45 @@ public:
 				name.size());
 	}
 
+	static std::list<CentralDirectoryRecord> parseZipCentralDirectory(
+	                                                             ByteBuffer& apk,
+	                                                             ZipSections& apkSections) {
+		// Read the ZIP Central Directory
+		size_t cdSizeBytes = apkSections.getZipCentralDirectorySizeBytes();
+		if (cdSizeBytes > INT32_MAX) {
+			throw apk_format_exception(std::string("ZIP Central Directory too large: ") + std::to_string(cdSizeBytes));
+		}
+		size_t cdOffset = apkSections.getZipCentralDirectoryOffset();
+		ByteBuffer cd{ ByteBuffer(apk, cdOffset, cdSizeBytes) };
+		
+		// Parse the ZIP Central Directory
+		size_t expectedCdRecordCount = apkSections.getZipCentralDirectoryRecordCount();
+		std::list<CentralDirectoryRecord> cdRecords{ expectedCdRecordCount };
+		for (int i = 0; i < expectedCdRecordCount; i++) {
+			int offsetInsideCd = cd.getPosition();
+			try {
+				CentralDirectoryRecord cdRecord = CentralDirectoryRecord::getRecord(cd);
+				std::string entryName = cdRecord.getName();
+				if (endsWith(entryName, "/")) {
+					// Ignore directory entries
+					continue;
+				}
+				cdRecords.push_back(cdRecord);
+			} catch (zip_format_exception e) {
+				throw apk_format_exception(
+				                           std::string("Malformed ZIP Central Directory record #")
+				                           + std::to_string(i + 1)
+				                           + std::string(" at file offset ")
+				                           + std::to_string(static_cast<int>(cdOffset) + offsetInsideCd)
+				                           + "\n" + std::string(e.what()));
+			}
+		}
+		// There may be more data in Central Directory, but we don't warn or throw because Android
+		// ignores unused CD data.
+		
+		return cdRecords;
+	}
+
 private:
 
 	static std::string getName(ByteBuffer& record, int position, size_t nameLengthBytes) {

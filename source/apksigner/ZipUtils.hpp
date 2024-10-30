@@ -2,7 +2,7 @@
 #define ZIPUTILS_HPP
 
 #include "ByteBuffer.hpp"
-#include "CentralDirectoryRecord.hpp"
+//#include "CentralDirectoryRecord.hpp"
 #include "ZipSections.hpp"
 #include "../utils.hpp"   // endsWith
 
@@ -15,7 +15,10 @@
 #include <utility>        // std::pair
 
 namespace apksigner {
-	
+
+// Forward declarations
+class CentralDirectoryRecord;
+
 /**
  * Indicates that an APK is not well-formed. For example, this may indicate that the APK is not
  * a well-formed ZIP archive, or that the APK contains multiple ZIP entries with the same name.
@@ -187,45 +190,6 @@ public:
 			throw std::invalid_argument(std::string("uint16 value of out range: ") + std::to_string(value));
 		}
 		buffer.putUnsignedInt16(static_cast<uint16_t>(value));
-	}
-	
-	static std::list<CentralDirectoryRecord> parseZipCentralDirectory(
-	                                                             ByteBuffer& apk,
-	                                                             ZipSections& apkSections) {
-		// Read the ZIP Central Directory
-		size_t cdSizeBytes = apkSections.getZipCentralDirectorySizeBytes();
-		if (cdSizeBytes > INT32_MAX) {
-			throw apk_format_exception(std::string("ZIP Central Directory too large: ") + std::to_string(cdSizeBytes));
-		}
-		size_t cdOffset = apkSections.getZipCentralDirectoryOffset();
-		ByteBuffer cd{ ByteBuffer(apk, cdOffset, cdSizeBytes) };
-		
-		// Parse the ZIP Central Directory
-		size_t expectedCdRecordCount = apkSections.getZipCentralDirectoryRecordCount();
-		std::list<CentralDirectoryRecord> cdRecords{ expectedCdRecordCount };
-		for (int i = 0; i < expectedCdRecordCount; i++) {
-			int offsetInsideCd = cd.getPosition();
-			try {
-				CentralDirectoryRecord cdRecord = CentralDirectoryRecord::getRecord(cd);
-				std::string entryName = cdRecord.getName();
-				if (endsWith(entryName, "/")) {
-					// Ignore directory entries
-					continue;
-				}
-				cdRecords.push_back(cdRecord);
-			} catch (zip_format_exception e) {
-				throw apk_format_exception(
-				                           std::string("Malformed ZIP Central Directory record #")
-				                           + std::to_string(i + 1)
-				                           + std::string(" at file offset ")
-				                           + std::to_string(static_cast<int>(cdOffset) + offsetInsideCd)
-				                           + "\n" + std::string(e.what()));
-			}
-		}
-		// There may be more data in Central Directory, but we don't warn or throw because Android
-		// ignores unused CD data.
-		
-		return cdRecords;
 	}
 	
 	static size_t getUnsignedInt32(ByteBuffer& buffer, int offset) {

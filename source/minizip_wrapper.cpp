@@ -122,7 +122,7 @@ namespace minizip {
 			size_t file_offset = static_cast<size_t>(unzGetOffset64(this->zipfile));
 
 		#ifdef _WIN32
-			auto dosDate = file_info.dos_date;
+			auto dosDate = file_info.dosDate;
 			time_t unixTime = dos2unixtime(dosDate);
 			tm_unz tmu_date;
 			if (unixTime >= 0) {
@@ -134,12 +134,12 @@ namespace minizip {
 				tmu_date.tm_mon = static_cast<uInt>(unixTm->tm_mon);
 				tmu_date.tm_year = static_cast<uInt>(unixTm->tm_year)+1900;
 			} else {
-				tmu_date.tm_sec = -1;
-				tmu_date.tm_min = -1;
-				tmu_date.tm_hour = -1;
-				tmu_date.tm_mday = -1;
-				tmu_date.tm_mon = -1;
-				tmu_date.tm_year = -1;
+				tmu_date.tm_sec = static_cast<uInt>(-1);
+				tmu_date.tm_min = static_cast<uInt>(-1);
+				tmu_date.tm_hour = static_cast<uInt>(-1);
+				tmu_date.tm_mday = static_cast<uInt>(-1);
+				tmu_date.tm_mon = static_cast<uInt>(-1);
+				tmu_date.tm_year = static_cast<uInt>(-1);
 			}
 		#else
 			auto dosDate = file_info.dosDate;
@@ -188,16 +188,6 @@ namespace minizip {
 	}
 
 	bool Unzipper::hasEntry(const std::string& name) {
-	#ifdef _WIN32
-		/*
-		 * Try locate the file szFileName in the zipfile.
-		 * For custom filename comparison pass in comparison function.
-		 *
-		 * return UNZ_OK if the file is found (it becomes the current file)
-		 * return UNZ_END_OF_LIST_OF_FILE if the file is not found
-		 */
-		int ret = unzLocateFile(this->zipfile, name.c_str(), nullptr);
-	#else
 		/*
 		 * Try locate the file szFileName in the zipfile.
 		 * For the iCaseSensitivity signification, see unzStringFileNameCompare
@@ -206,7 +196,6 @@ namespace minizip {
 		 * UNZ_END_OF_LIST_OF_FILE if the file is not found
 		 */
 		int ret = unzLocateFile(this->zipfile, name.c_str(), 1);
-	#endif
 		return ret == UNZ_OK;
 	}
 
@@ -309,11 +298,7 @@ namespace minizip {
 		zfi.tmz_date.tm_year = ltm->tm_year;
 	#endif
 
-	#ifdef _WIN32
-		zfi.dos_date = unix2dostime(now);
-	#else
 		zfi.dosDate = unix2dostime(now);
-	#endif
 		zfi.internal_fa = 0;
 		zfi.external_fa = 0;
 
