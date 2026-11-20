@@ -148,9 +148,9 @@ This method assumes that the SWF is inside the executable and not encrypted, so 
 
 Adobe Flash Player projector can be downloaded [here](https://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html)
 
-**Change icon** with  [Resource Editor](http://melander.dk/reseditor/) (.exe must not be compressed with UPX). And for changing the **window title**, it depends on the Flash Player version, some can be changed with Resource Hacker by editing the String table, and others can be changed only through hex editing (title may have null byte between characters). It is also possible to remove the **menu bar** with Resource Editor, by deleting the menu entries under the Menu folder.
+**Change icon** with  [Resource Editor](http://melander.dk/reseditor/) (.exe must not be compressed with UPX). And for changing the **window title**, it depends on the Flash Player version, some can be changed with Resource Hacker or [Resource Cracker](https://www.pelock.com/products/resource-cracker) by editing the String table, and others can be changed only through hex editing (title may have null byte between characters). It is also possible to remove the **menu bar** with Resource Editor, by deleting the menu entries under the Menu folder.
 
-Note: [Resource Hacker](http://www.angusj.com/resourcehacker/) appears to break Trong's Flash Player. [Resource Editor](http://melander.dk/reseditor/) is a good alternative that works.
+Note: [Resource Hacker](http://www.angusj.com/resourcehacker/) or [Resource Cracker](https://www.pelock.com/products/resource-cracker) appears to break Trong's Flash Player. [Resource Editor](http://melander.dk/reseditor/) is a good alternative that works.
 
 Tip: On screens with high DPI, it is useful to go to exe's `Properties -> Compatibility -> Change high DPI settings` and tick `Use this setting to fix scaling problems for this program instead of the one in Settings` and also tick `Override high DPI scaling behavior. Scaling performed by: Application`. This will remove the blur from the app.
 
